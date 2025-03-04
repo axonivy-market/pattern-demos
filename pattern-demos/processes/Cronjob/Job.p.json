@@ -218,6 +218,12 @@
       "name" : "JobBackgroundNote",
       "config" : {
         "dialog" : "com.axonivy.demo.patterndemos.ui.admin.JobBackgroundNote:start(String,String)",
+        "call" : {
+          "map" : {
+            "param.jobName" : "in.jobName",
+            "param.additionalJobData" : "in.additionalJobData"
+          }
+        },
         "output" : {
           "map" : {
             "out" : "in",
