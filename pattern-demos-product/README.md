@@ -49,4 +49,5 @@ project situation. Please copy and adapt the pattens and examples that you want 
 ## TODO
 
 * Rename UI beans, pattern: XyzCtrl
-* Extract (and reuse) Locking into it's own topic 
+* Extract (and reuse) Locking into it's own topic
+* Provide JUnit test for Locking
