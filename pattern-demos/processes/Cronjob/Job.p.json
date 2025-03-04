@@ -17,7 +17,11 @@
             { "name" : "manual", "type" : "Boolean", "desc" : "" },
             { "name" : "additionalJobData", "type" : "String", "desc" : "" }
           ],
-          "map" : { }
+          "map" : {
+            "out.additionalJobData" : "param.additionalJobData",
+            "out.jobName" : "param.jobName",
+            "out.manual" : "param.manual"
+          }
         }
       },
       "visual" : {
@@ -132,7 +136,37 @@
       "type" : "UserTask",
       "name" : "Admin task",
       "config" : {
-        "dialog" : "com.axonivy.demo.patterndemos.ui.admin.AdminTask:start(String,String,List<com.axonivy.demo.patterndemos.enums.AdminDecision>)"
+        "dialog" : "com.axonivy.demo.patterndemos.ui.admin.AdminTask:start(String,String,List<com.axonivy.demo.patterndemos.enums.AdminDecision>)",
+        "call" : {
+          "map" : {
+            "param.task" : "ivy.cms.co(\"/Tasks/Names/checkJobResult\", [in.jobName, in.result.getStatus()])",
+            "param.details" : "in.result.toStringList()"
+          },
+          "code" : [
+            "import com.axonivy.demo.patterndemos.enums.AdminDecision;",
+            "",
+            "if(!in.result.isOk()) {",
+            "  param.buttons = [AdminDecision.CHECK_LATER, AdminDecision.IGNORE, AdminDecision.RETRY];",
+            "}",
+            "else {",
+            "  param.buttons = [AdminDecision.CHECK_LATER, AdminDecision.DONE];",
+            "}"
+          ]
+        },
+        "task" : {
+          "name" : "<%=ivy.cms.co(\"/Processes/Names/checkJobResult\", [in.jobName, in.result.getStatus()])%>",
+          "description" : "<%=ivy.cms.co(\"/Tasks/Descriptions/checkJobResult\", [in.jobName, in.result.getStatus(), in.additionalJobData])%>",
+          "category" : "ADMIN",
+          "responsible" : {
+            "activator" : "ApplicationAdmin"
+          }
+        },
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.adminDecision" : "result.decision"
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 1208, "y" : 280 }
@@ -172,7 +206,8 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 1208, "y" : 360 }
+        "at" : { "x" : 1208, "y" : 360 },
+        "color" : "Red"
       },
       "connect" : [
         { "id" : "f19", "to" : "f5", "via" : [ { "x" : 336, "y" : 360 }, { "x" : 288, "y" : 312 }, { "x" : 288, "y" : 216 } ], "color" : "Red" }
@@ -182,7 +217,14 @@
       "type" : "DialogCall",
       "name" : "JobBackgroundNote",
       "config" : {
-        "dialog" : "com.axonivy.demo.patterndemos.ui.admin.JobBackgroundNote:start(String,String)"
+        "dialog" : "com.axonivy.demo.patterndemos.ui.admin.JobBackgroundNote:start(String,String)",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.additionalJobData" : "in.additionalJobData",
+            "out.jobName" : "in.jobName"
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 480, "y" : 280 }
@@ -194,6 +236,15 @@
       "id" : "f23",
       "type" : "TaskSwitchEvent",
       "name" : "System",
+      "config" : {
+        "task" : {
+          "name" : "<%=ivy.cms.co(\"/Processes/Names/backgroundJob\", [in1.jobName])%>",
+          "description" : "<%=ivy.cms.co(\"/Processes/Descriptions/backgroundJob\")%>",
+          "responsible" : {
+            "activator" : "SYSTEM"
+          }
+        }
+      },
       "visual" : {
         "at" : { "x" : 616, "y" : 280 },
         "labelOffset" : { "x" : 14, "y" : 34 }
@@ -201,5 +252,10 @@
       "connect" : [
         { "id" : "f24", "to" : "f6", "via" : [ { "x" : 680, "y" : 280 }, { "x" : 680, "y" : 216 } ], "color" : "default" }
       ]
-    } ]
+    } ],
+  "layout" : {
+    "colors" : {
+      "Red" : "#ff0000"
+    }
+  }
 }

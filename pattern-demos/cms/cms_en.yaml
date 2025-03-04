@@ -34,8 +34,12 @@ Labels:
   'yes': 'Yes'
 Processes:
   Descriptions:
+    backgroundJob: Technical task to execute a backgroundjobs.
+    checkJobResult: 'Check result of job ''''{0}''''. Overall Status: {1}'
     demoJob: Demo cron job.
   Names:
+    backgroundJob: Background job "{0}"
+    checkJobResult: Check result of job ''{0}'' with overall status ''{1}''.
     demoJob: 'Manual Jobstart: Demo job'
 Tasks:
   Description:

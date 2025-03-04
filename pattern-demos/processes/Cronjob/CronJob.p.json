@@ -52,7 +52,13 @@
         "runJob"
       ],
       "config" : {
-        "processCall" : "Cronjob/Job:runJob(String,Boolean,String)"
+        "processCall" : "Cronjob/Job:runJob(String,Boolean,String)",
+        "call" : {
+          "map" : {
+            "param.jobName" : "com.axonivy.demo.patterndemos.service.DemoJobService.DEMO_JOB_NAME",
+            "param.manual" : "in.manual"
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 312, "y" : 112 }
