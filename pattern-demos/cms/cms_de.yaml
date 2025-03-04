@@ -27,6 +27,36 @@ Dialogs:
                 start: Starten
                 unlock: Entsperren
                 unlockError: Job ''{0}'' konnte nicht entsperrt werden. Bitte prüfen Sie die Logs.
+            placeholderevalvuator:
+              PlaceholderEvaluator:
+                chooseSalutation: Bitte Anrede wählen
+                firstName: Vornamen
+                lastName: Nachname
+                replace: Ersetzen.
+                reset: reset
+                title: Titel
+                titleAfterName: Titel nach dem Namen
+Enums:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          enums:
+            Salutation:
+              FORMAL:
+                format: S. g. {Titel vorangestellt} {Vorname} {Nachname} {Titel nachgestellt}
+                name: S.g.
+              FORMAL_FEMALE:
+                format: Sehr geehrte Frau {Titel vorangestellt} {Nachname} {Titel nachgestellt}
+                name: Sehr geehrte Frau
+              FORMAL_MALE:
+                format: Sehr geehrter Herr {Titel vorangestellt} {Nachname} {Titel nachgestellt}
+                name: Sehr geehrter Herr
+              INFORMAL:
+                format: Guten Tag, {Titel vorangestellt} {Vorname} {Nachname} {Titel nachgestellt}
+                name: 'Guten Tag, '
+                
+                
 Labels:
   cancel: Abbrechen
   'no': Nein

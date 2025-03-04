@@ -30,6 +30,34 @@ Dialogs:
                 title: Job note
                 unlock: Unlock
                 unlockError: Job ''{0}'' could not be unlocked. Please check the logs.
+            placeholderevalvuator:
+              PlaceholderEvaluator:
+                chooseSalutation: Please choose salutation
+                firstName: First name
+                lastName: Last name
+                replace: Replace
+                reset: reset
+                title: Title
+                titleAfterName: Title after name
+Enums:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          enums:
+            Salutation:
+              FORMAL:
+                format: Dear {Vorname} {Nachname}
+                name: formal
+              FORMAL_FEMALE:
+                format: Dear {Vorname} {Nachname}
+                name: female formal
+              FORMAL_MALE:
+                format: Dear {Vorname} {Nachname}
+                name: male formal
+              INFORMAL:
+                format: Dear {Vorname} {Nachname}
+                name: informal
 Labels:
   cancel: Cancel
   'no': 'No'
