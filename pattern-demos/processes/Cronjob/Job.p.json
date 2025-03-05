@@ -169,7 +169,8 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 1208, "y" : 280 }
+        "at" : { "x" : 1208, "y" : 280 },
+        "color" : "Gold"
       },
       "connect" : [
         { "id" : "f15", "to" : "f14" }
@@ -190,10 +191,10 @@
       },
       "connect" : [
         { "id" : "f16", "to" : "f4", "via" : [ { "x" : 1392, "y" : 280 }, { "x" : 1456, "y" : 216 } ] },
-        { "id" : "f18", "to" : "f17", "via" : [ { "x" : 1344, "y" : 360 } ], "label" : {
+        { "id" : "f18", "to" : "f17", "via" : [ { "x" : 1344, "y" : 344 }, { "x" : 1304, "y" : 408 } ], "label" : {
             "name" : "Retry",
-            "segment" : 1.09,
-            "offset" : { "x" : 32, "y" : -32 }
+            "segment" : 1.14,
+            "offset" : { "x" : -24, "y" : -38 }
           }, "color" : "Red" }
       ]
     }, {
@@ -206,11 +207,11 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 1208, "y" : 360 },
+        "at" : { "x" : 1208, "y" : 408 },
         "color" : "Red"
       },
       "connect" : [
-        { "id" : "f19", "to" : "f5", "via" : [ { "x" : 336, "y" : 360 }, { "x" : 288, "y" : 312 }, { "x" : 288, "y" : 216 } ], "color" : "Red" }
+        { "id" : "f19", "to" : "f5", "via" : [ { "x" : 336, "y" : 400 }, { "x" : 288, "y" : 352 }, { "x" : 288, "y" : 216 } ], "color" : "Red" }
       ]
     }, {
       "id" : "f20",
@@ -258,10 +259,58 @@
       "connect" : [
         { "id" : "f24", "to" : "f6", "via" : [ { "x" : 680, "y" : 280 }, { "x" : 680, "y" : 216 } ], "color" : "default" }
       ]
+    }, {
+      "id" : "f0",
+      "type" : "ProcessAnnotation",
+      "name" : "Run job by the service class",
+      "visual" : {
+        "at" : { "x" : 880, "y" : 104 },
+        "description" : "Run the registered job by the JobService class. The job is specified by the the jobName.",
+        "color" : "Blue"
+      },
+      "connect" : [
+        { "id" : "f1", "to" : "f6" }
+      ]
+    }, {
+      "id" : "f2",
+      "type" : "ProcessAnnotation",
+      "name" : "If manual start or error by the job, then admin task created",
+      "visual" : {
+        "at" : { "x" : 1064, "y" : 336 },
+        "color" : "Blue"
+      },
+      "connect" : [
+        { "id" : "f28", "to" : "f11" }
+      ]
+    }, {
+      "id" : "f29",
+      "type" : "ProcessAnnotation",
+      "name" : "Job prestart dialog to start manually the job.",
+      "visual" : {
+        "at" : { "x" : 416, "y" : 352 },
+        "color" : "Blue"
+      },
+      "connect" : [
+        { "id" : "f30", "to" : "f20" }
+      ]
+    }, {
+      "id" : "f31",
+      "type" : "ProcessAnnotation",
+      "name" : "Set job to manual mode after the retry decision.",
+      "visual" : {
+        "at" : { "x" : 1344, "y" : 488 },
+        "description" : "Set job to manual mode after the retry decision if job was already manual or result was not ok and admin task was necessary.",
+        "color" : "Blue"
+      },
+      "connect" : [
+        { "id" : "f32", "to" : "f17" }
+      ]
     } ],
   "layout" : {
     "colors" : {
-      "Red" : "#ff0000"
+      "Red" : "#ff0000",
+      "Gold" : "#ffd700",
+      "Blue" : "#007bff"
     }
   }
 }
