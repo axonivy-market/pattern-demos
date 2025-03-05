@@ -5,7 +5,6 @@ import java.time.Instant;
 import java.util.function.Supplier;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.apache.logging.log4j.message.MessageFormatMessage;
 
 import com.axonivy.demo.patterndemoslock.dao.LockDAO;
 import com.axonivy.demo.patterndemoslock.entities.Lock;
@@ -91,13 +90,13 @@ public class LockService {
 		}
 
 		if(lock.isLocked() && (lock.getValidUntil() == null || Instant.now().isBefore(lock.getValidUntil()))) {
-			Ivy.log().info(new MessageFormatMessage("Cannot get lock {} because it is already locked, valid until is {}", lock.getName(), lock.getValidUntil()).getFormattedMessage());
+			Ivy.log().info("Cannot get lock {0} because it is already locked, valid until is {1}", lock.getName(), lock.getValidUntil());
 		}
 		else {
 			try {
 				lock.setLocked(true);
 				lock.setValidUntil(validUntil);
-				Ivy.log().info(new MessageFormatMessage("Locking {0}, valid until is {1}.", lock.getName(), lock.getValidUntil()).getFormattedMessage());
+				Ivy.log().info("Locking {0}, valid until is {1}.", lock.getName(), lock.getValidUntil());
 
 				lock = LockDAO.get().save(lock);
 				locked = lock.isLocked();
@@ -106,7 +105,7 @@ public class LockService {
 					throw e;
 				}
 				else {
-					Ivy.log().warn(new MessageFormatMessage("Exception while trying to lock {0}: {1}", lock.getName(), ExceptionUtils.getRootCauseMessage(e)).getFormattedMessage());
+					Ivy.log().warn("Exception while trying to lock {0}: {1}", lock.getName(), ExceptionUtils.getRootCauseMessage(e));
 				}
 			}
 		}
@@ -165,13 +164,13 @@ public class LockService {
 		unlocked = !lock.isLocked();
 
 		if(unlocked) {
-			Ivy.log().info(new MessageFormatMessage("Lock {0} is already unlocked, no further activity.", lock.getName()).getFormattedMessage());
+			Ivy.log().info("Lock {0} is already unlocked, no further activity.", lock.getName());
 		}
 		else {
 			try {
 				lock.setLocked(false);
 				lock.setValidUntil(null);
-				Ivy.log().info(new MessageFormatMessage("Unlocking {0}.", lock.getName()).getFormattedMessage());
+				Ivy.log().info("Unlocking {0}.", lock.getName());
 
 				lock = LockDAO.get().save(lock);
 				unlocked = !lock.isLocked();
@@ -180,7 +179,7 @@ public class LockService {
 					throw e;
 				}
 				else {
-					Ivy.log().warn(new MessageFormatMessage("Exception while trying to lock {0}: {1}", lock.getName(), ExceptionUtils.getRootCauseMessage(e)).getFormattedMessage());
+					Ivy.log().warn("Exception while trying to lock {0}: {1}", lock.getName(), ExceptionUtils.getRootCauseMessage(e));
 				}
 			}
 		}
@@ -242,20 +241,20 @@ public class LockService {
 
 	protected boolean forceFunction(String what, Duration tryDuration, Supplier<Boolean> function) {
 		var result = false;
-	
+
 		var finish = tryDuration != null ? Instant.now().plus(tryDuration) : null;
-	
+
 		while (!result && (finish == null || finish.isAfter(Instant.now()))) {
-	
+
 			result = function.get();
-	
+
 			if(!result) {
-				Ivy.log().debug(new MessageFormatMessage("Could not {0}, retrying until {1}.", what, tryDuration).getFormattedMessage());
+				Ivy.log().debug("Could not {0}, retrying until {1}.", what, tryDuration);
 			}
 		}
-	
+
 		return result;
-	
+
 	}
 
 	/**
@@ -269,7 +268,7 @@ public class LockService {
 	 */
 	protected <R> R doLockedInternally(String lockName, Duration validDuration, Supplier<Boolean> lockFunction, Supplier<R> function) {
 		R result = null;
-	
+
 		if(lockFunction.get()) {
 			try {
 				result = function.get();
@@ -282,7 +281,7 @@ public class LockService {
 		} else {
 			throw BpmError.create("com:axonivy:demo:patterndemos:lock").build();
 		}
-	
+
 		return result;
 	}
 }

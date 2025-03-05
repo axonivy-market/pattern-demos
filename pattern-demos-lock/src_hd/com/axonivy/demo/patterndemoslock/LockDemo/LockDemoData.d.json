@@ -4,12 +4,8 @@
   "namespace" : "com.axonivy.demo.patterndemoslock.LockDemo",
   "isBusinessCaseData" : false,
   "fields" : [ {
-    "name" : "ctrl",
-    "type" : "com.axonivy.demo.patterndemoslock.ui.LockDemoCtrl",
-    "modifiers" : [ "PERSISTENT" ]
-  }, {
-    "name" : "proceed",
-    "type" : "Boolean",
+    "name" : "message",
+    "type" : "String",
     "modifiers" : [ "PERSISTENT" ]
   } ]
 }

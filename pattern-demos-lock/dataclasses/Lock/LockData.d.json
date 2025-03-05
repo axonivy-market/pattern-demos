@@ -4,7 +4,7 @@
   "namespace" : "Lock",
   "isBusinessCaseData" : false,
   "fields" : [ {
-    "name" : "proceed",
+    "name" : "success",
     "type" : "Boolean",
     "modifiers" : [ "PERSISTENT" ]
   } ]

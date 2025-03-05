@@ -1,8 +1,16 @@
 # Pattern Demos
 
 Pattern Demos are a collection of processes, dialogs, code or other snippets, which can be useful in your projects.
+If you want to use a pattern, copy the necessary parts to your project and adapt as needed. The demos are kept
+as simple as possible but some of the demos require additional infrastructure in your project.
 
 ## Demo
+
+### Lock
+
+Use the LockService class to acquire system-wide locks for single-use actions. The LockService
+is based on persistence-utils and needs a database connection. It saves locks in an optimistic
+locked entity to avoid race-conditions. 
 
 ### Admin Task
 
