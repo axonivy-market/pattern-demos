@@ -8,9 +8,4 @@ public interface BaseDAO extends com.axonivy.utils.persistence.dao.BaseDAO {
 	default public String getPersistenceUnitName() {
 		return "pattern-demos-lock_jpa";
 	}
-
-	default public String getDatabaseName() {
-		return "patterns_demo";
-	}
-
 }

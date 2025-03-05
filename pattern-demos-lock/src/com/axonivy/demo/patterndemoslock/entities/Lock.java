@@ -22,9 +22,6 @@ public class Lock extends AuditableIdEntity {
 	@Column
 	private Instant validUntil;
 
-	// <<MEMBERSTART>> - do not delete this line
-	// <<MEMBEREND>> - do not delete this line
-
 	/**
 	 * @return the name
 	 */
@@ -66,7 +63,4 @@ public class Lock extends AuditableIdEntity {
 	public void setValidUntil(Instant validUntil) {
 		this.validUntil = validUntil;
 	}
-
-	// <<FUNCTIONSTART>> - do not delete this line
-	// <<FUNCTIONEND>> - do not delete this line
 }
