@@ -38,7 +38,7 @@
       "config" : {
         "output" : {
           "code" : [
-            "import com.axonivy.demo.patterndemoslock.service.LockService;",
+            "import com.axonivy.demo.patterndemos.lock.service.LockService;",
             "in.success = LockService.get().lock(\"demoLock\");"
           ]
         }
@@ -74,7 +74,7 @@
       "type" : "DialogCall",
       "name" : "See lock status",
       "config" : {
-        "dialog" : "com.axonivy.demo.patterndemoslock.LockDemo:start(String)",
+        "dialog" : "com.axonivy.demo.patterndemos.lock.LockDemo:start(String)",
         "call" : {
           "map" : {
             "param.message" : "\"This dialog is shown in locked state. It cannot be shown again before unlocking.\""
@@ -121,7 +121,7 @@
       "config" : {
         "output" : {
           "code" : [
-            "import com.axonivy.demo.patterndemoslock.service.LockService;",
+            "import com.axonivy.demo.patterndemos.lock.service.LockService;",
             "in.success = LockService.get().unlock(\"demoLock\");"
           ]
         }
@@ -139,7 +139,7 @@
       "config" : {
         "output" : {
           "code" : [
-            "import com.axonivy.demo.patterndemoslock.service.LockService;",
+            "import com.axonivy.demo.patterndemos.lock.service.LockService;",
             "in.success = LockService.get().lock(\"demoLock\");"
           ]
         }
@@ -157,7 +157,7 @@
       "config" : {
         "output" : {
           "code" : [
-            "import com.axonivy.demo.patterndemoslock.service.LockService;",
+            "import com.axonivy.demo.patterndemos.lock.service.LockService;",
             "in.success = LockService.get().unlock(\"demoLock\");"
           ]
         }
@@ -173,7 +173,7 @@
       "type" : "DialogCall",
       "name" : "Show status",
       "config" : {
-        "dialog" : "com.axonivy.demo.patterndemoslock.LockDemo:start(String)",
+        "dialog" : "com.axonivy.demo.patterndemos.lock.LockDemo:start(String)",
         "call" : {
           "map" : {
             "param.message" : "in.success ? \"The lock is now set.\" : \"The lock was already set and could not be set again.\""
@@ -191,7 +191,7 @@
       "type" : "DialogCall",
       "name" : "Show status",
       "config" : {
-        "dialog" : "com.axonivy.demo.patterndemoslock.LockDemo:start(String)",
+        "dialog" : "com.axonivy.demo.patterndemos.lock.LockDemo:start(String)",
         "call" : {
           "map" : {
             "param.message" : "in.success ? \"The lock is now unset.\" : \"The lock could not be unlocked, look at the logs.\""
@@ -241,7 +241,7 @@
       "type" : "DialogCall",
       "name" : "See lock status",
       "config" : {
-        "dialog" : "com.axonivy.demo.patterndemoslock.LockDemo:start(String)",
+        "dialog" : "com.axonivy.demo.patterndemos.lock.LockDemo:start(String)",
         "call" : {
           "map" : {
             "param.message" : "\"The lock could not be acquired. Wait until the other process finishes or unlock manually (if you know what you are doing).\""

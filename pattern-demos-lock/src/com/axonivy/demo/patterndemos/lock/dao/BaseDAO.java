@@ -1,4 +1,4 @@
-package com.axonivy.demo.patterndemoslock.dao;
+package com.axonivy.demo.patterndemos.lock.dao;
 
 /**
  * Define the persistence unit name to use in DAOs implementing this one.

@@ -1,9 +1,9 @@
-package com.axonivy.demo.patterndemoslock.dao;
+package com.axonivy.demo.patterndemos.lock.dao;
 
 import javax.persistence.criteria.Expression;
 
-import com.axonivy.demo.patterndemoslock.entities.Lock;
-import com.axonivy.demo.patterndemoslock.entities.Lock_;
+import com.axonivy.demo.patterndemos.lock.entities.Lock;
+import com.axonivy.demo.patterndemos.lock.entities.Lock_;
 import com.axonivy.utils.persistence.dao.AuditableIdDAO;
 import com.axonivy.utils.persistence.dao.CriteriaQueryContext;
 

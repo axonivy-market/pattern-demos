@@ -3,7 +3,7 @@
   "id" : "195666049EFE3DC2",
   "kind" : "HTML_DIALOG",
   "config" : {
-    "data" : "com.axonivy.demo.patterndemoslock.LockDemo.LockDemoData"
+    "data" : "com.axonivy.demo.patterndemos.lock.LockDemo.LockDemoData"
   },
   "elements" : [ {
       "id" : "f0",

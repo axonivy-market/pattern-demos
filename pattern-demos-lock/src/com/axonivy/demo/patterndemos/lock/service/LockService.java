@@ -1,4 +1,4 @@
-package com.axonivy.demo.patterndemoslock.service;
+package com.axonivy.demo.patterndemos.lock.service;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -6,8 +6,8 @@ import java.util.function.Supplier;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
-import com.axonivy.demo.patterndemoslock.dao.LockDAO;
-import com.axonivy.demo.patterndemoslock.entities.Lock;
+import com.axonivy.demo.patterndemos.lock.dao.LockDAO;
+import com.axonivy.demo.patterndemos.lock.entities.Lock;
 
 import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.environment.Ivy;

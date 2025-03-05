@@ -1,4 +1,4 @@
-package com.axonivy.demo.patterndemoslock.entities;
+package com.axonivy.demo.patterndemos.lock.entities;
 
 import java.time.Instant;
 import javax.annotation.Generated;
