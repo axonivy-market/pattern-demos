@@ -11,10 +11,10 @@ Dialogs:
               AdminTask:
                 checkLater: Check later
                 checkLaterTooltip: Keep this task to check later
-                description: Description
+                description: This is example of admin task. This task can be used for cronjobs, or other processes where admin check is necessary for the job.
                 done: Done
                 doneTooltip: Done, continue process
-                ignore: ignore
+                ignore: Ignore
                 ignoreConfirmatationHeader: Continue?
                 ignoreConfirmatationMessage: Do you really want to ignore and continue the process?
                 ignoreTooltip: Ignore and continue process
@@ -39,6 +39,13 @@ Dialogs:
                 reset: reset
                 title: Title
                 titleAfterName: Title after name
+            primefacesextensions:
+              PrimefacesExtensions:
+                description: In this extension we added check for byte length of input (instead of character length) to init method (PrimeFaces.widget.InputText.prototype.init).
+                explanation: "<b>If you would like to extend or improve the functionality of a component, follow these steps:</b><br/><br/>\n        \t\t\t1. Find the JavaScript of the component you want to extend in the designer directory to get the current version of PrimeFaces.<br/>\n        \t\t\t\
+                  2. Copy part or all of this JavaScript to the `webContent` directory in your project. (in our case it is /webContent/js/InputTextExtension.js)<br/>\n        \t\t\t3. Improve your JavaScript.<br/>\n        \t\t\t4. Add a link to your JavaScript in your main XHTML file (e.g., `frame-10-full-width.xhtml`)\
+                  \ as shown below:<br/>"
+                title: Primefaces extension of component p:inputText.
 Enums:
   com:
     axonivy:

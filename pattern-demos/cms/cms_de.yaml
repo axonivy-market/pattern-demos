@@ -11,9 +11,10 @@ Dialogs:
               AdminTask:
                 checkLater: Später prüfen
                 checkLaterTooltip: Aufgabe behalten und später prüfen
+                description: This is example of admin task. This task can be used for cronjobs, or other processes where admin check is necessary for the job.
                 done: Erledigt
                 doneTooltip: Erledigt, im Prozess weitergehen
-                ignore: ignore
+                ignore: Ignorieren Sie
                 ignoreConfirmatationHeader: Weiter?
                 ignoreConfirmatationMessage: Wollen Sie wirklich ignorieren und im Prozess weitergehen?
                 ignoreTooltip: Ignorieren und im Prozess weitergehen
@@ -36,6 +37,13 @@ Dialogs:
                 reset: reset
                 title: Titel
                 titleAfterName: Titel nach dem Namen
+            primefacesextensions:
+              PrimefacesExtensions:
+                description: In dieser Erweiterung wurde die init-Methode (PrimeFaces widget.prototype.init) um die Prüfung der Byte-Länge der Eingabe (statt der Zeichenlänge) erweitert. Länge) zur init-Methode (PrimeFaces.widget.InputText.prototype.init) hinzugefügt.
+                explanation: "<b>IWenn Sie die Funktionalität einer Komponente erweitern oder verbessern möchten, gehen Sie folgendermaßen vor.</b><br/><br/>\n        \t\t\t1. Suchen Sie das JavaScript der Komponente, die Sie erweitern möchten, im Designer-Verzeichnis, um die aktuelle Version von PrimeFaces\
+                  \ zu erhalten.<br/>\n        \t\t\t2. Copy part or all of this JavaScript to the `webContent` directory in your project. (in our case it is /webContent/js/InputTextExtension.js).<br/>\n        \t\t\t3. Verbessern Sie Ihr JavaScript.<br/>\n        \t\t\t4. Fügen Sie einen Link zu Ihrem\
+                  \ JavaScript in Ihre XHTML-Hauptdatei ein (z. B. „frame-10-full-width.xhtml“), wie unten gezeigt.<br/>"
+                title: Primefaces-Erweiterung der Komponente p:inputText.
 Enums:
   com:
     axonivy:
@@ -55,8 +63,6 @@ Enums:
               INFORMAL:
                 format: Guten Tag, {Titel vorangestellt} {Vorname} {Nachname} {Titel nachgestellt}
                 name: 'Guten Tag, '
-                
-                
 Labels:
   cancel: Abbrechen
   'no': Nein
