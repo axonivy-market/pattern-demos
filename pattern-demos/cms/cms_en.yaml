@@ -36,6 +36,10 @@ Dialogs:
             placeholderevalvuator:
               PlaceholderEvaluator:
                 chooseSalutation: Please choose salutation
+                content: 'Content for replacement:'
+                description: |-
+                  This demo is about generic logic, how to replace placeholders for example marked by curly brackets "{}" in text. Main purpose of this demo is show how to set enum and methods to achieve it. We can propose to each developer also debug how it is working to get knowledge.
+                  You should look into enum Salutation and classes Placeholder, SalutationPlaceholder, PlaceholderEvalvuator. You can start debug to see how it is working from PlaceholderEvaluatorBean.replacePlaceholders().
                 firstName: First name
                 lastName: Last name
                 replace: Replace

@@ -4,10 +4,9 @@ import com.axonivy.demo.patterndemos.service.PlaceholderEvaluator;
 import com.axonivy.utils.persistence.enums.HasCmsName;
 
 public enum SalutationPlaceholder implements HasCmsName, Placeholder {
-	TITLE_BEFORE("Titel vorangestellt"),
-	FIRSTNAME("Vorname"),
-	LASTNAME("Nachname"),
-	TITLE_AFTER("Titel nachgestellt");
+	// enums with strings with names of placeholders, in text they can be between
+	// curly brackets for example {Titel vorangestellt}
+	TITLE_BEFORE("Titel vorangestellt"), FIRSTNAME("Vorname"), LASTNAME("Nachname"), TITLE_AFTER("Titel nachgestellt");
 
 	private String placeholderName;
 
@@ -35,6 +34,12 @@ class SalutationPlaceholderEvaluator extends PlaceholderEvaluator<SalutationPlac
 		this.title2 = title2;
 	}
 
+	/**
+	 * Method which assign value to placeholder.
+	 * 
+	 * @param SalutationPlaceholder
+	 * @return String
+	 **/
 	@Override
 	public String evaluate(SalutationPlaceholder ph) {
 		String result = null;
@@ -63,4 +68,3 @@ class SalutationPlaceholderEvaluator extends PlaceholderEvaluator<SalutationPlac
 		return SalutationPlaceholder.class;
 	}
 }
-

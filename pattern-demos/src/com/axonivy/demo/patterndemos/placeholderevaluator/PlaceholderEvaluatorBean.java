@@ -23,14 +23,24 @@ public class PlaceholderEvaluatorBean {
 		this.textForReplacement = textForReplacement;
 	}
 
+	/**
+	 * Set format of salutation to text for replacement.
+	 */
 	public void setSalutationToText() {
 		this.textForReplacement = selectedSalutation.getCmsFormat();
 	}
-	
+
+	/**
+	 * Replace placeholders by values from UI.
+	 */
 	public void replacePlaceholders() {
-		this.textForReplacement = Salutation.fillDataInSalutation(textForReplacement, title, firstName, lastName, title2);
+		this.textForReplacement = Salutation.fillDataInSalutation(textForReplacement, title, firstName, lastName,
+				title2);
 	}
-	
+
+	/**
+	 * Reset replaced text.
+	 */
 	public void reset() {
 		this.textForReplacement = selectedSalutation.getCmsFormat();
 	}

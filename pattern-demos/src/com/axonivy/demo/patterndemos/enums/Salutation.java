@@ -10,10 +10,13 @@ public enum Salutation  implements HasCmsName {
 	FORMAL;
 
 	/**
-	 * Replace placeholders by values in salutation from person
+	 * Replace placeholders by values in salutation from person.
 	 * 
-	 * @param person
-	 * @param boolean if we are calling method from communication component
+	 * @param String content
+	 * @param String title
+	 * @param String firstName
+	 * @param String lastName
+	 * @param String title2
 	 * @return string
 	 */
 	public static String fillDataInSalutation(String content, String title, String firstName, String lastName, String title2) {
