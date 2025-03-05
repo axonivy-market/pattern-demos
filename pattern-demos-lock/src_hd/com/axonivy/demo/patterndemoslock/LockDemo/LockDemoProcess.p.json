@@ -1,0 +1,119 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "195666049EFE3DC2",
+  "kind" : "HTML_DIALOG",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemoslock.LockDemo.LockDemoData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "HtmlDialogStart",
+      "name" : "start()",
+      "config" : {
+        "signature" : "start",
+        "input" : {
+          "map" : {
+            "out.ctrl" : "new com.axonivy.demo.patterndemoslock.ui.LockDemoCtrl()"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "proceed", "type" : "Boolean", "desc" : "" }
+          ],
+          "map" : {
+            "result.proceed" : "in.proceed"
+          }
+        },
+        "guid" : "195666049F0B7B0C"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 64 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "HtmlDialogEventStart",
+      "name" : "close",
+      "config" : {
+        "guid" : "195666049F11AA95"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 216 }
+      },
+      "connect" : [
+        { "id" : "f5", "to" : "f8" }
+      ]
+    }, {
+      "id" : "f4",
+      "type" : "HtmlDialogExit",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 216 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f9",
+      "type" : "HtmlDialogEventStart",
+      "name" : "proceed",
+      "config" : {
+        "guid" : "195667CBFBD90674"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 136 }
+      },
+      "connect" : [
+        { "id" : "f11", "to" : "f6" }
+      ]
+    }, {
+      "id" : "f10",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 136 },
+        "labelOffset" : { "x" : 10, "y" : 30 }
+      }
+    }, {
+      "id" : "f6",
+      "type" : "Script",
+      "name" : "Proceed - true",
+      "config" : {
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.proceed" : "true"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 136 }
+      },
+      "connect" : [
+        { "id" : "f7", "to" : "f10", "color" : "default" }
+      ]
+    }, {
+      "id" : "f8",
+      "type" : "Script",
+      "name" : "Proceed - false",
+      "config" : {
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.proceed" : "false"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 216 }
+      },
+      "connect" : [
+        { "id" : "f12", "to" : "f4", "color" : "default" }
+      ]
+    } ]
+}

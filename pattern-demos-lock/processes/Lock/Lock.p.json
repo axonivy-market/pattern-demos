@@ -7,22 +7,81 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "start",
+      "name" : "lockDemo",
       "config" : {
-        "signature" : "start"
+        "signature" : "lockDemoStart",
+        "request" : {
+          "name" : "<%=ivy.cms.co(\"/Processes/Names/lockDemo\")%>",
+          "description" : "<%=ivy.cms.co(\"/Processes/Details/lockDemo\")%>"
+        }
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
       },
       "connect" : [
-        { "id" : "f2", "to" : "f1" }
+        { "id" : "f2", "to" : "f5" }
       ]
     }, {
       "id" : "f1",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 352, "y" : 64 },
+        "at" : { "x" : 824, "y" : 64 },
         "labelOffset" : { "x" : 13, "y" : 33 }
       }
+    }, {
+      "id" : "f3",
+      "type" : "DialogCall",
+      "name" : "See lock status",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemoslock.LockDemo:start()",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.proceed" : "result.proceed"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 448, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f9" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "Script",
+      "name" : "Reset the lock",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.demo.patterndemoslock.service.LockService;",
+            "LockService.get().unlock(\"demoLock\");"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 248, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f3", "color" : "default" }
+      ]
+    }, {
+      "id" : "f9",
+      "type" : "Script",
+      "name" : "Lock the \"demoLock\"",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.demo.patterndemoslock.service.LockService;",
+            "LockService.get().lock(\"demoLock\");"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 648, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f7", "to" : "f1" }
+      ]
     } ]
 }
