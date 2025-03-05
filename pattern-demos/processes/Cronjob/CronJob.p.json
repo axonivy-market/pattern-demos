@@ -105,7 +105,10 @@
       "name" : "Call sub process of Job",
       "visual" : {
         "at" : { "x" : 560, "y" : 208 },
-        "description" : "The job itself is speicfied by the parameter of jobName"
+        "description" : [
+          "The job itself is speicfied by the parameter of jobName.",
+          "The job name is setup by the class of DemoJobService."
+        ]
       },
       "connect" : [
         { "id" : "f12", "to" : "f1" }
