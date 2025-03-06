@@ -54,6 +54,23 @@ Use these examples to see how Primefaces Widgets can be customized using the Pri
 This component is a repository for valuable patterns and demos. Typically they must be adapted to your
 project situation. Please copy and adapt the pattens and examples that you want to use directly to your project.
 
+### Admin Task
+
+The AdminTask shows a concept and must be adapted to your needs and usage-places because it depends on your
+process. The available buttons can be selected on a case-by-case base and you must think what a "Retry"
+or an "Ignore" would mean in your context or if you decide to allow these buttons it all. Out of the box, the
+AdminTask handled "Check Later" by itself (by just canceling out of the task). To use the AdminTask in
+your projects, copy the Dialog to your project, adjust it to your needs and use it at all background
+activities that could fail and require Administrator attention. The demo shows a typical situation and
+a simple example of handling "Retry" and "Ignore".
+
+Note, that the task and details parameter of the AdminTask should be persistent (i.e. have the persistent
+flag set in your data-class). This is necessary so that the values will be available, when the Admin opens
+the task later.
+
+The demo assignes the task to the role Administrator and categorizes the task as the ADMIN category.
+Change it to your needs. 
+
 ## TODO
 
 * Rename UI beans, pattern: XyzCtrl
