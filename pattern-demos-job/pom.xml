@@ -35,7 +35,7 @@
     </dependency>
     <dependency>
       <groupId>com.axonivy.demo</groupId>
-      <artifactId>pattern-demos</artifactId>
+      <artifactId>pattern-demos-admintask</artifactId>
       <version>${project.version}</version>
       <type>iar</type>
     </dependency>

@@ -21,6 +21,6 @@
     "modifiers" : [ "PERSISTENT" ]
   }, {
     "name" : "adminDecision",
-    "type" : "com.axonivy.demo.patterndemos.lock.enums.AdminDecision"
+    "type" : "com.axonivy.demo.patterndemos.admintask.enums.AdminDecision"
   } ]
 }

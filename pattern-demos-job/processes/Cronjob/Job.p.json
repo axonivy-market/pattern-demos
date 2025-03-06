@@ -135,14 +135,15 @@
       "type" : "UserTask",
       "name" : "Admin task",
       "config" : {
-        "dialog" : "com.axonivy.demo.patterndemos.ui.JobBackgroundNote:start(String,String)",
+        "dialog" : "com.axonivy.demo.patterndemos.admintask.AdminTask:start(String,String,List<com.axonivy.demo.patterndemos.admintask.enums.AdminDecision>)",
         "call" : {
           "map" : {
             "param.task" : "ivy.cms.co(\"/Tasks/Names/checkJobResult\", [in.jobName, in.result.getStatus()])",
             "param.details" : "in.result.toStringList()"
           },
           "code" : [
-            "import com.axonivy.demo.patterndemos.lock.enums.AdminDecision;",
+            "import com.axonivy.demo.patterndemos.admintask.enums.AdminDecision;",
+            "",
             "if(!in.result.isOk()) {",
             "  param.buttons = [AdminDecision.CHECK_LATER, AdminDecision.IGNORE, AdminDecision.RETRY];",
             "}",
@@ -179,7 +180,7 @@
       "name" : "Decision?",
       "config" : {
         "conditions" : {
-          "f18" : "in.adminDecision == com.axonivy.demo.patterndemos.lock.enums.AdminDecision.RETRY",
+          "f18" : "in.adminDecision == com.axonivy.demo.patterndemos.admintask.enums.AdminDecision.RETRY",
           "f16" : ""
         }
       },

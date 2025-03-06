@@ -11,7 +11,7 @@
       "config" : {
         "javaClass" : "ch.ivyteam.ivy.process.eventstart.beans.TimerBean",
         "userConfig" : {
-          "time" : "com.axonivy.demo.patterndemos.job.demoStartCronJobPattern"
+          "time" : "com.axonivy.demo.patterndemosjob.job.demoStartCronJobPattern"
         },
         "link" : "eventLink.ivp"
       },
@@ -113,5 +113,23 @@
       "connect" : [
         { "id" : "f12", "to" : "f1" }
       ]
+    }, {
+      "id" : "f13",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "This demo initiates a subprocess to manage the handling of a demo job. ",
+        "",
+        "There are two ways to trigger the job. ",
+        "",
+        "The first, or upper, path is activated by a cron scheduler, which can be configured using the variable com.axonivy.demo.patterndemosjob.job.demoStartCronJobPattern. This variable is adjustable in the variables.yaml file and should follow the standard cron pattern.",
+        "",
+        "The second method is manual triggering. In this case, you are first directed to a dialog to start the job. ",
+        "",
+        "You can reuse the subprocess, which is activated by calling it."
+      ],
+      "visual" : {
+        "at" : { "x" : 905, "y" : 161 },
+        "size" : { "width" : 494, "height" : 270 }
+      }
     } ]
 }
