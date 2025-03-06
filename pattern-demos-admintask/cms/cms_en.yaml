@@ -1,0 +1,38 @@
+Categories:
+  ADMIN:
+    name: Administration
+Dialogs:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          ui:
+            admin:
+              AdminTask:
+                checkLater: Check later
+                checkLaterTooltip: Keep this task to check later
+                description: |-
+                  An admin task is a task that can handle a sensitive process we want to keep under control, such as a cron job, sending emails, or other processes. The main idea is to intervene at the end of the process to verify the result or step in if a problem occurs during the process.
+
+                  You can set buttons in the UI or backing bean for each scenario. In our demo, we provide the buttons 'Ignore', 'Done', 'Retry', and 'Check Later'. These allow you to ignore an error, rerun the process, accept the result, or defer checking it until later.
+                done: Done
+                doneTooltip: Done, continue process
+                ignore: Ignore
+                ignoreConfirmatationHeader: Continue?
+                ignoreConfirmatationMessage: Do you really want to ignore and continue the process?
+                ignoreTooltip: Ignore and continue process
+                retryTooltip: Retry the operation
+                title: This is example of admin task. This task can be used for cronjobs, or other processes where admin check is necessary for the job.
+Labels:
+  cancel: Cancel
+  'no': 'No'
+  retry: Retry
+  'yes': 'Yes'
+Tasks:
+  Description:
+    checkJobResult: |-
+      Check result of job ''{0}''. Overall Status: {1}
+
+      Additional Job Data: ''{2}''
+  Names:
+    checkJobResult: Check result of job ''{0}'' with overall status ''{1}''.
