@@ -1,0 +1,62 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "195417CC8C3AF94C",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.ui.primefacesextensions.PrimefacesExtensions.PrimefacesExtensionsData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "start",
+      "config" : {
+        "signature" : "start",
+        "request" : {
+          "name" : "Primefaces Extensions",
+          "description" : "Show how to implement Primefaces Extensions"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 504, "y" : 64 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "DialogCall",
+      "name" : "Demo of primefaces extension",
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.ui.primefacesextensions.PrimefacesExtensions:start()"
+      },
+      "visual" : {
+        "at" : { "x" : 288, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f1", "color" : "default" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways: by refining the logic of its existing methods and by introducing new methods to the widget.",
+        "",
+        "If you would like to extend or improve the functionality of a component, follow these steps:",
+        "1. Find the JavaScript of the component you want to extend in the designer directory to get the current version of PrimeFaces",
+        "    2. Copy part or all of this JavaScript to the `webContent` directory in your project. (in our case it is /webContent/js/InputTextExtension.js)",
+        "    3. Improve your JavaScript.",
+        "    4. Add a link to your JavaScript in your main XHTML file (e.g., `frame-10-full-width.xhtml`) as shown below:",
+        "        <h:outputScript name=\"js/InputTextExtension.js\"/>"
+      ],
+      "visual" : {
+        "at" : { "x" : 800, "y" : 208 },
+        "size" : { "width" : 572, "height" : 188 }
+      }
+    } ]
+}

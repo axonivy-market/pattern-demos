@@ -1,0 +1,9 @@
+Dialogs:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          ui:
+            primefacesextensions:
+              PrimefacesExtensions:
+                description: The following input text field has a length limit of ten characters, but our extension counts it in bytes. You can try writing ten standard characters or five umlauts; if you write more, the last character will be removed.
