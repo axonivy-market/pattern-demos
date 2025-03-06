@@ -1,11 +1,8 @@
 package com.axonivy.demo.patterndemos.lock.dao;
 
-import javax.persistence.criteria.Expression;
-
 import com.axonivy.demo.patterndemos.lock.entities.Lock;
 import com.axonivy.demo.patterndemos.lock.entities.Lock_;
 import com.axonivy.utils.persistence.dao.AuditableIdDAO;
-import com.axonivy.utils.persistence.dao.CriteriaQueryContext;
 
 public class LockDAO extends AuditableIdDAO<Lock_, Lock> implements BaseDAO {
 	private static final LockDAO INSTANCE = new LockDAO();
@@ -27,8 +24,8 @@ public class LockDAO extends AuditableIdDAO<Lock_, Lock> implements BaseDAO {
 	 */
 	public Lock findByName(String type) {
 		Lock lock = null;
-		try (CriteriaQueryContext<Lock> ctx = initializeQuery()) {
-			Expression<String> nameEx = getExpression(null, ctx.r, Lock_.name);
+		try (var ctx = initializeQuery()) {
+			var nameEx = getExpression(null, ctx.r, Lock_.name);
 
 			ctx.where(ctx.c.equal(nameEx, type));
 			lock = forceSingleResult(findByCriteria(ctx));

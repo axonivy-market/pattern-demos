@@ -2,19 +2,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.axonivy.demo</groupId><!-- your group id: e.g.
-	com.axonivy.connector.<myconnector> or com.axonivy.utils.<myutil> -->
-	<name>pattern-demos</name><!-- fill your product name -->
-	<artifactId>pattern-demos-modules</artifactId><!-- fill your product name +
-	a "-modules" postfix -->
-	<version>12.0.0-SNAPSHOT</version><!-- identicate your minimal compliant ivy
-	version with the first 2 digits -->
+	<groupId>com.axonivy.demo</groupId>
+	<name>pattern-demos</name>
+	<artifactId>pattern-demos-modules</artifactId>
+	<version>12.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
 		<module>${project.name}</module>
-		<module>${project.name}-lock</module>
 		<module>${project.name}-admintask</module>
+		<module>${project.name}-lock</module>
+		<module>${project.name}-job</module>
 		<module>${project.name}-test</module>
 		<module>${project.name}-product</module>
 	</modules>
