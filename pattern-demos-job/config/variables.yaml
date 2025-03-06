@@ -8,7 +8,7 @@ Variables:
             # Cron/Quartz Pattern for demo job.
             demoJobCronPattern: 0/10 * * * * 
             # Change value to false to avoid error and admin task in the demo.
-            forceError: true*
+            forceError: true
       
 
 

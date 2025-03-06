@@ -3,16 +3,16 @@ package com.axonivy.demo.patterndemos.service;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public class DocumentService {
-	private static final DocumentService INSTANCE = new DocumentService();
-	public static final Pattern pattern = Pattern.compile("\\{{(.*?)\\}}");
+public class ReplacementService {
+	private static final ReplacementService INSTANCE = new ReplacementService();
+	public static final Pattern pattern = Pattern.compile("\\{\\{(.*?)\\}\\}");
 
 	/**
 	 * Gets the service instance.
 	 *
 	 * @return DocumentService
 	 */
-	public static DocumentService get() {
+	public static ReplacementService get() {
 		return INSTANCE;
 	}
 

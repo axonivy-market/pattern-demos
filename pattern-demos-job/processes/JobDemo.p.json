@@ -11,7 +11,7 @@
       "config" : {
         "javaClass" : "ch.ivyteam.ivy.process.eventstart.beans.TimerBean",
         "userConfig" : {
-          "time" : "com.axonivy.demo.patterndemos.job.demoStartCronJobPattern"
+          "time" : "ivy.var.com_axonivy_demo_patterndemos_job_demoJobCronPattern"
         },
         "link" : "eventLink.ivp"
       },
