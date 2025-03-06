@@ -18,11 +18,6 @@
 				<artifactId>project-build-plugin</artifactId>
 				<version>12.0.1</version>
 				<extensions>true</extensions>
-				<configuration>
-					<compilerOptions>
-						<compilerOption>-proc:none</compilerOption>
-					</compilerOptions>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -35,23 +30,4 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	<dependencies>
-		<dependency>
-			<groupId>com.axonivy.utils.persistence</groupId>
-			<artifactId>persistence-utils</artifactId>
-			<version>12.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-jpamodelgen</artifactId>
-			<version>5.6.5.Final</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.axonivy.utils.cronjob</groupId>
-			<artifactId>cronjob</artifactId>
-			<version>11.3.1</version>
-			<type>iar</type>
-		</dependency>
-	</dependencies>
 </project>
