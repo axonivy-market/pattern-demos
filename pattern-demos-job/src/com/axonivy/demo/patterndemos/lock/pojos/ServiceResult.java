@@ -17,7 +17,6 @@ import org.apache.logging.log4j.Level;
  * Represent a list of status messages and the most severe status that occurred.
  */
 public class ServiceResult {
-//	private static final Logger LOG = LogService.get().getLogger();
 	public static final int MAX_TO_SHOW = 500;
 	private int oks = 0;
 	private int warnings = 0;
@@ -81,10 +80,10 @@ public class ServiceResult {
 	 * @param arguments
 	 */
 	public void add(ResultStatus status, String message, Throwable th, Object...arguments) {
-		String text = "";
+		var text = "";
 		if(message != null) {
 			text = MessageFormat.format(message, arguments);
-//			LOG.log(status.getLevel(), text, th);
+			//			LOG.log(status.getLevel(), text, th);
 			if(th != null) {
 				text += System.lineSeparator() + ExceptionUtils.getStackTrace(th);
 			}
@@ -133,12 +132,12 @@ public class ServiceResult {
 	 * @return
 	 */
 	public String memoryFootprint() {
-		Runtime runtime = Runtime.getRuntime();
+		var runtime = Runtime.getRuntime();
 
 		double mb = 1024 * 1024;
 
-		long total = runtime.totalMemory();
-		long used = total - runtime.freeMemory();
+		var total = runtime.totalMemory();
+		var used = total - runtime.freeMemory();
 
 		System.gc();
 		return String.format("total: %7.1f M used: %7.1f M", total / mb, used / mb);
@@ -152,7 +151,7 @@ public class ServiceResult {
 	 * @return
 	 */
 	public ResultStatus getStatus() {
-		ResultStatus status = ResultStatus.OK;
+		var status = ResultStatus.OK;
 		if(isError()) {
 			status = ResultStatus.ERROR;
 		}
@@ -261,22 +260,22 @@ public class ServiceResult {
 	 * @return
 	 */
 	public String toAbbreviatedStringList(int maxResults) {
-		StringWriter stringWriter = new StringWriter();
-		PrintWriter out = new PrintWriter(stringWriter);
+		var stringWriter = new StringWriter();
+		var out = new PrintWriter(stringWriter);
 
 		out.format("Result: %s%n", getStatus());
 		out.format("Total lines: %d OK: %d WARN: %d ERROR: %d%n".formatted(getTotal(), getOks(), getWarnings(), getErrors()));
 
-		int toDrop = maxResults > 0 ? results.size() - maxResults : 0;
-		int dropStart = 0;
+		var toDrop = maxResults > 0 ? results.size() - maxResults : 0;
+		var dropStart = 0;
 
 		// does not make sense for only a few lines
 		if(toDrop > 3) {
 			dropStart = (results.size() - toDrop) / 2;
 		}
 
-		int count = 0;
-		int dropped = 0;
+		var count = 0;
+		var dropped = 0;
 		for (Result result : results) {
 			if(dropStart > 0 && count >= dropStart && dropped < toDrop) {
 				if(toDrop - dropped == 1) {

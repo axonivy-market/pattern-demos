@@ -25,7 +25,6 @@ import ch.ivyteam.ivy.environment.Ivy;
 public class JobStatus extends AuditableIdEntity {
 	private static final long serialVersionUID = 1L;
 	public static final int MAX_MESSAGE_LENGTH = 1024*1024;
-//	private static final Logger LOG = LogService.get().getLogger();
 
 	private static final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -232,13 +231,13 @@ public class JobStatus extends AuditableIdEntity {
 	 */
 	public <T> T unpackFromJobData(Class<T> jobDataClass) {
 		T result = null;
-		String data = getJobData();
+		var data = getJobData();
 		if(data != null) {
 			try {
 				result = objectMapper.readerFor(jobDataClass).readValue(data);
 			} catch (IOException e) {
 				Ivy.log().error(MessageFormatter.format("Could not unpack JobData from JobStatus ''{0}'' {1}", name, e).getMessage());
-//				LOG.error("Could not unpack JobData from JobStatus ''{0}'' with id: ''{1}'': {2}", e, name, id, data);
+				//				LOG.error("Could not unpack JobData from JobStatus ''{0}'' with id: ''{1}'': {2}", e, name, id, data);
 			}
 		}
 		return result;
@@ -259,7 +258,7 @@ public class JobStatus extends AuditableIdEntity {
 			setJobData(jobDataString);
 		} catch (JsonProcessingException e) {
 			Ivy.log().error(MessageFormatter.format("Could not pack JobData to JobStatus ''{0}''. Leaving the previous message untouched. {1}", name, e).getMessage());
-//			LOG.error("Could not pack JobData to JobStatus ''{0}'' with id: ''{1}''. Leaving the previous message untouched.", e, name, id);
+			//			LOG.error("Could not pack JobData to JobStatus ''{0}'' with id: ''{1}''. Leaving the previous message untouched.", e, name, id);
 		}
 	}
 }
