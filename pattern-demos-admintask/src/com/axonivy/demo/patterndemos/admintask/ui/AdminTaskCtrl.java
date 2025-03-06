@@ -1,18 +1,18 @@
-package com.axonivy.demo.patterndemos.ui.admin;
+package com.axonivy.demo.patterndemos.admintask.ui;
 
 import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.axonivy.demo.patterndemos.enums.AdminDecision;
+import com.axonivy.demo.patterndemos.admintask.enums.AdminDecision;
 
-public class AdminTaskBean {
+public class AdminTaskCtrl {
 	private String task;
 	private String details;
 	private Set<AdminDecision> buttons;
 	private AdminDecision decision;
 
-	public AdminTaskBean(String task, String details, Collection<AdminDecision> buttons) {
+	public AdminTaskCtrl(String task, String details, Collection<AdminDecision> buttons) {
 			this.task = task;
 			this.details = details;
 			this.buttons = buttons.stream().collect(Collectors.toSet());

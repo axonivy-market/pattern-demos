@@ -3,7 +3,7 @@
   "id" : "1954CE6212DD4AD4",
   "kind" : "HTML_DIALOG",
   "config" : {
-    "data" : "com.axonivy.demo.patterndemos.ui.admin.AdminTask.AdminTaskData"
+    "data" : "com.axonivy.demo.patterndemos.admintask.AdminTask.AdminTaskData"
   },
   "elements" : [ {
       "id" : "f0",
@@ -15,18 +15,18 @@
           "params" : [
             { "name" : "task", "type" : "String", "desc" : "" },
             { "name" : "details", "type" : "String", "desc" : "" },
-            { "name" : "buttons", "type" : "List<com.axonivy.demo.patterndemos.enums.AdminDecision>", "desc" : "" }
+            { "name" : "buttons", "type" : "List<com.axonivy.demo.patterndemos.admintask.enums.AdminDecision>", "desc" : "" }
           ],
           "map" : {
-            "out.bean" : "new com.axonivy.demo.patterndemos.ui.admin.AdminTaskBean(param.task, param.details, param.buttons)"
+            "out.ctrl" : "new com.axonivy.demo.patterndemos.admintask.ui.AdminTaskCtrl(param.task, param.details, param.buttons)"
           }
         },
         "result" : {
           "params" : [
-            { "name" : "decision", "type" : "com.axonivy.demo.patterndemos.enums.AdminDecision", "desc" : "" }
+            { "name" : "decision", "type" : "com.axonivy.demo.patterndemos.admintask.enums.AdminDecision", "desc" : "" }
           ],
           "map" : {
-            "result.decision" : "in.bean.decision"
+            "result.decision" : "in.ctrl.decision"
           }
         },
         "guid" : "1954CE62138AFC80"
@@ -53,7 +53,7 @@
         "output" : {
           "map" : {
             "out" : "in",
-            "out.bean.decision" : "com.axonivy.demo.patterndemos.enums.AdminDecision.DONE"
+            "out.ctrl.decision" : "com.axonivy.demo.patterndemos.admintask.enums.AdminDecision.DONE"
           }
         }
       },
@@ -79,7 +79,7 @@
         "output" : {
           "map" : {
             "out" : "in",
-            "out.bean.decision" : "com.axonivy.demo.patterndemos.enums.AdminDecision.IGNORE"
+            "out.ctrl.decision" : "com.axonivy.demo.patterndemos.admintask.enums.AdminDecision.IGNORE"
           }
         }
       },
@@ -98,7 +98,7 @@
         "output" : {
           "map" : {
             "out" : "in",
-            "out.bean.decision" : "com.axonivy.demo.patterndemos.enums.AdminDecision.RETRY"
+            "out.ctrl.decision" : "com.axonivy.demo.patterndemos.admintask.enums.AdminDecision.RETRY"
           }
         }
       },

@@ -6,33 +6,23 @@ Dialogs:
     axonivy:
       demo:
         patterndemos:
-          ui:
-            admin:
-              AdminTask:
-                checkLater: Später prüfen
-                checkLaterTooltip: Aufgabe behalten und später prüfen
-                description: |-
-                  Ein Admin-Task ist ein Task, der einen sensiblen Prozess abwickeln kann, den wir unter Kontrolle halten wollen, z. B. einen Cron-Job, das Versenden von E-Mails oder andere Prozesse. Die Hauptidee ist, am Ende des Prozesses einzugreifen, um das Ergebnis zu überprüfen oder einzugreifen, wenn während des Prozesses ein Problem auftritt.
-
-                  Sie können für jedes Szenario Schaltflächen in der Benutzeroberfläche oder der Backing Bean festlegen. In unserer Demo stellen wir die Schaltflächen „Ignorieren“, „Fertig“, „Wiederholen“ und „Später prüfen“ bereit. Damit können Sie einen Fehler ignorieren, den Prozess erneut ausführen, das Ergebnis akzeptieren oder die Überprüfung auf später verschieben.
-                done: Erledigt
-                doneTooltip: Erledigt, im Prozess weitergehen
-                ignore: Ignorieren Sie
-                ignoreConfirmatationHeader: Weiter?
-                ignoreConfirmatationMessage: Wollen Sie wirklich ignorieren und im Prozess weitergehen?
-                ignoreTooltip: Ignorieren und im Prozess weitergehen
-                retryTooltip: Operation erneut durchführen
-                title: Dies ist ein Beispiel für eine Verwaltungsaufgabe. Diese Aufgabe kann für Cronjobs oder andere Prozesse verwendet werden, bei denen eine Admin-Prüfung für den Auftrag erforderlich ist.
+          admintask:
+            AdminTask:
+              checkLater: Später prüfen
+              checkLaterTooltip: Aufgabe behalten und später prüfen
+              description: Bitte führen Sie die Aufgabe durch.
+              details: Details
+              done: Erledigt
+              doneTooltip: Erledigt, im Prozess weitergehen
+              ignore: Ignorieren
+              ignoreConfirmatationHeader: Weiter?
+              ignoreConfirmatationMessage: Wollen Sie wirklich ignorieren und im Prozess weitergehen?
+              ignoreTooltip: Ignorieren und im Prozess weitergehen
+              pageTitle: Admin Task
+              retry: Erneut versuchen
+              retryTooltip: Operation erneut durchführen
+              task: Aufgabe
+              title: Admin Task
 Labels:
-  cancel: Abbrechen
   'no': Nein
-  retry: Erneut versuchen
   'yes': Ja
-Tasks:
-  Description:
-    checkJobResult: |-
-      Überprüfen Sie das Resultat von Job ''{0}''. Gesamtstatus: {1}
-
-      Zusätzliche Job Daten: ''{2}''
-  Names:
-    checkJobResult: Überprüfen Sie das Resultat von Job ''{0}'' mit dem Gesamtstatus ''{1}''.

@@ -1,4 +1,4 @@
-package com.axonivy.demo.patterndemos.enums;
+package com.axonivy.demo.patterndemos.admintask.enums;
 
 public enum AdminDecision {
 	CHECK_LATER,
