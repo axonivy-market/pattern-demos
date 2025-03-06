@@ -14,6 +14,7 @@
 	<modules>
 		<module>${project.name}</module>
 		<module>${project.name}-lock</module>
+		<module>${project.name}-admintask</module>
 		<module>${project.name}-test</module>
 		<module>${project.name}-product</module>
 	</modules>
@@ -45,5 +46,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 </project>
