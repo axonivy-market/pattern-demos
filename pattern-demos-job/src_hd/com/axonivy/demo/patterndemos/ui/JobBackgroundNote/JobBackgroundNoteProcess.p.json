@@ -17,7 +17,7 @@
             { "name" : "additionalJobData", "type" : "String", "desc" : "" }
           ],
           "map" : {
-            "out.bean" : "new com.axonivy.demo.patterndemos.lock.ui.JobBackgroundNoteBean(param.jobName, param.additionalJobData)"
+            "out.ctrl" : "new com.axonivy.demo.patterndemos.lock.ui.JobBackgroundNoteBean(param.jobName, param.additionalJobData)"
           }
         },
         "guid" : "19547332CDDAD5CF"
@@ -87,7 +87,7 @@
       "name" : "Start",
       "config" : {
         "output" : {
-          "code" : "in.bean.startJob();"
+          "code" : "in.ctrl.startJob();"
         }
       },
       "visual" : {
@@ -109,7 +109,7 @@
       "name" : "Unlock",
       "config" : {
         "output" : {
-          "code" : "in.bean.unlockJob();"
+          "code" : "in.ctrl.unlockJob();"
         }
       },
       "visual" : {

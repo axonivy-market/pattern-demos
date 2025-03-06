@@ -4,7 +4,7 @@
   "namespace" : "com.axonivy.demo.patterndemos.ui.JobBackgroundNote",
   "isBusinessCaseData" : false,
   "fields" : [ {
-    "name" : "bean",
+    "name" : "ctrl",
     "type" : "com.axonivy.demo.patterndemos.lock.ui.JobBackgroundNoteBean",
     "modifiers" : [ "PERSISTENT" ]
   } ]
