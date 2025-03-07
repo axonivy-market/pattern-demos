@@ -49,15 +49,6 @@ When the job fails—either due to a simulated error or an actual issue—an Adm
 
 These options are conceptual and must be tailored to your specific process. Refer to the "Admin Task" section under "Setup" for more details on customizing the AdminTask for your needs.
 
-#### Reusability and Customization
-
-The subprocess that drives the job is designed for reuse. You can integrate it into other parts of your application by calling it, making this pattern a versatile building block for scheduled task management. To adapt it to your project:
-
-1. Copy the pattern components (including the dialog and subprocess) into your project.
-2. Modify the cron schedule in `demoStartCronJobPattern` to match your desired timing.
-3. Adjust the AdminTask’s logic and available actions to align with your process requirements.
-4. Update the role assignment or task category if "Administrator" and "ADMIN" do not suit your environment.
-
 #### Demo Overview
 
 The included demo showcases a typical scenario for the Cron Job Pattern. It illustrates how the job is triggered (via scheduler or dialog), how a failure is simulated (using `forceError`), and how the AdminTask enables handling of that failure with options like "Retry" and "Ignore." Use this as a starting point to explore and customize the pattern for your needs.
