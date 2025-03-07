@@ -6,8 +6,8 @@
       "data": {
         "projects": [
           {
-            "groupId": "MY-GROUP-ID",
-            "artifactId": "pattern-demos-demo",
+            "groupId": "com.axonivy.demo",
+            "artifactId": "pattern-demos-job",
             "version": "${version}",
             "type": "iar"
           }
@@ -28,8 +28,8 @@
       "data": {
         "dependencies": [
           {
-            "groupId": "MY-GROUP-ID",
-            "artifactId": "pattern-demos",
+            "groupId": "com.axonivy.demo",
+            "artifactId": "pattern-demos-lock",
             "version": "${version}",
             "type": "iar"
           }
@@ -50,8 +50,29 @@
       "data": {
         "dependencies": [
           {
-            "groupId": "MY-GROUP-ID",
-            "artifactId": "pattern-demos",
+            "groupId": "com.axonivy.demo",
+            "artifactId": "pattern-demos-admintask",
+            "version": "${version}"
+          }
+        ],
+        "repositories": [
+          {
+            "id": "maven.axonivy.com",
+            "url": "https://maven.axonivy.com",
+            "snapshots": {
+              "enabled": "true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "maven-dropins",
+      "data": {
+        "dependencies": [
+          {
+            "groupId": "com.axonivy.demo",
+            "artifactId": "pattern-demos-primefacesextensions",
             "version": "${version}"
           }
         ],
