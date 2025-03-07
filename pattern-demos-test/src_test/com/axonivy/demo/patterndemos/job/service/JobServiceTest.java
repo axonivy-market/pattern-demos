@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.Duration;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.axonivy.demo.patterndemos.job.entities.JobStatus;
@@ -17,6 +18,11 @@ import ch.ivyteam.ivy.environment.IvyTest;
 public class JobServiceTest {
 	private JobService jobSvc = JobService.get();
 
+	@BeforeEach
+	public void initializedDemoJobService() {
+		DemoJobService.get();
+	}
+
 	@Test
 	public void testSimpleRun() {
 		var jobName = "testJob";
@@ -24,8 +30,8 @@ public class JobServiceTest {
 		assertThat(jobSvc.getJobLock(jobName)).isNull();
 
 		assertThat(jobSvc.isLocked(jobName)).isFalse();
-		ServiceResult result;
-		result = jobSvc.runJob(jobName, true, Duration.ofMinutes(1), this::simpleJob);
+
+		var result = jobSvc.runJob(jobName, true, Duration.ofMinutes(1), this::simpleJob);
 
 		assertThat(jobSvc.isLocked(jobName)).isFalse();
 
@@ -35,29 +41,76 @@ public class JobServiceTest {
 		assertThat(jobStatus.getRunStatus()).isEqualTo(JobRunStatus.OK);
 	}
 
+
+	@Test
+	public void testRegisteredRun() {
+		var result = jobSvc.runJob(DemoJobService.DEMO_JOB_NAME);
+		assertThat(result.isOk()).isTrue();
+	}
+
+	@Test
+	public void testRunWithLastJobStatus() {
+		var jobName = "memoryjob";
+
+		ServiceResult result = null;
+
+		result = jobSvc.runJob(jobName, true, Duration.ofMinutes(1), this::memoryJob);
+		assertThat(result.isOk()).isTrue();
+		assertThat(jobSvc.loadJobStatus(jobName).getJobData()).contains("This is run 1");
+
+		result = jobSvc.runJob(jobName, true, Duration.ofMinutes(1), this::memoryJob);
+		assertThat(result.isOk()).isTrue();
+		assertThat(jobSvc.loadJobStatus(jobName).getJobData()).contains("This is run 2");
+
+		result = jobSvc.runJob(jobName, true, Duration.ofMinutes(1), this::memoryJob);
+		assertThat(result.isOk()).isTrue();
+		assertThat(jobSvc.loadJobStatus(jobName).getJobData()).contains("This is run 3");
+	}
+
+	public static class DemoJobData {
+		private int count = 0;
+		private String someInfo = "";
+		public int getCount() {
+			return count;
+		}
+		public void setCount(int count) {
+			this.count = count;
+		}
+		public String getSomeInfo() {
+			return someInfo;
+		}
+		public void setSomeInfo(String someInfo) {
+			this.someInfo = someInfo;
+		}
+	}
+
 	private ServiceResult simpleJob(JobStatus lastJobStatus) {
 		var result = new ServiceResult();
 		result.add(ResultStatus.OK, "Everything is awesome!!!");
 		return result;
 	}
 
-	@Test
-	public void testRegisteredRun() {
-		assertThat(jobSvc.loadJobStatus(DemoJobService.DEMO_JOB_NAME).getRunStatus()).isNull();
-		assertThat(jobSvc.getJobLock(DemoJobService.DEMO_JOB_NAME)).isNull();
+	private ServiceResult memoryJob(JobStatus lastJobStatus) {
+		var result = new ServiceResult();
 
-		assertThat(jobSvc.isLocked(DemoJobService.DEMO_JOB_NAME)).isFalse();
-		ServiceResult result;
+		DemoJobData jobData = null;
+		if(lastJobStatus != null) {
+			jobData = lastJobStatus.unpackFromJobData(DemoJobData.class);
+		}
 
-		result = jobSvc.runJob(DemoJobService.DEMO_JOB_NAME);
+		if(jobData == null) {
+			jobData = new DemoJobData();
+		}
 
-		assertThat(jobSvc.isLocked(DemoJobService.DEMO_JOB_NAME)).isFalse();
+		jobData.setCount(jobData.getCount() + 1);
+		jobData.setSomeInfo("This is run %d".formatted(jobData.getCount()));
 
-		assertThat(result.isOk()).isTrue();
-		var jobStatus = jobSvc.loadJobStatus(DemoJobService.DEMO_JOB_NAME);
-		assertThat(jobStatus).isNotNull();
-		assertThat(jobStatus.getRunStatus()).isEqualTo(JobRunStatus.OK);
+		var curJobStatus = jobSvc.loadCurrentJobStatus(lastJobStatus);
+		curJobStatus.packToJobData(jobData);
+		jobSvc.saveJobStatus(curJobStatus);
+
+		result.add(ResultStatus.OK, "Everything is awesome!!!");
+
+		return result;
 	}
-
-
 }

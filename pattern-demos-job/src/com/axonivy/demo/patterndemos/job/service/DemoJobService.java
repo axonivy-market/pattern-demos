@@ -14,6 +14,10 @@ public class DemoJobService {
 
 	public static final String DEMO_JOB_NAME = "com.axonivy.demo.patterndemos.job.demojob";
 
+	/**
+	 * Note: The following initialization can be done anywhere before the registry is used.
+	 * For this type of initialization to work, it might be necessary to instantiate the class.
+	 */
 	static {
 		JobService.get().registerJobDescription(DEMO_JOB_NAME, (jobStatus) -> get().demoJob(jobStatus));
 	}

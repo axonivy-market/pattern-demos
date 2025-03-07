@@ -188,8 +188,7 @@ public class JobStatus extends AuditableIdEntity {
 			try {
 				result = objectMapper.readerFor(jobDataClass).readValue(data);
 			} catch (IOException e) {
-				Ivy.log().error(MessageFormatter.format("Could not unpack JobData from JobStatus ''{0}'' {1}", name, e).getMessage());
-				//				LOG.error("Could not unpack JobData from JobStatus ''{0}'' with id: ''{1}'': {2}", e, name, id, data);
+				Ivy.log().error("Could not unpack JobData from JobStatus ''{0}'' {1}", e, data, name);
 			}
 		}
 		return result;
