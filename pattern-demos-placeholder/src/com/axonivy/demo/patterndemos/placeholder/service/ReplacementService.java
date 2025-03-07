@@ -1,4 +1,4 @@
-package com.axonivy.demo.patterndemos.service;
+package com.axonivy.demo.patterndemos.placeholder.service;
 
 import java.util.Map;
 import java.util.regex.Pattern;

@@ -1,1 +1,0 @@
-const byteSize = str => new Blob([str]).size;

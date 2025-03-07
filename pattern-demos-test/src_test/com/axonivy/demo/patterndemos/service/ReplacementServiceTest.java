@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
+import com.axonivy.demo.patterndemos.placeholder.ReplacementService;
+
 import ch.ivyteam.ivy.environment.IvyTest;
 
 @IvyTest
