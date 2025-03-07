@@ -3,7 +3,7 @@
   "id" : "19541F34D02AB4E1",
   "kind" : "HTML_DIALOG",
   "config" : {
-    "data" : "com.axonivy.demo.patterndemos.ui.primefacesextensions.PrimefacesExtensions.PrimefacesExtensionsData"
+    "data" : "com.axonivy.demo.patterndemos.primefacesextensions.PrimefacesExtensions.PrimefacesExtensionsData"
   },
   "elements" : [ {
       "id" : "f0",
