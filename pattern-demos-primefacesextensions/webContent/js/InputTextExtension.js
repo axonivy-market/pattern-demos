@@ -36,11 +36,11 @@ PrimeFaces.widget.InputText.prototype.init = function(cfg) {
 PrimeFaces.widget.InputText = PrimeFaces.widget.InputText.extend({
 	//method which change color on red, if we cut from string
 	changeColor: function() {
-		this.jq.css('background-color', 'red'); 
+		this.jq.css('background-color', '#e38a8a'); 
 	},
 	//method which change color on green, if we didn't cut from string
 	returnColor: function() {
-		this.jq.css('background-color', 'green'); 
+		this.jq.css('background-color', '#8ae3a3'); 
 	}
 });
 

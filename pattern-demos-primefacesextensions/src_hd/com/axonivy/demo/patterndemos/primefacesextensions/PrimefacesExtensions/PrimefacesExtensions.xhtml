@@ -13,13 +13,17 @@
 				<div class="grid">
 					<div class="col-12 md:col-12 lg:col-12">
 						<h:outputText escape="false"
-							value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/ui/primefacesextensions/PrimefacesExtensions/description')}"></h:outputText>
+							value="The following input text field has a length limit of ten characters, but our extension counts it in bytes, 
+							because some special characters as emoticons or umlauts (ä,ß,ö,ü,etc) are written asi single character, 
+							but taking more than one byte in UTF-8 encoding. In following input you can try write normal or special characters and if you reach 10 bytes, 
+							last one will be removed. Input field has green color if you don't exceed maximum bytes, 
+							red color has if we had to remove last one character to fit into byte limit (this is demo of extension how to add new methods to widget)."></h:outputText>
 					</div>
 				</div>
 				<div class="grid">
 					<div class="col-12 md:col-6 lg:col-2">
 						<p:outputLabel
-							value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/ui/primefacesextensions/PrimefacesExtensions/enterText')}"></p:outputLabel>
+							value="Enter text"></p:outputLabel>
 					</div>
 					<div class="col-12 md:col-6 lg:col-8">
 						<p:inputText value="#{data.testInput}" maxlength="10"></p:inputText>
