@@ -86,6 +86,27 @@
           }
         ]
       }
+    },
+    {
+      "id": "maven-dropins",
+      "data": {
+        "dependencies": [
+          {
+            "groupId": "com.axonivy.demo",
+            "artifactId": "pattern-demos-placeholder",
+            "version": "${version}"
+          }
+        ],
+        "repositories": [
+          {
+            "id": "maven.axonivy.com",
+            "url": "https://maven.axonivy.com",
+            "snapshots": {
+              "enabled": "true"
+            }
+          }
+        ]
+      }
     }
   ]
 }
