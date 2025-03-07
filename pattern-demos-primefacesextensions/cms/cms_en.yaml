@@ -6,4 +6,5 @@ Dialogs:
           ui:
             primefacesextensions:
               PrimefacesExtensions:
-                description: The following input text field has a length limit of ten characters, but our extension counts it in bytes. You can try writing ten standard characters or five umlauts; if you write more, the last character will be removed.
+                description: <b>The following input text field has a length limit of ten characters, but our extension counts it in bytes. You can try writing ten standard characters or five umlauts (ä,ß,ö,ü,etc) and if you write more, the last character will be removed.</b>
+                enterText: Please enter text

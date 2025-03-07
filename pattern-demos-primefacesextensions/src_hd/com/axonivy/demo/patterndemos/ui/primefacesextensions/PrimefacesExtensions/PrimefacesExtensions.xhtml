@@ -10,8 +10,21 @@
 		<ui:define name="title">Primefaces Extensions</ui:define>
 		<ui:define name="content">
 			<h:form id="form">
-				<h:outputText value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/ui/primefacesextensions/PrimefacesExtensions/description')}" ></h:outputText>
-				<p:inputText value="#{data.testInput}"></p:inputText>
+				<div class="grid">
+					<div class="col-12 md:col-12 lg:col-12">
+						<h:outputText escape="false"
+							value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/ui/primefacesextensions/PrimefacesExtensions/description')}"></h:outputText>
+					</div>
+				</div>
+				<div class="grid">
+					<div class="col-12 md:col-6 lg:col-2">
+						<p:outputLabel
+							value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/ui/primefacesextensions/PrimefacesExtensions/enterText')}"></p:outputLabel>
+					</div>
+					<div class="col-12 md:col-6 lg:col-8">
+						<p:inputText value="#{data.testInput}" maxlength="10"></p:inputText>
+					</div>
+				</div>
 			</h:form>
 		</ui:define>
 	</ui:composition>

@@ -23,9 +23,10 @@ PrimeFaces.widget.InputText.prototype.init = function(cfg) {
 	var $this = this;
     this.jq.on('keyup.inputtextarea-maxlength', function(e) {
         if(e.currentTarget.maxLength > 0){
+			$this.returnColor();
            	while(byteSize(e.currentTarget.value) > e.currentTarget.maxLength) {
            		e.currentTarget.value = e.currentTarget.value.slice(0,-1);
-				this.changeColor();
+				$this.changeColor();
         		}
             }
      });
@@ -33,7 +34,17 @@ PrimeFaces.widget.InputText.prototype.init = function(cfg) {
 
 //This is example how to add new method to widget.
 PrimeFaces.widget.InputText = PrimeFaces.widget.InputText.extend({
+	//method which change color on red, if we cut from string
 	changeColor: function() {
-		
+		this.jq.css('background-color', 'red'); 
 	},
+	//method which change color on green, if we didn't cut from string
+	returnColor: function() {
+		this.jq.css('background-color', 'green'); 
+	}
 });
+
+// Helper function for byte size
+function byteSize(str) {
+    return new Blob([str]).size;
+}
