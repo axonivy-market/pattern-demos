@@ -53,10 +53,6 @@ These options are conceptual and must be tailored to your specific process. Refe
 
 The included demo showcases a typical scenario for the Cron Job Pattern. It illustrates how the job is triggered (via scheduler or dialog), how a failure is simulated (using `forceError`), and how the AdminTask enables handling of that failure with options like "Retry" and "Ignore." Use this as a starting point to explore and customize the pattern for your needs.
 
-#### TODO
-
-* Describe, why we write jobs in Java
-
 ### Placeholder Evaluation
 
 Use the ReplacementService directly in your project or just as an example
