@@ -3,6 +3,6 @@
     <user>
         <username>AppAdmin</username>
         <fullName>Application Admin</fullName>
-        <role>ApplicationAdmin</role>
+        <role>Administrator</role>
     </user>
 </userConfig>

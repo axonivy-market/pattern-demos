@@ -157,7 +157,7 @@
           "description" : "<%=ivy.cms.co(\"/Tasks/Description/checkJobResult\", [in.jobName, in.result.getStatus(), in.additionalJobData])%>",
           "category" : "ADMIN",
           "responsible" : {
-            "activator" : "ApplicationAdmin"
+            "activator" : "Administrator"
           }
         },
         "output" : {
