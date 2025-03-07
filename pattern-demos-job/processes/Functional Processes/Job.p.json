@@ -154,7 +154,7 @@
         },
         "task" : {
           "name" : "<%=ivy.cms.co(\"/Processes/Names/checkJobResult\", [in.jobName, in.result.getStatus()])%>",
-          "description" : "<%=ivy.cms.co(\"/Tasks/Descriptions/checkJobResult\", [in.jobName, in.result.getStatus(), in.additionalJobData])%>",
+          "description" : "<%=ivy.cms.co(\"/Tasks/Description/checkJobResult\", [in.jobName, in.result.getStatus(), in.additionalJobData])%>",
           "category" : "ADMIN",
           "responsible" : {
             "activator" : "ApplicationAdmin"

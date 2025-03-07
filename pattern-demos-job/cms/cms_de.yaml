@@ -18,9 +18,6 @@ Dialogs:
               unlock: Entsperrenn
 Labels:
   cancel: Abbrechen
-  'no': Nein
-  retry: Erneut versuchen
-  'yes': Ja
 Processes:
   Descriptions:
     backgroundJob: Technische Aufgabe zur Ausführung eines Hintergrundjobs

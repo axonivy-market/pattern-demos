@@ -18,9 +18,6 @@ Dialogs:
               unlock: Unlockk
 Labels:
   cancel: Cancel
-  'no': 'No'
-  retry: Retry
-  'yes': 'Yes'
 Processes:
   Descriptions:
     backgroundJob: Technical task to execute a backgroundjobs.
