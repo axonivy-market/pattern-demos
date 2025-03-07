@@ -7,7 +7,7 @@
 	xmlns:pe="http://primefaces.org/ui/extensions">
 <h:body>
 	<ui:composition template="/layouts/frame-10-full-width.xhtml">
-		<ui:define name="title">PlaceholderDemo</ui:define>
+		<ui:define name="title">Placeholder Demo</ui:define>
 		<ui:define name="content">
 
 			<h:form id="form">
@@ -15,6 +15,15 @@
 					<div class="grid">
 						<div class="col-12 md:col-12 lg:col-12">
 							<h2>Placeholder Demo</h2>
+						</div>
+					</div>
+					<div class="grid">
+						<div class="col-12 md:col-12 lg:col-12">
+							This demo shows a simple way to implement place-holders,
+							marked by {{ }} in texts. Pressing the "Replace" button will
+							take the template and replace the given place-holders with
+							text. You can play around with the example and change text
+							or place-holders. 
 						</div>
 					</div>
 					<div class="grid">

@@ -24,7 +24,7 @@ an admin role gets a task with the results and can decide whether the job should
 * Add description either in README.md or directly in process
 
 
-### Cronjob
+### Job
 
 Use this cron-job pattern for all your cron-jobs to make them startable manually and in case of
 manual start or errors, create an admin task to let the admin role decide how to continue.
@@ -38,9 +38,8 @@ manual start or errors, create an admin task to let the admin role decide how to
 
 ### Placeholder Evaluation
 
-* Rewrite to a more understandable example
-* Make simpler without the need of so many additional class
-* Add description either in README.md or directly in process
+Use the ReplacementService directly in your project or just as an example
+of a simple place-holder replacement in text. 
 
 ### Primefaces Extensions
 
@@ -85,6 +84,4 @@ If you modify the logic of a component, you should verify its functionality with
 
 ## TODO
 
-* Rename UI beans, pattern: XyzCtrl
-* Extract (and reuse) Locking into it's own topic
 * Provide JUnit test for Locking
