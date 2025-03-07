@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import org.slf4j.helpers.MessageFormatter;
 
 import com.axonivy.demo.patterndemos.job.enums.JobRunStatus;
-import com.axonivy.demo.patterndemos.job.service.JobService;
 import com.axonivy.utils.persistence.beans.AuditableIdEntity;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -54,10 +53,6 @@ public class JobStatus extends AuditableIdEntity {
 	@Column
 	@Lob
 	private String jobData;
-
-	@Column
-	@Lob
-	private String additionalJobData;
 
 	/**
 	 * @return the name
@@ -156,49 +151,6 @@ public class JobStatus extends AuditableIdEntity {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
-	/**
-	 * Additional data (parameters) for job start.
-	 *
-	 * String representation of job start data. It is in the responsibility of the job to understand/unmarshall this data.
-	 *
-	 * @return the additionalJobData might be <code>null</code>
-	 */
-	public String getAdditionalJobData() {
-		return additionalJobData;
-	}
-
-	/**
-	 * Additional data (parameters) for job start.
-	 *
-	 * String representation of job start data. It is in the responsibility of the job to understand/unmarshall this data.
-	 *
-	 * @param additionalJobData the additionalJobData to set
-	 */
-	public void setAdditionalJobData(String additionalJobData) {
-		this.additionalJobData = additionalJobData;
-	}
-
-	/**
-	 * Get additional job data by unpacking it's JSON representation.
-	 *
-	 * @param <T>
-	 * @param type
-	 * @return
-	 */
-	public <T> T getAdditionalJobData(Class<T> type) {
-		return JobService.get().unpackAdditionalData(additionalJobData, type);
-	}
-
-	/**
-	 * Set additional job data by packing it into it's JSON representation.
-	 *
-	 * @param data
-	 */
-	public void setAdditionalJobData(Object data) {
-		additionalJobData = JobService.get().packAdditionalData(data);
-	}
-
 
 	/**
 	 * Data the Job wants to remember for it's next run.

@@ -44,12 +44,11 @@ public class JobService {
 	/**
 	 * Run a Job.
 	 *
-	 * @param additionalJobData
 	 * @param jobDescription
 	 *
 	 * @return
 	 */
-	public ServiceResult runJob(String jobName, String additionalJobData) {
+	public ServiceResult runJob(String jobName) {
 		var jobDescription = findJobDescription(jobName);
 		if(jobDescription == null) {
 			BpmError
@@ -57,18 +56,17 @@ public class JobService {
 			.withMessage("Could not find job ''" + jobName + "'' in job repository.")
 			.throwError();
 		}
-		return runJob(jobDescription, additionalJobData);
+		return runJob(jobDescription);
 	}
 
 	/**
 	 * Run a Job.
 	 *
 	 * @param jobDescription
-	 * @param additionalJobData
 	 * @return
 	 */
-	public ServiceResult runJob(JobDescription jobDescription, String additionalJobData) {
-		return runJob(jobDescription.getJobName(), true, null, jobDescription.getJobFunction(), additionalJobData);
+	public ServiceResult runJob(JobDescription jobDescription) {
+		return runJob(jobDescription.getJobName(), true, null, jobDescription.getJobFunction());
 	}
 
 	/**
@@ -78,20 +76,19 @@ public class JobService {
 	 * @param locked if <code>true</code>, than only one instance of the job can run at a time
 	 * @param lockTimeout timeout for the lock, if <code>null</code>, then no timeout
 	 * @param function function to execute
-	 * @param additionalJobData
 	 * @return
 	 */
-	public ServiceResult runJob(String jobName, boolean locked, Duration lockTimeout, Function<JobStatus, ServiceResult> function, String additionalJobData) {
+	public ServiceResult runJob(String jobName, boolean locked, Duration lockTimeout, Function<JobStatus, ServiceResult> function) {
 		var startTime = Instant.now();
 		try {
 
 			ServiceResult result = null;
 			try {
 				if(locked) {
-					result = LockService.get().doLocked(lockName(jobName), lockTimeout, () -> runInternal(jobName, function, additionalJobData));
+					result = LockService.get().doLocked(lockName(jobName), lockTimeout, () -> runInternal(jobName, function));
 				}
 				else {
-					result = runInternal(jobName, function, additionalJobData);
+					result = runInternal(jobName, function);
 				}
 			} catch (Throwable e) {
 				result = new ServiceResult();
@@ -176,7 +173,6 @@ public class JobService {
 		current.setLastSuccessStartTime(jobStatus.getLastSuccessStartTime());
 		current.setLastSuccessEndTime(jobStatus.getLastSuccessEndTime());
 		current.setJobData(jobStatus.getJobData());
-		current.setAdditionalJobData(StringUtils.isBlank(jobStatus.getAdditionalJobData()) ? null : jobStatus.getAdditionalJobData());
 		current.setMessage(jobStatus.getMessage());
 		return JobStatusDAO.get().save(current);
 	}
@@ -197,14 +193,13 @@ public class JobService {
 	 * @param <R>
 	 * @param jobName
 	 * @param function
-	 * @param additionalJobData
 	 * @return
 	 */
-	protected <R> R runInternal(String jobName, Function<JobStatus, R> function, String additionalJobData) {
+	protected <R> R runInternal(String jobName, Function<JobStatus, R> function) {
 		R result = null;
 
 		// Find last job status in database.
-		var lastJobStatus = logJobStart(jobName, additionalJobData);
+		var lastJobStatus = logJobStart(jobName);
 
 		var ok = false;
 		String message = null;
@@ -239,14 +234,12 @@ public class JobService {
 	 * Log start of job.
 	 *
 	 * @param jobName
-	 * @param additionalJobData
 	 * @return last JobStatus
 	 */
-	protected JobStatus logJobStart(String jobName, String additionalJobData) {
+	protected JobStatus logJobStart(String jobName) {
 		var jobStatus = loadJobStatus(jobName);
 		var lastJobStatus = loadJobStatus(jobName);
 
-		jobStatus.setAdditionalJobData(StringUtils.isBlank(additionalJobData) ? null : additionalJobData);
 		jobStatus.setRunStatus(JobRunStatus.RUNNING);
 		jobStatus.setStartTime(Instant.now());
 		jobStatus.setEndTime(null);
@@ -255,7 +248,7 @@ public class JobService {
 
 		jobStatus = saveJobStatus(jobStatus);
 
-		Ivy.log().info(new MessageFormatMessage("Job ''{0}'' started at ''{1}'', additionalJobData: ''{2}''", jobStatus.getName(), toDefaultString(jobStatus.getStartTime()), jobStatus.getAdditionalJobData()).getFormattedMessage());
+		Ivy.log().info(new MessageFormatMessage("Job ''{0}'' started at ''{1}''", jobStatus.getName(), toDefaultString(jobStatus.getStartTime())).getFormattedMessage());
 		return lastJobStatus;
 	}
 
@@ -287,12 +280,11 @@ public class JobService {
 
 		jobStatus = saveJobStatus(jobStatus);
 
-		Ivy.log().info(new MessageFormatMessage("Job ''{0}'' started at ''{1}'' and ended at ''{2}'' with status ''{3}'', additionalJobData: ''{4}''",
+		Ivy.log().info(new MessageFormatMessage("Job ''{0}'' started at ''{1}'' and ended at ''{2}'' with status ''{3}''",
 				jobStatus.getName(),
 				toDefaultString(jobStatus.getStartTime()),
 				toDefaultString(jobStatus.getEndTime()),
-				jobStatus.getRunStatus(),
-				jobStatus.getAdditionalJobData()).getFormattedMessage());
+				jobStatus.getRunStatus()).getFormattedMessage());
 
 		return jobStatus;
 	}

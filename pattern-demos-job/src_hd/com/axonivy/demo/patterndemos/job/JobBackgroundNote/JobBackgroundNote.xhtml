@@ -21,7 +21,7 @@
 					</div>
 					<h:panelGroup rendered="#{not data.ctrl.locked}">
 						<div class="grid">
-							<div class="col-12 md:col-12 lg:col-12">#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/job/JobBackgroundNote/details', [data.ctrl.jobName, data.ctrl.additionalJobData])}</div>
+							<div class="col-12 md:col-12 lg:col-12">#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/job/JobBackgroundNote/details', [data.ctrl.jobName])}</div>
 						</div>
 					</h:panelGroup>
 					<h:panelGroup rendered="#{data.ctrl.locked}">

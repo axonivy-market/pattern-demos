@@ -12,10 +12,6 @@
     "type" : "Boolean",
     "modifiers" : [ "PERSISTENT" ]
   }, {
-    "name" : "additionalJobData",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
-  }, {
     "name" : "result",
     "type" : "com.axonivy.demo.patterndemos.job.pojos.ServiceResult",
     "modifiers" : [ "PERSISTENT" ]

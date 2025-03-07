@@ -8,17 +8,15 @@
   "elements" : [ {
       "id" : "f3",
       "type" : "CallSubStart",
-      "name" : "runJob(String,Boolean,String)",
+      "name" : "runJob(String,Boolean)",
       "config" : {
         "signature" : "runJob",
         "input" : {
           "params" : [
             { "name" : "jobName", "type" : "String", "desc" : "" },
-            { "name" : "manual", "type" : "Boolean", "desc" : "" },
-            { "name" : "additionalJobData", "type" : "String", "desc" : "" }
+            { "name" : "manual", "type" : "Boolean", "desc" : "" }
           ],
           "map" : {
-            "out.additionalJobData" : "param.additionalJobData",
             "out.jobName" : "param.jobName",
             "out.manual" : "param.manual"
           }
@@ -71,7 +69,7 @@
         "output" : {
           "code" : [
             "import com.axonivy.demo.patterndemos.job.service.JobService;",
-            "out.result = JobService.get().runJob(in.jobName, in.additionalJobData);"
+            "out.result = JobService.get().runJob(in.jobName);"
           ]
         }
       },
@@ -154,7 +152,7 @@
         },
         "task" : {
           "name" : "<%=ivy.cms.co(\"/Processes/Names/checkJobResult\", [in.jobName, in.result.getStatus()])%>",
-          "description" : "<%=ivy.cms.co(\"/Tasks/Description/checkJobResult\", [in.jobName, in.result.getStatus(), in.additionalJobData])%>",
+          "description" : "<%=ivy.cms.co(\"/Tasks/Description/checkJobResult\", [in.jobName,in.result.getStatus()])%>",
           "category" : "ADMIN",
           "responsible" : {
             "activator" : "Administrator"
@@ -220,14 +218,12 @@
         "dialog" : "com.axonivy.demo.patterndemos.job.JobBackgroundNote:start(String,String)",
         "call" : {
           "map" : {
-            "param.jobName" : "in.jobName",
-            "param.additionalJobData" : "in.additionalJobData"
+            "param.jobName" : "in.jobName"
           }
         },
         "output" : {
           "map" : {
             "out" : "in",
-            "out.additionalJobData" : "in.additionalJobData",
             "out.jobName" : "in.jobName"
           }
         }

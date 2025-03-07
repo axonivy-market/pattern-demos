@@ -8,10 +8,7 @@ Dialogs:
         patterndemos:
           job:
             JobBackgroundNote:
-              details: |-
-                Press ''Start'' to start job ''{0}'' in the background. As soon as it is finished, the administrator gets a task to see the technical details of the execution.
-
-                Additional Job Data: ''{1}''
+              details: Press ''Start'' to start job ''{0}'' in the background. As soon as it is finished, the administrator gets a task to see the technical details of the execution.
               lockedNote: Job ''{0}'' is locked and probably running. To start this job you must unlock it first.
               start: Start
               title: Job note
@@ -29,9 +26,6 @@ Processes:
     demoJob: 'Manual Jobstart: Demo job'
 Tasks:
   Description:
-    checkJobResult: |-
-      Check result of job ''{0}''. Overall Status: {1}
-
-      Additional Job Data: ''{2}''
+    checkJobResult: 'Check result of job ''''{0}''''. Overall Status: {1}'
   Names:
     checkJobResult: Check result of job ''{0}'' with overall status ''{1}''.

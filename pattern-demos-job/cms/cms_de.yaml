@@ -8,10 +8,7 @@ Dialogs:
         patterndemos:
           job:
             JobBackgroundNote:
-              details: |-
-                Drücken Sie ''Start'' um den Job ''{0}'' im Hintergrund auszuführen. Sobald er beendet ist, erhält der Administrator eine Aufgabe mit den technischen Details der Ausführung.
-
-                Zusätzliche Job Daten: ''{1}''
+              details: Drücken Sie ''Start'' um den Job ''{0}'' im Hintergrund auszuführen. Sobald er beendet ist, erhält der Administrator eine Aufgabe mit den technischen Details der Ausführung.
               lockedNote: Der Job ''{0}'' ist gesperrt und läuft möglicherweise bereits. Um ihn dennoch auszuführen, muss er zuerst entsperrt werden.
               start: Starten
               title: Job Notiz
@@ -29,9 +26,6 @@ Processes:
     demoJob: 'Manueller Jobstart: Demo job'
 Tasks:
   Description:
-    checkJobResult: |-
-      Überprüfen Sie das Resultat von Job ''{0}''. Gesamtstatus: {1}
-
-      Zusätzliche Job Daten: ''{2}''
+    checkJobResult: 'Überprüfen Sie das Resultat von Job ''''{0}''''. Gesamtstatus: {1}'
   Names:
     checkJobResult: Überprüfen Sie das Resultat von Job ''{0}'' mit dem Gesamtstatus ''{1}''.

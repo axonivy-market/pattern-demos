@@ -10,7 +10,6 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(JobStatus.class)
 public abstract class JobStatus_ extends com.axonivy.utils.persistence.beans.AuditableIdEntity_ {
 
-	public static volatile SingularAttribute<JobStatus, String> additionalJobData;
 	public static volatile SingularAttribute<JobStatus, Instant> lastSuccessStartTime;
 	public static volatile SingularAttribute<JobStatus, String> jobData;
 	public static volatile SingularAttribute<JobStatus, String> name;
@@ -20,7 +19,6 @@ public abstract class JobStatus_ extends com.axonivy.utils.persistence.beans.Aud
 	public static volatile SingularAttribute<JobStatus, JobRunStatus> runStatus;
 	public static volatile SingularAttribute<JobStatus, Instant> lastSuccessEndTime;
 
-	public static final String ADDITIONAL_JOB_DATA = "additionalJobData";
 	public static final String LAST_SUCCESS_START_TIME = "lastSuccessStartTime";
 	public static final String JOB_DATA = "jobData";
 	public static final String NAME = "name";
