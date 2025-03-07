@@ -46,8 +46,7 @@ manual start or errors, create an admin task to let the admin role decide how to
 
 Use these examples to see how Primefaces Widgets can be customized using the Primefaces client-side API of widgets.
 
-* Add comments to Javascript, reduce what is not needed to show the basic idea
-* Add description either in README.md or directly in process
+This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways: by refining the logic of its existing methods and by introducing new methods to the widget.
 
 ## Setup
 
@@ -69,7 +68,16 @@ flag set in your data-class). This is necessary so that the values will be avail
 the task later.
 
 The demo assignes the task to the role Administrator and categorizes the task as the ADMIN category.
-Change it to your needs. 
+Change it to your needs.
+
+### Primefaces Extensions 
+
+If you would like to extend or improve the functionality of a component, follow these steps:
+1. Find the JavaScript of the component you want to extend in the designer directory to get the current version of PrimeFaces
+    2. Copy part or all of this JavaScript to the `webContent` directory in your project. (in our case it is /webContent/js/InputTextExtension.js)
+    3. Improve your JavaScript.
+    4. Add a link to your JavaScript in your main XHTML file (e.g., `frame-10-full-width.xhtml`) as shown below:
+        <h:outputScript name="js/InputTextExtension.js"/>
 
 ## TODO
 
