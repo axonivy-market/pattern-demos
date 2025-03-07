@@ -10,8 +10,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import org.slf4j.helpers.MessageFormatter;
-
 import com.axonivy.demo.patterndemos.job.enums.JobRunStatus;
 import com.axonivy.utils.persistence.beans.AuditableIdEntity;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -208,8 +206,7 @@ public class JobStatus extends AuditableIdEntity {
 			jobDataString = objectMapper.writeValueAsString(jobData);
 			setJobData(jobDataString);
 		} catch (JsonProcessingException e) {
-			Ivy.log().error(MessageFormatter.format("Could not pack JobData to JobStatus ''{0}''. Leaving the previous message untouched. {1}", name, e).getMessage());
-			//			LOG.error("Could not pack JobData to JobStatus ''{0}'' with id: ''{1}''. Leaving the previous message untouched.", e, name, id);
+			Ivy.log().error("Could not pack JobData to JobStatus ''{0}''. Leaving the previous message untouched. {1}", e, jobDataString, name);
 		}
 	}
 }
