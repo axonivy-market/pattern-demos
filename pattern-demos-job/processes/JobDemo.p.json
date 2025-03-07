@@ -53,7 +53,7 @@
         "runJob"
       ],
       "config" : {
-        "processCall" : "Functional Processes/Job:runJob(String,Boolean,String)",
+        "processCall" : "Functional Processes/Job:runJob(String,Boolean)",
         "call" : {
           "map" : {
             "param.jobName" : "com.axonivy.demo.patterndemos.job.service.DemoJobService.DEMO_JOB_NAME",

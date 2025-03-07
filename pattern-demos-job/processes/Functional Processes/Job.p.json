@@ -215,7 +215,7 @@
       "type" : "DialogCall",
       "name" : "JobBackgroundNote",
       "config" : {
-        "dialog" : "com.axonivy.demo.patterndemos.job.JobBackgroundNote:start(String,String)",
+        "dialog" : "com.axonivy.demo.patterndemos.job.JobBackgroundNote:start(String)",
         "call" : {
           "map" : {
             "param.jobName" : "in.jobName"
