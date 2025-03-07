@@ -14,7 +14,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.axonivy.demo</groupId>
-			<artifactId>pattern-demos</artifactId>
+			<artifactId>pattern-demos-placeholder</artifactId>
 			<version>${project.version}</version>
 			<type>iar</type>
 		</dependency>
