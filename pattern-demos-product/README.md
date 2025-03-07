@@ -26,15 +26,41 @@ an admin role gets a task with the results and can decide whether the job should
 
 ### Job
 
-Use this cron-job pattern for all your cron-jobs to make them startable manually and in case of
-manual start or errors, create an admin task to let the admin role decide how to continue.
+The Job Pattern demonstrates a flexible and reusable approach to scheduling and managing periodic tasks within Axon Ivy.
+ This pattern initiates a subprocess to handle a demo job, offering two distinct methods to trigger execution, along with robust error handling via the AdminTask concept.
 
-#### TODO
+## Triggering the Job
 
-* Prepare two smal cron jobs
-* Reduce as max as possible
-* Add description either in README.md or directly in process
-* Describe, why we write jobs in Java
+### Scheduled Triggering
+
+The job can be automatically activated using a cron scheduler. This is configured through the `demoStartCronJobPattern` variable in the `variables.yaml` file, which adheres to the standard cron pattern (e.g., `0 0 * * *` for daily execution at midnight).
+ Adjust this variable to define the timing or frequency of the job according to your needs.
+
+### Manual Triggering
+
+Alternatively, the job can be started manually via a user dialog. This method provides on-demand flexibility, allowing users to initiate the job whenever necessary.
+
+## Job Behavior and Error Simulation
+
+The execution of the job—whether scheduled or manual—is influenced by the `forceError` variable in `variables.yaml`. By default, this variable is set to `true`, causing the job to simulate a failure.
+ This feature is particularly useful for testing the pattern’s error handling capabilities. To observe successful execution, set `forceError` to `false`.
+
+## Error Handling with AdminTask
+
+When the job fails—either due to a simulated error or an actual issue—an AdminTask is created to manage the situation. Assigned to the Administrator role and categorized as ADMIN, this task provides a framework for administrator intervention. The available actions include:
+
+- **Retry:** Reattempt the job to achieve successful completion.
+- **Ignore:** Dismiss the failure, allowing the next scheduled instance (if applicable) to proceed as planned.
+- **Check Later:** Postpone the decision by canceling out of the task, keeping it open for later review.
+
+## Reusability and Customization
+
+The subprocess that drives the job is designed for reuse. You can integrate it into other parts of your application by calling it, making this pattern a versatile building block for scheduled task management. To adapt it to your project:
+
+1. Copy the pattern components (including the dialog and subprocess) into your project.
+2. Modify the cron schedule in `demoStartCronJobPattern` to match your desired timing.
+3. Adjust the AdminTask’s logic and available actions to align with your process requirements.
+4. Update the role assignment or task category if "Administrator" and "ADMIN" do not suit your environment.
 
 ### Placeholder Evaluation
 

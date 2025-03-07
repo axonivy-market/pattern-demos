@@ -84,13 +84,15 @@
         "",
         "The first, or upper, path is activated by a cron scheduler, which can be configured using the variable demoStartCronJobPattern. This variable is adjustable in the variables.yaml file and should follow the standard cron pattern.",
         "",
-        "The second method is manual triggering. In this case, you are first directed to a dialog to start the job. ",
+        "The second method is manual triggering. In this case, you are first directed to a dialog to start the job.",
+        "",
+        "In both cases the job would be influence by variable forceError (variables.yaml). When set to true - per default then there will be simulated error by the job. If you would like to ",
         "",
         "You can reuse the subprocess, which is activated by calling it."
       ],
       "visual" : {
-        "at" : { "x" : 913, "y" : 121 },
-        "size" : { "width" : 510, "height" : 190 }
+        "at" : { "x" : 784, "y" : 144 },
+        "size" : { "width" : 518, "height" : 254 }
       }
     } ]
 }
