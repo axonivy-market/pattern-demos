@@ -4,7 +4,6 @@
         <non-jta-data-source>pattern_demo_test</non-jta-data-source>
         <class>com.axonivy.demo.patterndemos.job.entities.JobStatus</class>
         <properties>
-            <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
         </properties>
     </persistence-unit>

@@ -17,13 +17,6 @@ locked entity to avoid race-conditions.
 Use an Admin Task to catch errors in unattended backend-jobs (e.g. cron-jobs). In case of errors,
 an admin role gets a task with the results and can decide whether the job should be retried or skipped.
 
-#### TODO
-
-* Fix bugs
-* Make better example with a system task producing an error, which is fixable somehow
-* Add description either in README.md or directly in process
-
-
 ### Job
 
 Use this cron-job pattern for all your cron-jobs to make them startable manually and in case of manual start or errors, create an admin task to let the admin role decide how to continue.
@@ -98,7 +91,3 @@ If you would like to extend or improve the functionality of a component, follow 
         <h:outputScript name="js/InputTextExtension.js"/>
 !!!WARNING!!!
 If you modify the logic of a component, you should verify its functionality with each Ivy update, as these updates often include PrimeFaces updates that could result in compatibility issues.
-
-## TODO
-
-* Provide JUnit test for Locking

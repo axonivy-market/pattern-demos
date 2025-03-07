@@ -6,6 +6,6 @@ package com.axonivy.demo.patterndemos.lock.dao;
 public interface BaseDAO extends com.axonivy.utils.persistence.dao.BaseDAO {
 	@Override
 	default public String getPersistenceUnitName() {
-		return "pattern-demos-lock_jpa";
+		return "pattern-demos-lock";
 	}
 }

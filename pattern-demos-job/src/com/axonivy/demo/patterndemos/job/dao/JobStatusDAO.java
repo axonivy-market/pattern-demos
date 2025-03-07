@@ -2,7 +2,6 @@ package com.axonivy.demo.patterndemos.job.dao;
 
 import com.axonivy.demo.patterndemos.job.entities.JobStatus;
 import com.axonivy.demo.patterndemos.job.entities.JobStatus_;
-import com.axonivy.demo.patterndemos.lock.dao.BaseDAO;
 import com.axonivy.utils.persistence.dao.AuditableIdDAO;
 
 
