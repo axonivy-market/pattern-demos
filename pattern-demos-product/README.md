@@ -112,13 +112,22 @@ Change it to your needs.
 
 ### Primefaces Extensions 
 
-If you desire a different behavior for a component within PrimeFaces, you can accomplish this by extending the existing logic of its widgets.
+This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways:
 
-If you would like to extend or improve the functionality of a component, follow these steps:
-	1. Find the JavaScript of the component you want to extend in the designer directory to get the current version of PrimeFaces (AxonIvyDesigner/Contents/Eclipse/webapps/ivy/WEB-INF/lib-src)
-    2. Copy part or all of this JavaScript to the `webContent` directory in your project. (in our case it is /webContent/js/InputTextExtension.js)
-    3. Improve your JavaScript.
-    4. Add a link to your JavaScript in your main XHTML file (e.g., `frame-10-full-width.xhtml`) as shown below:
-        <h:outputScript name="js/InputTextExtension.js"/>
+* refining the logic of existing methods
+* introducing new widget methods
+
+If you would like to extend or improve the functionality of a Primefaces component, follow these steps:
+
+* Create an extension Javascript at <PROJECT>/webContent/js/MyExtension.js
+* Use the Client API documentation of Primefaces.
+* In your pages add a link to your JavaScript:
+        <h:outputScript name="js/MyExtension.js"/>
+
+If you want to directly replace behaviour of existing widgets, you have to find first the original Javascript code of your widget:
+
+* Find the currently used Primefaces library. You should find it at <DESIGNER>/webapps/ivy/WEB-INF/lib/primefaces...jar
+* Unpack this jar file (it is a zip file), and find the original javascript source of the component you want to change (typically at <JAR>/META-INF/resources/primefaces)
+
 !!!WARNING!!!
 If you modify the logic of a component, you should verify its functionality with each Ivy update, as these updates often include PrimeFaces updates that could result in compatibility issues.
