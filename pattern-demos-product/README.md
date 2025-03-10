@@ -1,6 +1,7 @@
 # Pattern Demos
 
-Pattern Demos are a collection of processes, dialogs, code or other snippets, which can be useful in your projects.
+***Note***: Pattern Demos are not a ready-to-use component but rather a collection of processes,
+dialogs, code or other snippets, which can be useful in your projects.
 If you want to use a pattern, copy the necessary parts to your project and adapt as needed. The demos are kept
 as simple as possible but some of the demos require additional infrastructure in your project.
 
@@ -21,7 +22,7 @@ an admin role gets a task with the results and can decide whether the job should
 
 Use this cron-job pattern for all your cron-jobs to make them startable manually and in case of manual start or errors, create an admin task to let the admin role decide how to continue.
 
-The Cron Job Pattern demonstrates a flexible and reusable approach to scheduling and managing periodic tasks within Axon Ivy. This pattern initiates a subprocess to handle a demo job, offering two distinct methods to trigger execution, along with robust error handling via the AdminTask concept.
+The Cron Job Pattern demonstrates a flexible and reusable approach to scheduling and managing periodic tasks within Axon Ivy. This pattern initiates a subprocess to handle a demo job, offering two distinct methods to trigger execution, along with locking and robust error handling via the AdminTask concept.
 
 #### Triggering the Job
 
