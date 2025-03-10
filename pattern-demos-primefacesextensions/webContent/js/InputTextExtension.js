@@ -1,4 +1,5 @@
-//This is example how to extend existing method init.
+// Override the constructor and change behaviour.
+// Note, that there also exists a client API which offers much functionality for existing widgets.
 PrimeFaces.widget.InputText.prototype.init = function(cfg) {
 	this.cfg = cfg;
 	this.jq = $(PrimeFaces.escapeClientId(this.cfg.id));
@@ -17,7 +18,7 @@ PrimeFaces.widget.InputText.prototype.init = function(cfg) {
            }
         }
 	
-	// In the following lines, we are extending the existing functionality of InputText to check the maximum length not in characters but in bytes,
+	// InputText is extended to check the maximum length not in characters but in bytes,
 	// because some characters, such as umlauts, take more than one byte.
 	this.normalizeNewlines(this.jq.val());
 	var $this = this;
@@ -27,24 +28,24 @@ PrimeFaces.widget.InputText.prototype.init = function(cfg) {
            	while(byteSize(e.currentTarget.value) > e.currentTarget.maxLength) {
            		e.currentTarget.value = e.currentTarget.value.slice(0,-1);
 				$this.changeColor();
-        		}
-            }
+        	}
+        }
      });
 }
 
-//This is example how to add new method to widget.
+// This is example shows how to add new methods to a widget.
 PrimeFaces.widget.InputText = PrimeFaces.widget.InputText.extend({
-	//method which change color on red, if we cut from string
+	// Add function to change color to red.
 	changeColor: function() {
 		this.jq.css('background-color', '#e38a8a'); 
 	},
-	//method which change color on green, if we didn't cut from string
+	// Add function to change color to green.
 	returnColor: function() {
 		this.jq.css('background-color', '#8ae3a3'); 
 	}
 });
 
-// Helper function for byte size
+// Helper function for byte size.
 function byteSize(str) {
     return new Blob([str]).size;
 }

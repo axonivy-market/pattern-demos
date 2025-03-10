@@ -7,17 +7,20 @@
 	xmlns:pe="http://primefaces.org/ui/extensions">
 <h:body>
 	<ui:composition template="/layouts/frame-10-full-width.xhtml">
-		<ui:define name="title">Primefaces Extensions</ui:define>
+		<ui:define name="title">Primefaces Extensions Demo</ui:define>
 		<ui:define name="content">
 			<h:form id="form">
 				<div class="grid">
 					<div class="col-12 md:col-12 lg:col-12">
-						<h:outputText escape="false"
-							value="The following input text field has a length limit of ten characters, but our extension counts it in bytes, 
-							because some special characters as emoticons or umlauts (ä,ß,ö,ü,etc) are written asi single character, 
-							but taking more than one byte in UTF-8 encoding. In following input you can try write normal or special characters and if you reach 10 bytes, 
-							last one will be removed. Input field has green color if you don't exceed maximum bytes, 
-							red color has if we had to remove last one character to fit into byte limit (this is demo of extension how to add new methods to widget)."></h:outputText>
+						<h:outputText escape="false">
+							The demo shows a change to InputText to restrict the number of bytes (instead of the nubmer of characters) allowed.
+							
+							The widget below allows entering text containing special characters (Umlaut, Emojis) which could require
+							more than one byte per character. Nevertheless, it will not allow you to enter text, that exceeds 10 bytes
+							of storage space. For the demo, the widget changed to red-color in case the number of characters was
+							restricted by the extension function.
+						</h:outputText>
+						
 					</div>
 				</div>
 				<div class="grid">

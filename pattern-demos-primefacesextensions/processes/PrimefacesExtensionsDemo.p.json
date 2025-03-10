@@ -45,18 +45,26 @@
       "id" : "f5",
       "type" : "ProcessAnnotation",
       "name" : [
-        "This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways: by refining the logic of its existing methods and by introducing new methods to the widget.",
+        "This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways:",
         "",
-        "If you would like to extend or improve the functionality of a component, follow these steps:",
-        "1. Find the JavaScript of the component you want to extend in the designer directory to get the current version of PrimeFaces",
-        "    2. Copy part or all of this JavaScript to the `webContent` directory in your project. (in our case it is /webContent/js/InputTextExtension.js)",
-        "    3. Improve your JavaScript.",
-        "    4. Add a link to your JavaScript in your main XHTML file (e.g., `frame-10-full-width.xhtml`) as shown below:",
-        "        <h:outputScript name=\"js/InputTextExtension.js\"/>"
+        "* refining the logic of existing methods",
+        "* introducing new widget methods",
+        "",
+        "If you would like to extend or improve the functionality of a Primefaces component, follow these steps:",
+        "",
+        "* Create an extension Javascript at <PROJECT>/webContent/js/MyExtension.js",
+        "* Use the Client API documentation of Primefaces.",
+        "* In your pages add a link to your JavaScript:",
+        "        <h:outputScript name=\"js/MyExtension.js\"/>",
+        "",
+        "If you want to directly replace behaviour of existing widgets, you have to find first the original Javascript code of your widget:",
+        "",
+        "* Find the currently used Primefaces library. You should find it at <DESIGNER>/webapps/ivy/WEB-INF/lib/primefaces...jar",
+        "* Unpack this jar file (it is a zip file), and find the original javascript source of the component you want to change (typically at <JAR>/META-INF/resources/primefaces)"
       ],
       "visual" : {
-        "at" : { "x" : 800, "y" : 208 },
-        "size" : { "width" : 572, "height" : 188 }
+        "at" : { "x" : 907, "y" : 171 },
+        "size" : { "width" : 714, "height" : 282 }
       }
     } ]
 }
