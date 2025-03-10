@@ -23,16 +23,6 @@ public class ParallelTasksDemoService {
 		return INSTANCE;
 	}
 
-	//	public void startParallelTasks() {
-	//		var iterationCount = 4;
-	//
-	//		for (var i = 0; i < iterationCount ; i++) {
-	//			// at:ac:fwf:panda:core:meeting:startAddAgendaItemsTask
-	//			var caseId = String.valueOf(Ivy.wfCase().getId());
-	//			Ivy.wf().signals().send(new SignalCode("com:axonivy:demo:patterndemos:paralleltasks:startParallelTask"), caseId);
-	//		}
-	//	}
-
 	public void startParallelTasks() {
 		var iterationCount = 4;
 		var signalCode = new SignalCode("com:axonivy:demo:patterndemos:paralleltasks:startParallelTask");
@@ -40,7 +30,7 @@ public class ParallelTasksDemoService {
 
 		for (var i = 0; i < iterationCount; i++) {
 
-			Ivy.wf().signals().create().data("{\"caseId\": \"" + caseId + "\"}").makeCurrentTaskPersistent().send(signalCode);
+			Ivy.wf().signals().create().data(caseId).makeCurrentTaskPersistent().send(signalCode);
 		}
 	}
 
@@ -97,7 +87,7 @@ public class ParallelTasksDemoService {
 	 */
 	public List<ITask> findActiveTasksByCaseAndCustomeField(String caseId, String customField, String customFieldValue) {
 		return Sudo.get(() -> {
-			return TaskQuery.create().where().customField().stringField("CaseId").isEqual(caseId)
+			return TaskQuery.create().where().customField().stringField("caseId").isEqual(caseId)
 					.and().customField().stringField(customField).isEqual(customFieldValue)
 					.and(getTaskQueryForRunningTasks()).executor().results();
 		});

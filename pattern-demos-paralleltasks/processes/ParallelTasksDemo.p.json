@@ -148,7 +148,14 @@
         "task"
       ],
       "config" : {
-        "dialog" : "com.axonivy.demo.patterndemos.paralleltasks.DemoParallelTask:start()"
+        "dialog" : "com.axonivy.demo.patterndemos.paralleltasks.DemoParallelTask:start()",
+        "task" : {
+          "name" : "<%=ivy.cms.co(\"/Tasks/Names/demoParallelTask\")%>",
+          "customFields" : [
+            { "name" : "caseId", "type" : "STRING", "value" : "in.caseId" },
+            { "name" : "demoParallelTask", "type" : "STRING", "value" : "\"true\"" }
+          ]
+        }
       },
       "visual" : {
         "at" : { "x" : 456, "y" : 464 }

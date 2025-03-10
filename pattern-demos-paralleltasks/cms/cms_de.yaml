@@ -11,6 +11,7 @@ Dialogs:
               title: Demonstrationsaufgabe parallel.
 Tasks:
   Descriptions:
-    demoTasksProceedWaiting: ''
+    demoTasksProceedWaiting: Warten auf den Fortschritt aller Demo-Parallelaufgaben
   Names:
-    demoTasksProceedWaiting: ''
+    demoParallelTask: Demo-Parallelaufgabe
+    demoTasksProceedWaiting: Warten auf den Fortschritt aller Demo-Parallelaufgaben

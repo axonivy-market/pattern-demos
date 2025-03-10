@@ -13,4 +13,5 @@ Tasks:
   Descriptions:
     demoTasksProceedWaiting: Waiting for procced of all demo parallel tasks
   Names:
+    demoParallelTask: Demo parallel task
     demoTasksProceedWaiting: Waiting for procced of all demo parallel tasks
