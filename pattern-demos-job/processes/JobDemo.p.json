@@ -11,7 +11,7 @@
       "config" : {
         "javaClass" : "ch.ivyteam.ivy.process.eventstart.beans.TimerBean",
         "userConfig" : {
-          "time" : "ivy.var.com_axonivy_demo_patterndemos_job_demoJobCronPattern"
+          "time" : "ivy.var.com_axonivy_demo_patterndemos_job_demoJobTimerConfiguration"
         },
         "link" : "eventLink.ivp"
       },
@@ -82,13 +82,14 @@
         "",
         "There are two ways to trigger the job. ",
         "",
-        "The first, or upper, path is activated by a cron scheduler, which can be configured using the variable demoStartCronJobPattern. This variable is adjustable in the variables.yaml file and should follow the standard cron pattern.",
+        "The Automatic Job Run is triggered by a TimerBean which is configured in the global variable demoJobTimerConfiguration. In case of an automatic start, an AdminTask will be generated, if the job result is not OK.",
         "",
-        "The second method is manual triggering. In this case, you are first directed to a dialog to start the job.",
+        "The Manual job run can be used for manual starts. In case of a manual start the result of the job will always be available in an AdminTask.",
         "",
-        "In both cases the job would be influence by variable forceError (variables.yaml). When set to true - per default then there will be simulated error by the job. If you would like to ",
+        "In both cases the job would be influence by the global variable forceError. When set to true - per default then there will be simulated error by the job.",
         "",
-        "You can reuse the subprocess, which is activated by calling it."
+        "To use this pattern, copy the Job sub-process to your project, adapt roles and",
+        "messages if needed and call it for all the jobs in the project."
       ],
       "visual" : {
         "at" : { "x" : 784, "y" : 144 },

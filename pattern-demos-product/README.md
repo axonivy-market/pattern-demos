@@ -14,27 +14,40 @@ locked entity to avoid race-conditions.
 
 ### Admin Task
 
-Use an Admin Task to catch errors in unattended backend-jobs (e.g. cron-jobs). In case of errors,
+Use an Admin Task to catch errors in unattended backend-jobs. In case of errors,
 an admin role gets a task with the results and can decide whether the job should be retried or skipped.
 
 ### Job
 
-Use this cron-job pattern for all your cron-jobs to make them startable manually and in case of manual start or errors, create an admin task to let the admin role decide how to continue.
+Use this job pattern for all your unattended backend jobs to make them startable manually and in case of manual
+start or errors, create an admin task to let the admin role decide how to continue.
 
-The Cron Job Pattern demonstrates a flexible and reusable approach to scheduling and managing periodic tasks within Axon Ivy. This pattern initiates a subprocess to handle a demo job, offering two distinct methods to trigger execution, along with robust error handling via the AdminTask concept.
+The Job Pattern demonstrates a flexible and reusable approach to scheduling and managing periodic tasks within Axon Ivy.
+This pattern initiates a subprocess to handle a demo job, offering two distinct methods to trigger execution, along with
+robust error handling via the AdminTask concept.
+
+The included demo showcases a typical scenario for the Job Pattern. It illustrates how the job is triggered (via scheduler or dialog),
+how a failure is simulated (using `forceError`), and how the AdminTask enables handling of that failure with options like "Retry" and "Ignore."
+Use this as a starting point to explore and customize the pattern for your needs.
+
+Note, that this pattern makes use of the `pattern-demos-lock` and the `pattern-demos-admintask` patterns.
 
 #### Triggering the Job
 
-- **Scheduled Triggering:** The job can be automatically activated using a cron scheduler. This is configured through the `demoStartCronJobPattern` variable in the `variables.yaml` file, which adheres to the standard cron pattern (e.g., `0 0 * * *` for daily execution at midnight). Adjust this variable to define the timing or frequency of the job according to your needs.
+- **Scheduled Triggering:** The job can be automatically activated using a TimerBean. This is configured through the global variable `demoJobTimerConfiguration` (e.g., `0 0 * * *` for daily execution at midnight).
 - **Manual Triggering:** Alternatively, the job can be started manually via a user dialog. This method provides on-demand flexibility, allowing users to initiate the job whenever necessary.
 
 #### Job Behavior and Error Simulation
 
-The execution of the job—whether scheduled or manual—is influenced by the `forceError` variable in `variables.yaml`. By default, this variable is set to `true`, causing the job to simulate a failure. This feature is particularly useful for testing the pattern’s error handling capabilities. To observe successful execution, set `forceError` to `false`.
+The execution of the job — whether scheduled or manual — is influenced by the `forceError` variable in `variables.yaml`.
+Set the variable to `true`, to cause the job to simulate an error. This feature is particularly useful for testing the
+pattern’s error handling capabilities. To observe successful execution, set `forceError` to `false`.
 
 #### Error Handling with AdminTask
 
-When the job fails—either due to a simulated error or an actual issue—an AdminTask is created to manage the situation. Assigned to the Administrator role and categorized as ADMIN, this task provides a framework for administrator intervention. The available actions include:
+When the job fails—either due to a simulated error or an actual issue—an AdminTask is created to manage the situation.
+Assigned to the Administrator role and categorized as ADMIN, this task provides a framework for administrator intervention.
+The available actions include:
 
 - **Retry:** Reattempt the job to achieve successful completion.
 - **Ignore:** Dismiss the failure, allowing the next scheduled instance (if applicable) to proceed as planned.
@@ -42,9 +55,26 @@ When the job fails—either due to a simulated error or an actual issue—an Adm
 
 These options are conceptual and must be tailored to your specific process. Refer to the "Admin Task" section under "Setup" for more details on customizing the AdminTask for your needs.
 
-#### Demo Overview
+#### Additional Features
 
-The included demo showcases a typical scenario for the Cron Job Pattern. It illustrates how the job is triggered (via scheduler or dialog), how a failure is simulated (using `forceError`), and how the AdminTask enables handling of that failure with options like "Retry" and "Ignore." Use this as a starting point to explore and customize the pattern for your needs.
+##### ServiceResult
+
+The pattern also offers a class `ServiceResult` which can be used to collect multiple results which are often the case in
+regular jobs. Use this class in your job-implementation to generate `OK`, `WARNING` and `ERROR` messages. The Job pattern shown
+here will automatically generate an Admin Task if a `ServiceResult` contains any not OK entry.
+
+##### Job Locking
+
+Typically jobs will be started locked without timeout using the `pattern-demos-lock` pattern. This means, that only one instance of
+a job can be running at a point in time and locks will never timeout.
+
+##### Job Description
+
+To avoid providing many parameters for a Job start, a `JobDescription` can be built and put into a
+job repository as shown in this demo. Note, that running jobs by the name of their `JobDescription`
+will only work, after the `JobDescription` is added to the repository. This can be done in multiple
+ways (StartEventBean, static functions,...) and the demo shows a simple example using static
+initialization.
 
 ### Placeholder Evaluation
 

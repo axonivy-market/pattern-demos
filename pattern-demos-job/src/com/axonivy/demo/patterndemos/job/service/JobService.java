@@ -66,7 +66,7 @@ public class JobService {
 	 * @return
 	 */
 	public ServiceResult runJob(JobDescription jobDescription) {
-		return runJob(jobDescription.getJobName(), true, null, jobDescription.getJobFunction());
+		return runJob(jobDescription.getJobName(), jobDescription.isLocked(), jobDescription.getLockTimeout(), jobDescription.getJobFunction());
 	}
 
 	/**
@@ -304,6 +304,8 @@ public class JobService {
 
 	/**
 	 * Register a Job so that it's description can be found by the job name.
+	 * 
+	 * This convenience function will create a locked jobs without timeout.
 	 *
 	 * <p>
 	 * Note: it is safe to call this from static code.
@@ -314,7 +316,7 @@ public class JobService {
 	 * @return
 	 */
 	public JobService registerJobDescription(String jobName, Function<JobStatus, ServiceResult> jobFunction) {
-		jobRepository.put(jobName, JobDescription.create(jobName, jobFunction));
+		jobRepository.put(jobName, JobDescription.create(jobName, true, null, jobFunction));
 		return this;
 	}
 
@@ -369,14 +371,18 @@ public class JobService {
 	 */
 	public static class JobDescription {
 		private String jobName;
+		private boolean locked = true;
+		private Duration lockTimeout;
 		private Function<JobStatus, ServiceResult> jobFunction;
 
 		private JobDescription() {
 		}
 
-		public static JobDescription create(String jobName, Function<JobStatus, ServiceResult> jobFunction) {
+		public static JobDescription create(String jobName, boolean locked, Duration lockTimeout, Function<JobStatus, ServiceResult> jobFunction) {
 			var jobDescription = new JobDescription();
 			jobDescription.setJobName(jobName);
+			jobDescription.setLocked(locked);
+			jobDescription.setLockTimeout(lockTimeout);
 			jobDescription.setJobFunction(jobFunction);
 			return jobDescription;
 		}
@@ -393,6 +399,34 @@ public class JobService {
 		 */
 		public void setJobName(String jobName) {
 			this.jobName = jobName;
+		}
+
+		/**
+		 * @return the locked
+		 */
+		public boolean isLocked() {
+			return locked;
+		}
+
+		/**
+		 * @param locked the locked to set
+		 */
+		public void setLocked(boolean locked) {
+			this.locked = locked;
+		}
+
+		/**
+		 * @return the lockTimeout
+		 */
+		public Duration getLockTimeout() {
+			return lockTimeout;
+		}
+
+		/**
+		 * @param lockTimeout the lockTimeout to set
+		 */
+		public void setLockTimeout(Duration lockTimeout) {
+			this.lockTimeout = lockTimeout;
 		}
 
 		/**

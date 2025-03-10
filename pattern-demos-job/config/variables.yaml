@@ -6,6 +6,6 @@ Variables:
         patterndemos:
           job:
             # Cron/Quartz Pattern for demo job.
-            demoJobCronPattern: 0/5 * * * * ?
+            demoJobTimerConfiguration: "* * * * *"
             # Change value to false to avoid error and admin task in the demo.
             forceError: "false"
