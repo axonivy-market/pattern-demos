@@ -21,7 +21,7 @@
       "id" : "f1",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 1144, "y" : 160 },
+        "at" : { "x" : 1288, "y" : 160 },
         "labelOffset" : { "x" : 13, "y" : 33 }
       }
     }, {
@@ -97,6 +97,10 @@
       "boundaries" : [ {
           "id" : "f10",
           "type" : "SignalBoundaryEvent",
+          "name" : "com:axonivy:demo:patterndemos:paralleltasks:continueAfterParallelTask:<%=ivy.case.getId()%>",
+          "config" : {
+            "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:continueAfterParallelTask:<%=ivy.case.getId()%>"
+          },
           "visual" : {
             "at" : { "x" : 728, "y" : 200 },
             "labelOffset" : { "x" : 13, "y" : 33 }
@@ -134,7 +138,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 932, "y" : 159 },
+        "at" : { "x" : 936, "y" : 160 },
         "size" : { "width" : 136, "height" : 62 }
       },
       "connect" : [
@@ -165,7 +169,7 @@
           "type" : "SignalBoundaryEvent",
           "name" : "Cancel demo parallel task",
           "config" : {
-            "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:cancelParallelTasks:<%=ivy.case.getId()%>"
+            "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:cancelParallelTasks:<%=in.caseId%>"
           },
           "visual" : {
             "at" : { "x" : 488, "y" : 504 },
