@@ -7,94 +7,33 @@
         "projects": [
           {
             "groupId": "com.axonivy.demo",
-            "artifactId": "pattern-demos-job",
-            "version": "${version}",
-            "type": "iar"
-          }
-        ],
-        "repositories": [
-          {
-            "id": "maven.axonivy.com",
-            "url": "https://maven.axonivy.com",
-            "snapshots": {
-              "enabled": "true"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "id": "maven-dependency",
-      "data": {
-        "dependencies": [
-          {
-            "groupId": "com.axonivy.demo",
             "artifactId": "pattern-demos-lock",
             "version": "${version}",
             "type": "iar"
-          }
-        ],
-        "repositories": [
-          {
-            "id": "maven.axonivy.com",
-            "url": "https://maven.axonivy.com",
-            "snapshots": {
-              "enabled": "true"
-            }
-          }
-        ]
-      }
-    }, 
-    {
-      "id": "maven-dropins",
-      "data": {
-        "dependencies": [
+          },
           {
             "groupId": "com.axonivy.demo",
             "artifactId": "pattern-demos-admintask",
-            "version": "${version}"
-          }
-        ],
-        "repositories": [
-          {
-            "id": "maven.axonivy.com",
-            "url": "https://maven.axonivy.com",
-            "snapshots": {
-              "enabled": "true"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "id": "maven-dropins",
-      "data": {
-        "dependencies": [
+            "version": "${version}",
+            "type": "iar"
+          },
           {
             "groupId": "com.axonivy.demo",
-            "artifactId": "pattern-demos-primefacesextensions",
-            "version": "${version}"
-          }
-        ],
-        "repositories": [
-          {
-            "id": "maven.axonivy.com",
-            "url": "https://maven.axonivy.com",
-            "snapshots": {
-              "enabled": "true"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "id": "maven-dropins",
-      "data": {
-        "dependencies": [
+            "artifactId": "pattern-demos-job",
+            "version": "${version}",
+            "type": "iar"
+          },
           {
             "groupId": "com.axonivy.demo",
             "artifactId": "pattern-demos-placeholder",
-            "version": "${version}"
+            "version": "${version}",
+            "type": "iar"
+          },
+          {
+            "groupId": "com.axonivy.demo",
+            "artifactId": "pattern-demos-primefacesextensions",
+            "version": "${version}",
+            "type": "iar"
           }
         ],
         "repositories": [
