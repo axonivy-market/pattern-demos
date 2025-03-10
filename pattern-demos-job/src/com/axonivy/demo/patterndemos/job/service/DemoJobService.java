@@ -44,7 +44,7 @@ public class DemoJobService {
 		try {
 			Ivy.log().info("The cronjob demo triggered.");
 			result.add(ResultStatus.OK, "Demo job started.");
-			if(Boolean.parseBoolean(Ivy.var().get(""))) {
+			if(Boolean.parseBoolean(Ivy.var().get("com.axonivy.demo.patterndemos.job.forceError"))) {
 				result.add(ResultStatus.ERROR, "Forced error. To avoid it, set the global variable 'forceError' to false.");
 			}
 			else {
