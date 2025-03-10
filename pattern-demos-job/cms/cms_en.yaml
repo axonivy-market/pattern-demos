@@ -18,14 +18,14 @@ Labels:
 Processes:
   Descriptions:
     backgroundJob: Technical task to execute a backgroundjobs.
-    checkJobResult: 'Check result of job ''''{0}''''. Overall Status: {1}'
+    checkJobResult: Check result of job ''{0}'' with overall Status ''{1}''.
     demoJob: Demo cron job.
   Names:
-    backgroundJob: Background job "{0}"
+    backgroundJob: Background job ''{0}''
     checkJobResult: Check result of job ''{0}'' with overall status ''{1}''.
-    demoJob: 'Manual Jobstart: Demo job'
+    demoJob: Manual Jobstart, Demo job
 Tasks:
   Description:
-    checkJobResult: 'Check result of job ''''{0}''''. Overall Status: {1}'
+    checkJobResult: Check result of job ''{0}'' with overall Status ''{1}''.
   Names:
     checkJobResult: Check result of job ''{0}'' with overall status ''{1}''.
