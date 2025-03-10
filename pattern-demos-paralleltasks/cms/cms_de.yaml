@@ -1,0 +1,17 @@
+Dialogs:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          paralleltasks:
+            DemoParallelTask:
+              close: Schließen
+              description: Dies ist eine der Demo-Parallelaufgaben. Sie können diese Parallelaufgabe fortsetzen und abschließen oder einfach diesen Dialog schließen und später fortfahren. Sobald alle Parallelaufgaben in diesem Prozess abgeschlossen sind, kann der Hauptprozess fortgesetzt werden.
+              done: Erledigt
+              title: Demonstrationsaufgabe parallel.
+Tasks:
+  Descriptions:
+    demoTasksProceedWaiting: Warten auf den Fortschritt aller Demo-Parallelaufgaben
+  Names:
+    demoParallelTask: Demo-Parallelaufgabe
+    demoTasksProceedWaiting: Warten auf den Fortschritt aller Demo-Parallelaufgaben

@@ -1,6 +1,7 @@
 # Pattern Demos
 
-Pattern Demos are a collection of processes, dialogs, code or other snippets, which can be useful in your projects.
+***Note***: Pattern Demos are not a ready-to-use component but rather a collection of processes,
+dialogs, code or other snippets, which can be useful in your projects.
 If you want to use a pattern, copy the necessary parts to your project and adapt as needed. The demos are kept
 as simple as possible but some of the demos require additional infrastructure in your project.
 
