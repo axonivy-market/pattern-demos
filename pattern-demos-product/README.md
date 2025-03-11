@@ -138,8 +138,10 @@ This demo shows a pattern to allow changing a parent object in a child component
 It uses Java based controllers which offer more flexibility than Ivy processes in complex UI scenarios.
 
 A child controller is created in the parent controller and provided to component. Therefore both controllers have a reference to the same business object.
-This way a change in the component will automatically be reflected in the parent as well. Of course, similar controller patterns
-can be used in other situations.
+This way a change in the component will automatically be reflected in the parent as well and vice versa. Note, that if the
+parent creates a new object (e.g. by a save operation), it must be replaced in the component controller as well.
+
+Of course, using Java controllers and similar patterns can be used generally for other complex situations (e.g. inheritance).
 
 ### Parallel Tasks
 The parallel tasks pattern is designed to manage multiple concurrent tasks that are initiated by a signal and need to be coordinated to ensure completion before the main process continues. It incorporates administrative oversight to handle exceptions or delays, empowering admins to decide the next steps.
