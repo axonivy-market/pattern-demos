@@ -131,9 +131,19 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 
 ***Note***: If you modify the logic of a component, you should verify its functionality with each Ivy update, as these updates often include PrimeFaces updates that could result in compatibility issues.
 
-# Parallel Tasks
+### Components
+
+This demo shows a pattern to allow changing a parent object in a child component.
+
+It uses Java based controllers which offer more flexibility than Ivy processes in complex UI scenarios.
+
+A child controller is created in the parent controller and provided to component. Therefore both controllers have a reference to the same business object.
+This way a change in the component will automatically be reflected in the parent as well. Of course, similar controller patterns
+can be used in other situations.
+
+### Parallel Tasks
 The parallel tasks pattern is designed to manage multiple concurrent tasks that are initiated by a signal and need to be coordinated to ensure completion before the main process continues. It incorporates administrative oversight to handle exceptions or delays, empowering admins to decide the next steps.
-## Key Features
+#### Key Features
 * Signal triggering: Launches multiple subprocesses simultaneously using a signal.
 
 * Concurrent execution: Runs these subprocesses in parallel for efficiency.
@@ -142,7 +152,7 @@ The parallel tasks pattern is designed to manage multiple concurrent tasks that 
 
 * Error handling: Includes an AdminTask mechanism for manual intervention in case of delays or failures.
 
-## Demo Scenario
+#### Demo Scenario
 The included demo illustrates a practical use case:
 * A main process sends a signal to trigger several parallel tasks.
 
@@ -152,7 +162,7 @@ The included demo illustrates a practical use case:
 
 This demo provides a foundation to understand and adapt the pattern to your own requirements.
 
-## Get Started
+#### Get Started
 Explore the demo to see the Parallel Tasks pattern in action. Customize it to fit your specific use case, leveraging its robust concurrency and error-handling capabilities.
 
 
