@@ -1,6 +1,6 @@
 package com.axonivy.demo.patterndemos.ui.components;
 
-import com.axonivy.demo.patterndemos.PersonHolder;
+import com.axonivy.demo.patterndemos.ui.holders.PersonHolder;
 
 public class ChildCtrl {
 
