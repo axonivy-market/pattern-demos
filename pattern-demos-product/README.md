@@ -88,6 +88,49 @@ Use these examples to see how Primefaces Widgets can be customized using the Pri
 
 This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways: by refining the logic of its existing methods and by introducing new methods to the widget.
 
+### Components
+
+This demo shows a pattern to allow referencing a parent owned object in one or more child components.
+
+It uses Java based controllers which offer more flexibility than Ivy processes in complex UI scenarios.
+
+One object (in this example the `ParentCtrl`) owns a business object and implements a specific holder interface (in this example
+the `PersonHolder`) which allows getting and setting of the `Person` business object. Other controllers are created by the
+`ParentCtrl` and get a reference to the `ParentCtrl` (who is the `PersonHolder`). Therefore both controllers have access to the
+`Person`. This way a change in the component will automatically be reflected in the parent as well and vice versa. Note, that the
+automatic update will work even when a new instance of the `Person` is set by any component.
+
+Java controllers and similar patterns can be used for many complex situations (e.g. inheritance).
+
+### Parallel Tasks
+
+The parallel tasks pattern is designed to manage multiple concurrent tasks that are initiated by a signal and need to be coordinated
+to ensure completion before the main process continues. It incorporates administrative oversight to handle exceptions or delays,
+empowering admins to decide the next steps.
+
+#### Key Features
+
+* Signal triggering: Launches multiple subprocesses simultaneously using a signal.
+
+* Concurrent execution: Runs these subprocesses in parallel for efficiency.
+
+* Completion synchronization: Pauses the main process until all parallel tasks are complete.
+
+* Error handling: Includes an AdminTask mechanism for manual intervention in case of delays or failures.
+
+#### Demo Scenario
+The included demo illustrates a practical use case:
+* A main process sends a signal to trigger several parallel tasks.
+
+* These tasks execute concurrently, simulating real-world workloads.
+
+* The main process waits for all tasks to finish or allows an admin to skip stalled tasks via an admin task interface.
+
+This demo provides a foundation to understand and adapt the pattern to your own requirements.
+
+#### Get Started
+Explore the demo to see the Parallel Tasks pattern in action. Customize it to fit your specific use case, leveraging its robust concurrency and error-handling capabilities.
+
 ## Setup
 
 This component is a repository for valuable patterns and demos. Typically they must be adapted to your
@@ -130,41 +173,5 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 * Unpack this jar file (it is a zip file), and find the original javascript source of the component you want to change (typically at <JAR>/META-INF/resources/primefaces)
 
 ***Note***: If you modify the logic of a component, you should verify its functionality with each Ivy update, as these updates often include PrimeFaces updates that could result in compatibility issues.
-
-### Components
-
-This demo shows a pattern to allow changing a parent object in a child component.
-
-It uses Java based controllers which offer more flexibility than Ivy processes in complex UI scenarios.
-
-A child controller is created in the parent controller and provided to component. Therefore both controllers have a reference to the same business object.
-This way a change in the component will automatically be reflected in the parent as well and vice versa. Note, that if the
-parent creates a new object (e.g. by a save operation), it must be replaced in the component controller as well.
-
-Of course, using Java controllers and similar patterns can be used generally for other complex situations (e.g. inheritance).
-
-### Parallel Tasks
-The parallel tasks pattern is designed to manage multiple concurrent tasks that are initiated by a signal and need to be coordinated to ensure completion before the main process continues. It incorporates administrative oversight to handle exceptions or delays, empowering admins to decide the next steps.
-#### Key Features
-* Signal triggering: Launches multiple subprocesses simultaneously using a signal.
-
-* Concurrent execution: Runs these subprocesses in parallel for efficiency.
-
-* Completion synchronization: Pauses the main process until all parallel tasks are complete.
-
-* Error handling: Includes an AdminTask mechanism for manual intervention in case of delays or failures.
-
-#### Demo Scenario
-The included demo illustrates a practical use case:
-* A main process sends a signal to trigger several parallel tasks.
-
-* These tasks execute concurrently, simulating real-world workloads.
-
-* The main process waits for all tasks to finish or allows an admin to skip stalled tasks via an admin task interface.
-
-This demo provides a foundation to understand and adapt the pattern to your own requirements.
-
-#### Get Started
-Explore the demo to see the Parallel Tasks pattern in action. Customize it to fit your specific use case, leveraging its robust concurrency and error-handling capabilities.
 
 
