@@ -13,7 +13,7 @@
         "signature" : "start",
         "input" : {
           "params" : [
-            { "name" : "childCtrl", "type" : "com.axonivy.demo.patterndemos.components.ChildCtrl", "desc" : "" }
+            { "name" : "childCtrl", "type" : "com.axonivy.demo.patterndemos.ui.components.ChildCtrl", "desc" : "" }
           ],
           "map" : {
             "out.ctrl" : "param.childCtrl"

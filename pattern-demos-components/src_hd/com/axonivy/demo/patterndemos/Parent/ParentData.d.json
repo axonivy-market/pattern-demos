@@ -5,7 +5,7 @@
   "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "ctrl",
-    "type" : "com.axonivy.demo.patterndemos.ParentCtrl",
+    "type" : "com.axonivy.demo.patterndemos.ui.ParentCtrl",
     "modifiers" : [ "PERSISTENT" ]
   } ]
 }

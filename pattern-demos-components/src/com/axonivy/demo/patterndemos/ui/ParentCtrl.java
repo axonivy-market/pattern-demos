@@ -1,9 +1,10 @@
-package com.axonivy.demo.patterndemos;
+package com.axonivy.demo.patterndemos.ui;
 
 import javax.faces.event.ActionEvent;
 
-import com.axonivy.demo.patterndemos.components.ChildCtrl;
+import com.axonivy.demo.patterndemos.PersonHolder;
 import com.axonivy.demo.patterndemos.entities.Person;
+import com.axonivy.demo.patterndemos.ui.components.ChildCtrl;
 
 public class ParentCtrl implements PersonHolder {
 

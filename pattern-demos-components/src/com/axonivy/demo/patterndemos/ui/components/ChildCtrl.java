@@ -1,4 +1,4 @@
-package com.axonivy.demo.patterndemos.components;
+package com.axonivy.demo.patterndemos.ui.components;
 
 import com.axonivy.demo.patterndemos.PersonHolder;
 
