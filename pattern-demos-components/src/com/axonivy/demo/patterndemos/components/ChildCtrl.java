@@ -1,21 +1,16 @@
 package com.axonivy.demo.patterndemos.components;
 
-import com.axonivy.demo.patterndemos.entities.Person;
+import com.axonivy.demo.patterndemos.PersonHolder;
 
 public class ChildCtrl {
 
-	private Person person;
+	private PersonHolder personHolder;
 
-	public ChildCtrl(Person person) {
-		this.person = person;
+	public ChildCtrl(PersonHolder personHolder) {
+		this.personHolder = personHolder;
 	}
 
-	public Person getPerson() {
-		return person;
+	public PersonHolder getPersonHolder() {
+		return personHolder;
 	}
-
-	public void setPerson(Person person) {
-		this.person = person;
-	}
-
 }

@@ -16,7 +16,7 @@
             { "name" : "childCtrl", "type" : "com.axonivy.demo.patterndemos.components.ChildCtrl", "desc" : "" }
           ],
           "map" : {
-            "out.controller" : "param.childCtrl"
+            "out.ctrl" : "param.childCtrl"
           }
         },
         "guid" : "1957FFE2E88F9D51"

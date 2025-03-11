@@ -44,14 +44,10 @@
     }, {
       "id" : "f5",
       "type" : "ProcessAnnotation",
-      "name" : [
-        "This demonstration illustrates the process of creating components with sub-components and updating them during a save operation, for example.",
-        "",
-        "It allows us to observe how a correct implementation functions and what occurs when we implement it incorrectly."
-      ],
+      "name" : "This demonstration illustrates the process of creating components with sub-components and updating them during a save operation, for example.",
       "visual" : {
-        "at" : { "x" : 794, "y" : 80 },
-        "size" : { "width" : 347, "height" : 127 }
+        "at" : { "x" : 798, "y" : 48 },
+        "size" : { "width" : 355, "height" : 63 }
       }
     } ]
 }

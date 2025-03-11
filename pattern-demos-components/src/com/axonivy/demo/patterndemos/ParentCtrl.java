@@ -1,9 +1,11 @@
 package com.axonivy.demo.patterndemos;
 
+import javax.faces.event.ActionEvent;
+
 import com.axonivy.demo.patterndemos.components.ChildCtrl;
 import com.axonivy.demo.patterndemos.entities.Person;
 
-public class ParentCtrl {
+public class ParentCtrl implements PersonHolder {
 
 	private ChildCtrl childCtrl;
 	private Person person;
@@ -18,56 +20,35 @@ public class ParentCtrl {
 	 **/
 	public void init() {
 		person = new Person();
-		this.childCtrl = new ChildCtrl(person);
+		person.setFirstName("");
+		person.setLastName("");
+		this.childCtrl = new ChildCtrl(this);
 	}
 
 	/**
-	 * This method simulates saving data to the database, necessitating the creation
-	 * of a new Person object because the database always returns a distinct
-	 * instance. We must ensure that this new Person object is assigned to the
-	 * controllers; failing to do so will cause the application to crash due to the
-	 * use of two different object instances.
+	 * Save person.
+	 * 
+	 * Simulates saving data to the database which creates a new object.
+	 * Note, that the child will automatically see this new object because
+	 * we are the person holder.
 	 *
 	 * 
 	 **/
-	public void save() {
-		Person savedPerson = new Person();
-		savedPerson.setId("simulatedId");
-		savedPerson.setTitleBeforeName(getChildCtrl().getPerson().getTitleBeforeName());
-		savedPerson.setFirstName(getChildCtrl().getPerson().getFirstName());
-		savedPerson.setLastName(getChildCtrl().getPerson().getLastName());
-		savedPerson.setTitleAfterName(getChildCtrl().getPerson().getTitleAfterName());
-		savedPerson.setEmail(getChildCtrl().getPerson().getEmail());
-
-		person = savedPerson;
-
-		// This method set current instance to controllers.
-		updateControllers();
+	public void save(ActionEvent event) {
+		person = save(person);
 	}
 
 	/**
-	 * This method simulates saving data to the database, but if the controllers are
-	 * not updated, it will cause issues with two different object instances.
-	 *
-	 **/
-	public void saveWithoutUpdateControllers() {
-		Person savedPerson = new Person();
-		savedPerson.setId("simulatedId");
-		savedPerson.setTitleBeforeName(getChildCtrl().getPerson().getTitleBeforeName());
-		savedPerson.setFirstName(getChildCtrl().getPerson().getFirstName());
-		savedPerson.setLastName(getChildCtrl().getPerson().getLastName());
-		savedPerson.setTitleAfterName(getChildCtrl().getPerson().getTitleAfterName());
-		savedPerson.setEmail(getChildCtrl().getPerson().getEmail());
-
-		person = savedPerson;
-	}
-
-	/**
-	 * Method to update controllers.
-	 *
-	 **/
-	public void updateControllers() {
-		getChildCtrl().setPerson(person);
+	 * Simulate a typical save in a JPA environment, where the save will create a new object.
+	 * 
+	 * @param person
+	 * @return
+	 */
+	protected Person save(Person person) {
+		var savedPerson = new Person();
+		savedPerson.setFirstName(person.getFirstName());
+		savedPerson.setLastName(person.getLastName());
+		return savedPerson;
 	}
 
 	public ChildCtrl getChildCtrl() {
@@ -78,12 +59,13 @@ public class ParentCtrl {
 		this.childCtrl = childCtrl;
 	}
 
+	@Override
 	public Person getPerson() {
 		return person;
 	}
 
+	@Override
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-
 }

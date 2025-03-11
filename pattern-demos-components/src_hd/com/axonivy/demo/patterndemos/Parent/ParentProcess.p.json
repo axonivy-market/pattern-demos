@@ -13,7 +13,7 @@
         "signature" : "start",
         "input" : {
           "map" : {
-            "out.controller" : "new com.axonivy.demo.patterndemos.ParentCtrl()"
+            "out.ctrl" : "new com.axonivy.demo.patterndemos.ParentCtrl()"
           }
         },
         "guid" : "1957FFF98416F62F"

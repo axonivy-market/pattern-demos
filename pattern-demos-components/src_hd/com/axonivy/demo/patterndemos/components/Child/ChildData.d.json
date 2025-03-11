@@ -4,7 +4,7 @@
   "namespace" : "com.axonivy.demo.patterndemos.components.Child",
   "isBusinessCaseData" : false,
   "fields" : [ {
-    "name" : "controller",
+    "name" : "ctrl",
     "type" : "com.axonivy.demo.patterndemos.components.ChildCtrl",
     "modifiers" : [ "PERSISTENT" ]
   } ]
