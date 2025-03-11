@@ -1,0 +1,73 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<cc:interface componentType="IvyComponent">
+</cc:interface>
+
+<cc:implementation>
+	<h:outputText value="Person object: #{data.controller.person}" />
+	<div class="grid">
+		<div class="col-12 md:col-6 lg:col-3">
+			<p:outputLabel for="id" value="ID" />
+		</div>
+		<div class="col-12 md:col-6 lg:col-9">
+			<p:inputText id="id" disabled="true"
+				value="#{data.controller.person.id}" />
+		</div>
+	</div>
+
+	<div class="grid">
+		<div class="col-12 md:col-6 lg:col-3">
+			<p:outputLabel for="titleBeforeName" value="Title before name" />
+		</div>
+		<div class="col-12 md:col-6 lg:col-9">
+			<p:inputText id="titleBeforeName"
+				value="#{data.controller.person.titleBeforeName}" />
+		</div>
+	</div>
+
+	<div class="grid">
+		<div class="col-12 md:col-6 lg:col-3">
+			<p:outputLabel for="firstName" value="First name" />
+		</div>
+		<div class="col-12 md:col-6 lg:col-9">
+			<p:inputText id="firstName"
+				value="#{data.controller.person.firstName}" />
+		</div>
+	</div>
+
+	<div class="grid">
+		<div class="col-12 md:col-6 lg:col-3">
+			<p:outputLabel for="lastName" value="Last name" />
+		</div>
+		<div class="col-12 md:col-6 lg:col-9">
+			<p:inputText id="lastName" value="#{data.controller.person.lastName}" />
+		</div>
+	</div>
+
+	<div class="grid">
+		<div class="col-12 md:col-6 lg:col-3">
+			<p:outputLabel for="titleAfterName" value="Title after name" />
+		</div>
+		<div class="col-12 md:col-6 lg:col-9">
+			<p:inputText id="titleAfterName"
+				value="#{data.controller.person.titleAfterName}" />
+		</div>
+	</div>
+
+	<div class="grid">
+		<div class="col-12 md:col-6 lg:col-3">
+			<p:outputLabel for="email" value="Email" />
+		</div>
+		<div class="col-12 md:col-6 lg:col-9">
+			<p:inputText id="email" value="#{data.controller.person.email}" />
+		</div>
+	</div>
+</cc:implementation>
+
+</html>

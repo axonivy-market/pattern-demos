@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:body>
+	<ui:composition template="/layouts/frame-10-full-width.xhtml">
+		<ui:define name="title">Parent</ui:define>
+		<ui:define name="content">
+
+			<h3>Parent component</h3>
+
+			<h:form id="form">
+				<p:messages />
+				<h:outputText value="Person object: #{data.controller.person}" />
+
+				<p:fieldset id="childFS" legend="Child component">
+					<ic:com.axonivy.demo.patterndemos.components.Child
+						childCtrl="#{data.controller.childCtrl}" />
+				</p:fieldset>
+				<div class="command-btns">
+					<p:commandLink id="cancel"
+						actionListener="#{ivyWorkflowView.cancel()}" process="@this"
+						value="Cancel" />
+					<p:commandButton id="save" actionListener="#{data.controller.save}"
+						value="Save" update="form childFS" icon="pi pi-check" />
+					<p:commandButton id="saveWithoutUpdate"
+						actionListener="#{data.controller.saveWithoutUpdateControllers}"
+						value="Save without update controllers" update="form childFS"
+						icon="pi pi-check" />
+				</div>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>
