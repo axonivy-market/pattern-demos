@@ -132,15 +132,15 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 ***Note***: If you modify the logic of a component, you should verify its functionality with each Ivy update, as these updates often include PrimeFaces updates that could result in compatibility issues.
 
 # Parallel Tasks
-The Parallel Tasks pattern is designed to manage multiple concurrent tasks that are initiated by a signal and need to be coordinated to ensure completion before the main process continues. It incorporates administrative oversight to handle exceptions or delays, empowering admins to decide the next steps.
+The parallel tasks pattern is designed to manage multiple concurrent tasks that are initiated by a signal and need to be coordinated to ensure completion before the main process continues. It incorporates administrative oversight to handle exceptions or delays, empowering admins to decide the next steps.
 ## Key Features
-* Signal Triggering: Launches multiple subprocesses simultaneously using a signal.
+* Signal triggering: Launches multiple subprocesses simultaneously using a signal.
 
-* Concurrent Execution: Runs these subprocesses in parallel for efficiency.
+* Concurrent execution: Runs these subprocesses in parallel for efficiency.
 
-* Completion Synchronization: Pauses the main process until all parallel tasks are complete.
+* Completion synchronization: Pauses the main process until all parallel tasks are complete.
 
-* Error Handling: Includes an AdminTask mechanism for manual intervention in case of delays or failures.
+* Error handling: Includes an AdminTask mechanism for manual intervention in case of delays or failures.
 
 ## Demo Scenario
 The included demo illustrates a practical use case:

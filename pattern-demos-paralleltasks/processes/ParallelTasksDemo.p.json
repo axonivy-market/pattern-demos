@@ -97,7 +97,7 @@
       "boundaries" : [ {
           "id" : "f10",
           "type" : "SignalBoundaryEvent",
-          "name" : "com:axonivy:demo:patterndemos:paralleltasks:continueAfterParallelTask:<%=ivy.case.getId()%>",
+          "name" : "Continue after demo parallel tasks",
           "config" : {
             "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:continueAfterParallelTask:<%=ivy.case.getId()%>"
           },
@@ -233,5 +233,11 @@
       "connect" : [
         { "id" : "f25", "to" : "f4", "color" : "default" }
       ]
+    }, {
+      "id" : "f26",
+      "type" : "ProcessAnnotation",
+      "visual" : {
+        "at" : { "x" : 1672, "y" : 160 }
+      }
     } ]
 }
