@@ -130,3 +130,29 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 * Unpack this jar file (it is a zip file), and find the original javascript source of the component you want to change (typically at <JAR>/META-INF/resources/primefaces)
 
 ***Note***: If you modify the logic of a component, you should verify its functionality with each Ivy update, as these updates often include PrimeFaces updates that could result in compatibility issues.
+
+### Parallel Tasks
+The Parallel Tasks pattern is designed to manage multiple concurrent tasks that are initiated by a signal and need to be coordinated to ensure completion before the main process continues. It incorporates administrative oversight to handle exceptions or delays, empowering admins to decide the next steps.
+## Key Features
+* Signal Triggering: Launches multiple subprocesses simultaneously using a signal.
+
+* Concurrent Execution: Runs these subprocesses in parallel for efficiency.
+
+* Completion Synchronization: Pauses the main process until all parallel tasks are complete.
+
+* Error Handling: Includes an AdminTask mechanism for manual intervention in case of delays or failures.
+
+## Demo Scenario
+The included demo illustrates a practical use case:
+* A main process sends a signal to trigger several parallel tasks.
+
+* These tasks execute concurrently, simulating real-world workloads.
+
+* The main process waits for all tasks to finish or allows an admin to skip stalled tasks via an admin task interface.
+
+This demo provides a foundation to understand and adapt the pattern to your own requirements.
+
+## Get Started
+Explore the demo to see the Parallel Tasks pattern in action. Customize it to fit your specific use case, leveraging its robust concurrency and error-handling capabilities.
+
+
