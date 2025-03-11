@@ -34,6 +34,12 @@
             "artifactId": "pattern-demos-primefacesextensions",
             "version": "${version}",
             "type": "iar"
+          },
+          {
+            "groupId": "com.axonivy.demo",
+            "artifactId": "pattern-demos-components",
+            "version": "${version}",
+            "type": "iar"
           }
         ],
         "repositories": [
