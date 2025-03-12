@@ -7,9 +7,9 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "start",
+      "name" : "componentsDemo",
       "config" : {
-        "signature" : "start",
+        "signature" : "componentsDemo",
         "request" : {
           "name" : "Components",
           "description" : "Demo how to set and and update components"

@@ -19,11 +19,9 @@ Processes:
   Descriptions:
     backgroundJob: Technische Aufgabe zur Ausführung eines Hintergrundjobs
     checkJobResult: Überprüfen Sie das Ergebnis des Jobs ''{0}'' mit dem Gesamtstatus ''{1}''
-    demoJob: Demo cron job.
   Names:
     backgroundJob: Background job ''{0}''
     checkJobResult: Überprüfen Sie das Ergebnis des Jobs ''{0}'' mit dem Gesamtstatus ''{1}''.
-    demoJob: Manueller Jobstart, Demo job
 Tasks:
   Description:
     checkJobResult: Überprüfen Sie das Resultat von Job ''{0}'' mit dem Gesamtstatus ''{1}''

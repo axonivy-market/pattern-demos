@@ -7,12 +7,12 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "start",
+      "name" : "primefacesExtensionDemo",
       "config" : {
-        "signature" : "start",
+        "signature" : "primefacesExtensionDemo",
         "request" : {
           "name" : "Primefaces Extensions",
-          "description" : "Show how to implement Primefaces Extensions"
+          "description" : "Show how to implement Primefaces Extensions."
         }
       },
       "visual" : {

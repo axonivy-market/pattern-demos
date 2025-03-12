@@ -7,12 +7,16 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "Parallel tasks demo",
+      "name" : "parallelTasksDemo",
       "config" : {
-        "signature" : "start"
+        "signature" : "parallelTasksDemo",
+        "request" : {
+          "name" : "Parallel Tasks",
+          "description" : "Show how to handle a dynamic number of tasks."
+        }
       },
       "visual" : {
-        "at" : { "x" : 288, "y" : 160 }
+        "at" : { "x" : 112, "y" : 192 }
       },
       "connect" : [
         { "id" : "f2", "to" : "f6" }
@@ -21,23 +25,23 @@
       "id" : "f1",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 1288, "y" : 160 },
+        "at" : { "x" : 1024, "y" : 192 },
         "labelOffset" : { "x" : 13, "y" : 33 }
       }
     }, {
       "id" : "f3",
       "type" : "SignalStartEvent",
-      "name" : "Start parallel task",
+      "name" : "Create task",
       "config" : {
-        "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:startParallelTask",
+        "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:createTask",
         "output" : {
           "map" : {
-            "out.caseId" : "signal.getSignalData() as String"
+            "out.demoData" : "signal.getSignalData() as com.axonivy.demo.patterndemos.paralleltasks.pojos.DemoData"
           }
         }
       },
       "visual" : {
-        "at" : { "x" : 288, "y" : 464 },
+        "at" : { "x" : 112, "y" : 496 },
         "labelOffset" : { "x" : 13, "y" : 33 }
       },
       "connect" : [
@@ -47,26 +51,31 @@
       "id" : "f4",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 1232, "y" : 464 },
+        "at" : { "x" : 760, "y" : 496 },
         "labelOffset" : { "x" : 13, "y" : 33 }
       }
     }, {
       "id" : "f6",
       "type" : "Script",
       "name" : [
-        "Create demo",
+        "Create",
         "parallel tasks"
       ],
       "config" : {
         "output" : {
           "code" : [
-            "import com.axonivy.demo.patterndemos.paralleltasks.ParallelTasksDemoService;",
-            "ParallelTasksDemoService.get().startParallelTasks();"
+            "import java.util.UUID;",
+            "import com.axonivy.demo.patterndemos.paralleltasks.service.ParallelTasksDemoService;",
+            "",
+            "// We need some unique Id for this specific run.",
+            "out.uniqueId = UUID.randomUUID().toString().replaceAll(\"-\", \"\");",
+            "",
+            "ParallelTasksDemoService.get().createTasks(out.uniqueId, 3);"
           ]
         }
       },
       "visual" : {
-        "at" : { "x" : 456, "y" : 160 }
+        "at" : { "x" : 280, "y" : 192 }
       },
       "connect" : [
         { "id" : "f7", "to" : "f8" }
@@ -74,17 +83,19 @@
     }, {
       "id" : "f8",
       "type" : "UserTask",
-      "name" : "General admin",
+      "name" : "Wait for finishing signal",
       "config" : {
         "dialog" : "com.axonivy.demo.patterndemos.admintask.AdminTask:start(String,String,List<com.axonivy.demo.patterndemos.admintask.enums.AdminDecision>)",
         "call" : {
           "map" : {
-            "param.buttons" : "[com.axonivy.demo.patterndemos.admintask.enums.AdminDecision.CHECK_LATER, com.axonivy.demo.patterndemos.admintask.enums.AdminDecision.DONE]"
+            "param.task" : "\"Wait for the signal after all tasks were finished.\"",
+            "param.details" : "\"This task is waiting for the finishing signal of task group with unique id '%s'\".formatted(in.uniqueId)",
+            "param.buttons" : "[com.axonivy.demo.patterndemos.admintask.enums.AdminDecision.CHECK_LATER, com.axonivy.demo.patterndemos.admintask.enums.AdminDecision.IGNORE]"
           }
         },
         "task" : {
-          "name" : "<%=ivy.cms.co(\"/Tasks/Names/demoTasksProceedWaiting\")%>",
-          "description" : "<%=ivy.cms.co(\"/Tasks/Descriptions/demoTasksProceedWaiting\")%>",
+          "name" : "Wait for task's finishing signal.",
+          "description" : "Wait for the specific finishing signals.",
           "category" : "ADMIN",
           "responsible" : {
             "activator" : "Administrator"
@@ -92,31 +103,34 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 696, "y" : 160 }
+        "at" : { "x" : 520, "y" : 192 }
       },
       "boundaries" : [ {
           "id" : "f10",
           "type" : "SignalBoundaryEvent",
-          "name" : "Continue after demo parallel tasks",
+          "name" : "Finished",
           "config" : {
-            "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:continueAfterParallelTask:<%=ivy.case.getId()%>"
+            "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:continueAfterParallelTask:<%=in.uniqueId%>"
           },
           "visual" : {
-            "at" : { "x" : 728, "y" : 200 },
+            "at" : { "x" : 552, "y" : 232 },
             "labelOffset" : { "x" : 13, "y" : 33 }
           },
           "connect" : [
-            { "id" : "f13", "to" : "f11", "via" : [ { "x" : 1064, "y" : 200 } ] }
+            { "id" : "f13", "to" : "f11", "via" : [ { "x" : 888, "y" : 232 } ] }
           ]
         } ],
       "connect" : [
-        { "id" : "f9", "to" : "f14", "color" : "default" }
+        { "id" : "f9", "to" : "f14", "label" : {
+            "name" : "Ignore",
+            "offset" : { "x" : -21, "y" : -10 }
+          }, "color" : "default" }
       ]
     }, {
       "id" : "f11",
       "type" : "Alternative",
       "visual" : {
-        "at" : { "x" : 1096, "y" : 160 },
+        "at" : { "x" : 920, "y" : 192 },
         "labelOffset" : { "x" : 14, "y" : 34 }
       },
       "connect" : [
@@ -125,20 +139,17 @@
     }, {
       "id" : "f14",
       "type" : "Script",
-      "name" : [
-        "Finish all started ",
-        "demo parallel tasks"
-      ],
+      "name" : "Cancel active tasks",
       "config" : {
         "output" : {
           "code" : [
-            "import com.axonivy.demo.patterndemos.paralleltasks.ParallelTasksDemoService;",
-            "ParallelTasksDemoService.get().signalDemoParallelTasksCancel(ivy.case.getId().toString());"
+            "import com.axonivy.demo.patterndemos.paralleltasks.service.ParallelTasksDemoService;",
+            "ParallelTasksDemoService.get().cancelTasks(in.uniqueId);"
           ]
         }
       },
       "visual" : {
-        "at" : { "x" : 944, "y" : 160 },
+        "at" : { "x" : 768, "y" : 192 },
         "size" : { "width" : 136, "height" : 62 }
       },
       "connect" : [
@@ -147,87 +158,53 @@
     }, {
       "id" : "f16",
       "type" : "UserTask",
-      "name" : [
-        "Demo parallel",
-        "task"
-      ],
+      "name" : "The task",
       "config" : {
-        "dialog" : "com.axonivy.demo.patterndemos.paralleltasks.DemoParallelTask:start()",
+        "dialog" : "com.axonivy.demo.patterndemos.paralleltasks.DemoTask:start(com.axonivy.demo.patterndemos.paralleltasks.pojos.DemoData)",
+        "call" : {
+          "map" : {
+            "param.demoData" : "in.demoData"
+          }
+        },
         "task" : {
-          "name" : "<%=ivy.cms.co(\"/Tasks/Names/demoParallelTask\")%>",
-          "customFields" : [
-            { "name" : "caseId", "type" : "STRING", "value" : "in.caseId" },
-            { "name" : "demoParallelTask", "type" : "STRING", "value" : "\"true\"" }
-          ]
+          "name" : "Demo Task <%=in.demoData.taskNumber%>"
         }
       },
       "visual" : {
-        "at" : { "x" : 504, "y" : 464 }
+        "at" : { "x" : 280, "y" : 496 }
       },
       "boundaries" : [ {
           "id" : "f18",
           "type" : "SignalBoundaryEvent",
-          "name" : "Cancel demo parallel task",
+          "name" : "Cancel",
           "config" : {
-            "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:cancelParallelTasks:<%=in.caseId%>"
+            "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:cancelParallelTasks:<%=in.demoData.uniqueId%>"
           },
           "visual" : {
-            "at" : { "x" : 536, "y" : 504 },
+            "at" : { "x" : 312, "y" : 536 },
             "labelOffset" : { "x" : 13, "y" : 33 }
           },
           "connect" : [
-            { "id" : "f19", "to" : "f4", "via" : [ { "x" : 1112, "y" : 504 } ] }
+            { "id" : "f19", "to" : "f4", "via" : [ { "x" : 688, "y" : 536 }, { "x" : 704, "y" : 496 } ] }
           ]
         } ],
       "connect" : [
         { "id" : "f17", "to" : "f20", "color" : "default" }
       ]
     }, {
-      "id" : "f20",
-      "type" : "TaskSwitchEvent",
-      "name" : "Finish demo parallel task",
-      "config" : {
-        "task" : {
-          "responsible" : {
-            "activator" : "SYSTEM"
-          }
-        }
-      },
-      "visual" : {
-        "at" : { "x" : 744, "y" : 464 },
-        "labelOffset" : { "x" : 14, "y" : 34 }
-      },
-      "connect" : [
-        { "id" : "f21", "to" : "f24", "color" : "default" }
-      ]
-    }, {
-      "id" : "f22",
-      "type" : "ProcessAnnotation",
-      "name" : [
-        "This tasks finishes the initial task, ",
-        "otherwise the signal would start a second iteration of it."
-      ],
-      "visual" : {
-        "at" : { "x" : 848, "y" : 376 },
-        "size" : { "width" : 214, "height" : 78 }
-      },
-      "connect" : [
-        { "id" : "f23", "to" : "f20" }
-      ]
-    }, {
       "id" : "f24",
       "type" : "Script",
-      "name" : "Check if all demo parallel tasks are done",
+      "name" : "Signal finished",
       "config" : {
         "output" : {
           "code" : [
-            "import com.axonivy.demo.patterndemos.paralleltasks.ParallelTasksDemoService;",
-            "ParallelTasksDemoService.get().signalCheckDemoParallelDone(in.caseId);"
+            "import com.axonivy.demo.patterndemos.paralleltasks.service.ParallelTasksDemoService;",
+            "ParallelTasksDemoService.get().signalFinished(in.demoData.uniqueId);"
           ]
         }
       },
       "visual" : {
-        "at" : { "x" : 1032, "y" : 464 },
+        "at" : { "x" : 576, "y" : 496 },
         "size" : { "width" : 136, "height" : 62 }
       },
       "connect" : [
@@ -239,78 +216,50 @@
       "name" : [
         "Parallel Tasks Pattern",
         "",
-        "Manages multiple tasks triggered by a signal, running them concurrently while ensuring the main process waits for completion. Includes admin oversight to handle delays or errors.",
+        "Manages multiple tasks triggered by a signal, running them concurrently while ensuring the main process waits for completion.",
         "",
-        "Key Features: Signal-triggered parallel execution, synchronization, and error handling via admin tasks.  ",
-        "",
-        "Demo: Main process triggers parallel tasks, waits for all to finish, with admin options to skip stalled tasks.  ",
+        "The demo shows a main process which triggers parallel tasks, waits for all to finish, allowing the Administrator role to ignore and terminate active tasks before they are finished.",
         "",
         "Use Case: Perfect for workflows needing coordinated parallel processing with manual intervention."
       ],
       "visual" : {
-        "at" : { "x" : 1704, "y" : 160 },
-        "size" : { "width" : 536, "height" : 270 }
+        "at" : { "x" : 1113, "y" : 386 },
+        "size" : { "width" : 526, "height" : 156 },
+        "color" : "default"
       }
     }, {
       "id" : "f27",
       "type" : "ProcessAnnotation",
-      "name" : "Admin task for handling stalled parallel tasks, providing option to skip them.",
+      "name" : [
+        "Wait for the finishing signal.",
+        "",
+        "You can use any User Task here, but the AdminTask already has everything we need."
+      ],
       "visual" : {
-        "at" : { "x" : 776, "y" : 56 },
-        "size" : { "width" : 174, "height" : 70 }
+        "at" : { "x" : 520, "y" : 81 },
+        "size" : { "width" : 207, "height" : 83 }
       },
       "connect" : [
         { "id" : "f28", "to" : "f8" }
       ]
     }, {
-      "id" : "f29",
-      "type" : "ProcessAnnotation",
-      "name" : "Verify that all demo parallel tasks are completed; if so, trigger \"Continue After Demo Parallel Tasks\" in the main process to proceed.",
-      "visual" : {
-        "at" : { "x" : 1175, "y" : 375 },
-        "size" : { "width" : 223, "height" : 79 }
-      },
-      "connect" : [
-        { "id" : "f30", "to" : "f24" }
-      ]
-    }, {
       "id" : "f31",
       "type" : "ProcessAnnotation",
-      "name" : "If you proceed with admin task - skip parallel tasks, then all parallel tasks must be finished.",
+      "name" : "Cancel all active tasks by sending a signal.",
       "visual" : {
-        "at" : { "x" : 1064, "y" : 56 },
+        "at" : { "x" : 768, "y" : 88 },
         "size" : { "width" : 176, "height" : 64 }
       },
       "connect" : [
         { "id" : "f32", "to" : "f14" }
       ]
     }, {
-      "id" : "f33",
-      "type" : "ProcessAnnotation",
-      "name" : [
-        "Signal for triggering parallel processes (tasks).",
-        "",
-        "The caseId parameter is used to mark the parallel tasks, enabling later checks to determine if any are still running. Alternatively, you can use the UUID of an entity associated with these parallel tasks instead of caseId."
-      ],
-      "visual" : {
-        "at" : { "x" : 184, "y" : 376 },
-        "size" : { "width" : 304, "height" : 118 }
-      },
-      "connect" : [
-        { "id" : "f34", "to" : "f3" }
-      ]
-    }, {
       "id" : "f35",
       "type" : "ProcessAnnotation",
-      "name" : [
-        "Parallel Task - Two custom fields are utilized:",
-        "caseId: Identifies the main process for which the parallel task is created.  ",
-        "",
-        "demoParallelTask: Distinguishes the specific type of parallel task when multiple parallel task types exist."
-      ],
+      "name" : "The actual task, interruptable by a specific signal.",
       "visual" : {
-        "at" : { "x" : 554, "y" : 356 },
-        "size" : { "width" : 293, "height" : 121 }
+        "at" : { "x" : 280, "y" : 420 },
+        "size" : { "width" : 112, "height" : 56 }
       },
       "connect" : [
         { "id" : "f36", "to" : "f16" }
@@ -318,12 +267,37 @@
     }, {
       "id" : "f37",
       "type" : "ProcessAnnotation",
-      "name" : "Create demo parallel tasks for this process. Triggered by ParallelTasksDemoService.",
+      "name" : "Tasks are created by sending a start signal.",
       "visual" : {
-        "at" : { "x" : 536, "y" : 56 }
+        "at" : { "x" : 280, "y" : 88 },
+        "size" : { "width" : 126, "height" : 46 }
       },
       "connect" : [
         { "id" : "f38", "to" : "f6" }
+      ]
+    }, {
+      "id" : "f20",
+      "type" : "Alternative",
+      "name" : "finished?",
+      "config" : {
+        "conditions" : {
+          "f21" : "com.axonivy.demo.patterndemos.paralleltasks.service.ParallelTasksDemoService.get().allFinished(in.demoData)"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 416, "y" : 496 },
+        "labelOffset" : { "x" : 14, "y" : 34 }
+      },
+      "connect" : [
+        { "id" : "f21", "to" : "f24", "label" : {
+            "name" : "yes",
+            "offset" : { "x" : -21, "y" : -10 }
+          }, "color" : "default" },
+        { "id" : "f22", "to" : "f4", "via" : [ { "x" : 416, "y" : 432 }, { "x" : 704, "y" : 432 }, { "x" : 704, "y" : 496 } ], "label" : {
+            "name" : "no",
+            "segment" : 1.4,
+            "offset" : { "x" : -99, "y" : 30 }
+          } }
       ]
     } ]
 }

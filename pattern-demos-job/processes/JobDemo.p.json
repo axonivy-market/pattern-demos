@@ -34,8 +34,8 @@
           }
         },
         "request" : {
-          "name" : "<%=ivy.cms.co(\"/Processes/Names/demoJob\")%>",
-          "description" : "<%=ivy.cms.co(\"/Processes/Descriptions/demoJob\")%>"
+          "name" : "Manual job start",
+          "description" : "Show how to start a job manually."
         }
       },
       "visual" : {
