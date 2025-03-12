@@ -1,0 +1,15 @@
+Dialogs:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          validation:
+            BasicValidation:
+              close: Schließen
+              description: Grundlegende clientseitige Validierung für Ihren Dialog mit Eingabefeldern.
+              lastName: Nachname
+              name: Name
+              title: Basis-Validierung
+              validate: validate
+Validation:
+  isRequired: '{0}: Der Wert darf nicht leer sein'

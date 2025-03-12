@@ -1,0 +1,15 @@
+Dialogs:
+  com:
+    axonivy:
+      demo:
+        patterndemos:
+          validation:
+            BasicValidation:
+              close: Close
+              description: Basic client side validation for your dialog with input fields.
+              lastName: Last name
+              name: Name
+              title: Basic validation
+              validate: Validate
+Validation:
+  isRequired: '{0}: Value is required'
