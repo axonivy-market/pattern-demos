@@ -25,4 +25,5 @@ Dialogs:
               validationDisabled: Validation disabled
 Validation:
   dateNotInFuture: '{0}: Please select a future date.'
+  fromAfterToDate: From date ({0}) is after To date ({1}).
   isRequired: '{0}: Value is required'

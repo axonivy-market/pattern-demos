@@ -56,6 +56,8 @@
 								showIcon="true" pattern="dd.MM.yyyy" yearRange="1920:2050" yearNavigator="true" 
 								required="#{param['isValidationDisabled'] ne true}"
 								requiredMessage="#{messageBean.getRequiredMessage('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/fromDate')}">
+								<p:ajax process="@this"/>
+								<f:param name="isValidationDisabled" value="#{true}" />
 							</p:datePicker>
 						</div>
 					</div>
@@ -68,6 +70,8 @@
 								showIcon="true" pattern="dd.MM.yyyy" yearRange="1920:2050" yearNavigator="true" 
 								required="#{param['isValidationDisabled'] ne true}"
 								requiredMessage="#{messageBean.getRequiredMessage('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/toDate')}">
+								<p:ajax process="@this"/>
+								<f:param name="isValidationDisabled" value="#{true}" />
 							</p:datePicker>
 						</div>
 					</div>
@@ -89,7 +93,13 @@
 						</div>
 					</div>
 				</div>
-				
+
+				<h:inputHidden>
+					<f:validator validatorId="checkFromToDates" />
+					<f:attribute name="bean" value="#{data.ctrl}" />
+					<f:attribute name="isValidationDisabled" value="#{param['isValidationDisabled']}" />
+				</h:inputHidden>
+
 			</h:form>
     </ui:define>
   </ui:composition>

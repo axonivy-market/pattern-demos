@@ -1,4 +1,4 @@
-package com.axonivy.demo.patterndemos.validation.validator;
+package com.axonivy.demo.patterndemos.validation.ui.validator;
 
 import java.time.LocalDate;
 import java.util.Arrays;

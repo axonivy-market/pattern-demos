@@ -25,4 +25,5 @@ Dialogs:
               validationDisabled: Validierung deaktiviert
 Validation:
   dateNotInFuture: '{0}: Please select a future date.'
+  fromAfterToDate: Von-Datum ({0}) liegt nach dem Bis-Datum ({1}).
   isRequired: '{0}: Der Wert darf nicht leer sein'
