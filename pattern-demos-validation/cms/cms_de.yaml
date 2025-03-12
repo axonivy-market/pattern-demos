@@ -11,5 +11,18 @@ Dialogs:
               name: Name
               title: Basis-Validierung
               validate: validate
+            ServerSideValidation:
+              description: Beispiel für serverseitige benutzerdefinierte Validierung.
+              fromDate: Von
+              fromToDescirption: Für ein Beispiel der Zweifeld-Validierung mit zwei Datumswählern führt das System zunächst eine clientseitige Validierung durch, um zu prüfen, ob sowohl das 'Von'- als auch das 'Bis'-Datum ausgewählt wurden (Leerfeldvalidierung), und führt dann eine serverseitige Validierung
+                durch, um sicherzustellen, dass das 'Von'-Datum vor dem 'Bis'-Datum liegt (Datumsreihenfolgevalidierung). Wählen Sie bitte ein 'Von'-Datum und ein 'Bis'-Datum für das Ereignis aus. Wenn Sie nicht beide Felder ausfüllen, wird die Validierung ausgelöst, sobald Sie auf die Schaltfläche 'Validieren'
+                klicken.
+              startDate: Startdatum
+              startDateDescription: Für ein Beispiel der Einfachfeld-Validierung führt das System zunächst eine clientseitige Validierung durch, um zu pr  prüft das System zunächst, ob ein Wert ausgewählt wurde (Leerfeldvalidierung), und führt dann eine serverseitige Validierung durch, um zu prüfen, ob
+                das Startdatum für das Ereignis in der Zukunft liegt (Zukunftsdatumvalidierung). Wählen Sie bitte ein zukünftiges Startdatum für das Ereignis aus. Wenn Sie dies nicht tun, wird die Validierung ausgelöst, sobald Sie auf die Schaltfläche 'Validieren' klicken.
+              title: Serverseitige Validierung
+              toDate: Bis
+              validationDisabled: Validierung deaktiviert
 Validation:
+  dateNotInFuture: '{0}: Please select a future date.'
   isRequired: '{0}: Der Wert darf nicht leer sein'

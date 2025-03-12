@@ -9,33 +9,69 @@
       "type" : "RequestStart",
       "name" : "Basic validation demo",
       "config" : {
-        "signature" : "start"
+        "signature" : "basicValidationDemo"
       },
       "visual" : {
-        "at" : { "x" : 96, "y" : 64 }
+        "at" : { "x" : 192, "y" : 160 }
       },
       "connect" : [
-        { "id" : "f2", "to" : "f3" }
+        { "id" : "f2", "to" : "f9" }
       ]
     }, {
       "id" : "f1",
       "type" : "TaskEnd",
       "visual" : {
-        "at" : { "x" : 464, "y" : 64 },
+        "at" : { "x" : 464, "y" : 160 },
         "labelOffset" : { "x" : 13, "y" : 33 }
       }
     }, {
-      "id" : "f3",
+      "id" : "f5",
+      "type" : "RequestStart",
+      "name" : "Server side validation demo",
+      "config" : {
+        "signature" : "serverSideValidationDemo"
+      },
+      "visual" : {
+        "at" : { "x" : 192, "y" : 312 }
+      },
+      "connect" : [
+        { "id" : "f7", "to" : "f10" }
+      ]
+    }, {
+      "id" : "f6",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 464, "y" : 312 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f10",
+      "type" : "DialogCall",
+      "name" : [
+        "Server side",
+        "validation"
+      ],
+      "config" : {
+        "dialog" : "com.axonivy.demo.patterndemos.validation.ServerSideValidation:start()"
+      },
+      "visual" : {
+        "at" : { "x" : 328, "y" : 312 }
+      },
+      "connect" : [
+        { "id" : "f8", "to" : "f6" }
+      ]
+    }, {
+      "id" : "f9",
       "type" : "DialogCall",
       "name" : "Basic validation",
       "config" : {
         "dialog" : "com.axonivy.demo.patterndemos.validation.BasicValidation:start()"
       },
       "visual" : {
-        "at" : { "x" : 272, "y" : 64 }
+        "at" : { "x" : 328, "y" : 160 }
       },
       "connect" : [
-        { "id" : "f4", "to" : "f1", "color" : "default" }
+        { "id" : "f3", "to" : "f1" }
       ]
     } ]
 }

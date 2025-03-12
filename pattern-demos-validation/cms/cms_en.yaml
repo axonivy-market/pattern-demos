@@ -6,10 +6,23 @@ Dialogs:
           validation:
             BasicValidation:
               close: Close
-              description: Basic client side validation for your dialog with input fields.
+              description: Example of basic client side validation for your dialog with input fields.
               lastName: Last name
               name: Name
               title: Basic validation
               validate: Validate
+            ServerSideValidation:
+              description: Example of server side custom validation.
+              fromDate: From
+              fromToDescirption: |+
+                For an example of dual-field validation using two datepickers, the system will first perform client-side validation to check if both the 'From' and 'To' dates are selected (empty validation), then perform server-side validation to ensure the 'From' date is before the 'To' date (date order validation). Please select a 'From' date and a 'To' date for the event. If you don’t fill both fields, validation will be triggered as soon as you click the 'Validate' button.
+
+              startDate: Start date
+              startDateDescription: For an example of single-field validation, the system will first perform client-side validation to check if any value is selected (empty validation), then perform server-side validation to check if the start date for the event is in the future (future date validation).
+                Please select a future start date for the event. If you don’t, validation will be triggered as soon as you click the 'Validate' button.
+              title: Server side validation
+              toDate: To
+              validationDisabled: Validation disabled
 Validation:
+  dateNotInFuture: '{0}: Please select a future date.'
   isRequired: '{0}: Value is required'
