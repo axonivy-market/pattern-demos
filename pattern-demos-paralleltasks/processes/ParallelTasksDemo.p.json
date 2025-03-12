@@ -205,7 +205,7 @@
       "type" : "ProcessAnnotation",
       "name" : [
         "This tasks finishes the initial task, ",
-        "otherwise the signal would start a second iteration of it "
+        "otherwise the signal would start a second iteration of it."
       ],
       "visual" : {
         "at" : { "x" : 848, "y" : 376 },
@@ -314,6 +314,16 @@
       },
       "connect" : [
         { "id" : "f36", "to" : "f16" }
+      ]
+    }, {
+      "id" : "f37",
+      "type" : "ProcessAnnotation",
+      "name" : "Create demo parallel tasks for this process. Triggered by ParallelTasksDemoService.",
+      "visual" : {
+        "at" : { "x" : 536, "y" : 56 }
+      },
+      "connect" : [
+        { "id" : "f38", "to" : "f6" }
       ]
     } ]
 }
