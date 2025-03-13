@@ -6,15 +6,17 @@ Dialogs:
           validation:
             BasicValidation:
               apply: Übernehmen
-              close: Schließen
+              cancel: Abbrechen
               description: Grundlegende clientseitige Validierung für Dialog mit einfachen Eingabefeldern.
               firstName: Vorname
               lastName: Nachname
               title: Basis-Validierung
             ServerSideValidation:
               apply: Übernehmen (nach Validierung)
-              buttonsDescription: "Button-Aktionen: <p> \"Validieren\" löst die Validierung der Felder aus (Leerfeld- und benutzerdefinierte Validierung). <p/> <p> \"Validierung deaktiviert\" ist ebenfalls eine Auslöseschaltfläche, aber die Validierung ist deaktiviert und wird daher nicht ausgeführt.\
-                \ Normalerweise wird diese Implementierung für Speicher-Schaltflächen verwendet. Speichern ohne Validierung. <p/> <p> \"Schließen\" schließt den Dialog ohne Validierung und bringt Sie zurück zur Dashboard-Seite. <p/>\n\r"
+              buttonsDescription: "<p><b>Übernehmen</b> übernimmt die Feldwerte und löst die komplette Validierung aus. Dies führt typischerweise zu einer Speicheroperation und zum Weitergehen im Prozess und stellt sicher, dass alle benötigten Werte korrekt befüllt wurden.<p/>\n<p><b>Zwischenspeichern</b>\
+                \ übernimmt die Feldwerte, aber führt keine Validierung durch. Dies kann in großen Dialogen hilfreich sein, um den Zwischenstand festzuhalten ohne gezwungen zu sein, bereits alle Werte korrekt befüllen zu müssen. Der Prozess bleibt in diesem Fall typischwerweise im aktuellen Task.</p>\n\
+                <p><b>Abbrechen</b> führt keine Validierung durch und übernimmt die Feldwerte nicht.<p/>\n\r"
+              cancel: Abbrechen
               description: Beispiel für serverseitige Validierung.
               fromDate: Von
               fromToDescription: Für ein Beispiel der Zweifeld-Validierung mit zwei Datumswählern führt das System zunächst eine clientseitige Validierung durch, um zu prüfen, ob sowohl das 'Von'- als auch das 'Bis'-Datum ausgewählt wurden (Leerfeldvalidierung), und führt dann eine serverseitige Validierung
@@ -22,8 +24,7 @@ Dialogs:
                 klicken.
               intermediate: Zwischenspeichern (ohne Validierung)
               startDate: Startdatum
-              startDateDescription: Für ein Beispiel der Einfachfeld-Validierung führt das System zunächst eine clientseitige Validierung durch, um zu pr  prüft das System zunächst, ob ein Wert ausgewählt wurde (Leerfeldvalidierung), und führt dann eine serverseitige Validierung durch, um zu prüfen, ob
-                das Startdatum für das Ereignis in der Zukunft liegt (Zukunftsdatumvalidierung). Wählen Sie bitte ein zukünftiges Startdatum für das Ereignis aus. Wenn Sie dies nicht tun, wird die Validierung ausgelöst, sobald Sie auf die Schaltfläche 'Validieren' klicken.
+              startDateDescription: Nach einer einfachen Feldprüfung wird ein Validator eingesetzt um zu prüfen, ob das Startdatum in der Zukunft liegt. Danach wird die serverseitige, modellbasierte Validierung der beiden Datumsfelder durchgeführt ("Bis" Datum muss nach "Von" Datum liegen).
               title: Serverseitige Validierung
               toDate: Bis
 Processes:
