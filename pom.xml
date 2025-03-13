@@ -9,7 +9,6 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>${project.name}</module>
 		<module>${project.name}-admintask</module>
 		<module>${project.name}-lock</module>
 		<module>${project.name}-job</module>
