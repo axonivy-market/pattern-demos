@@ -9,7 +9,11 @@
       "type" : "RequestStart",
       "name" : "Basic validation demo",
       "config" : {
-        "signature" : "basicValidationDemo"
+        "signature" : "basicValidationDemo",
+        "request" : {
+          "name" : "<%=ivy.cms.co(\"/Processes/Names/basicValidationDemo\")%>",
+          "description" : "<%=ivy.cms.co(\"/Processes/Descriptions/basicValidationDemo\")%>"
+        }
       },
       "visual" : {
         "at" : { "x" : 192, "y" : 160 }
@@ -29,7 +33,11 @@
       "type" : "RequestStart",
       "name" : "Server side validation demo",
       "config" : {
-        "signature" : "serverSideValidationDemo"
+        "signature" : "serverSideValidationDemo",
+        "request" : {
+          "name" : "<%=ivy.cms.co(\"/Processes/Names/serverSideValidationDemo\")%>",
+          "description" : "<%=ivy.cms.co(\"/Processes/Descriptions/serverSideValidationDemo\")%>"
+        }
       },
       "visual" : {
         "at" : { "x" : 192, "y" : 312 }

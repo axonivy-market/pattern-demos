@@ -28,8 +28,8 @@
 							<h:outputLabel for="name" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/BasicValidation/name')}" />
 						</div>
 						<div class="col-12 md:col-6 lg:col-2">
-							<p:inputText id="name" required="true"
-								requiredMessage="#{messageBean.getRequiredMessage('/Dialogs/com/axonivy/demo/patterndemos/validation/BasicValidation/name')}" />
+							<p:inputText id="name" required="true" size="#{constants['SMALL_SIZE']}"
+								requiredMessage="#{messages.requiredMessage('/Dialogs/com/axonivy/demo/patterndemos/validation/BasicValidation/name')}" />
 						</div>
 					</div>
 					<div class="grid">
@@ -37,12 +37,13 @@
 							<p:outputLabel for="lastName" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/BasicValidation/lastName')}" />
 						</div>
 						<div class="col-12 md:col-6 lg:col-2">
-							<p:inputText id="lastName" required="true" requiredMessage="#{messageBean.getRequiredMessage('/Dialogs/com/axonivy/demo/patterndemos/validation/BasicValidation/lastName')}" />
+							<p:inputText id="lastName" required="true" size="#{constants['SMALL_SIZE']}"
+							requiredMessage="#{messages.requiredMessage('/Dialogs/com/axonivy/demo/patterndemos/validation/BasicValidation/lastName')}" />
 						</div>
 					</div>
 					<div class="grid justify-content-end">
 						<div class="col-12 md:col-2 lg:col-2">
-							<p:commandButton id="validate" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/BasicValidation/validate')}" icon="fa fa-check" update="form" />
+							<p:commandButton id="apply" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/BasicValidation/apply')}" icon="fa fa-check" update="form" />
 						</div>
 						<div class="col-12 md:col-2 lg:col-2">
 							<p:commandButton id="close"
@@ -58,5 +59,4 @@
 		</ui:define>
 	</ui:composition>
 </h:body>
-
 </html>

@@ -5,27 +5,35 @@ Dialogs:
         patterndemos:
           validation:
             BasicValidation:
+              apply: Apply (after validation)
               close: Close
               description: Example of basic client side validation for your dialog with input fields.
               lastName: Last name
               name: Name
               title: Basic validation
-              validate: Validate
             ServerSideValidation:
+              apply: Apply (after validation)
               buttonsDescription: 'Button actions: <p> "Validate" will trigger the validation of fields (empty field and custom validation). <p/><p> "Validation disabled" is also trigger button, but the validation is diasabled therefore not triggered. Usually this implementation is used for save buttons.
                 Saving without validation. <p/><p> "Close" will close the dialog without validation and returns you to the dashboard page.<p/>'
-              description: Example of server side custom validation.
+              description: Example of server side validation.
               fromDate: From
-              fromToDescirption: |+
+              fromToDescription: |+
                 For an example of dual-field validation using two datepickers, the system will first perform client-side validation to check if both the 'From' and 'To' dates are selected (empty validation), then perform server-side validation to ensure the 'From' date is before the 'To' date (date order validation). Please select a 'From' date and a 'To' date for the event. If you don’t fill both fields, validation will be triggered as soon as you click the 'Validate' button.
 
+              intermediate: Intermediate Save (without validation)
               startDate: Start date
               startDateDescription: For an example of single-field validation, the system will first perform client-side validation to check if any value is selected (empty validation), then perform server-side validation to check if the start date for the event is in the future (future date validation).
                 Please select a future start date for the event. If you don’t, validation will be triggered as soon as you click the 'Validate' button.
               title: Server side validation
               toDate: To
-              validationDisabled: Validation disabled
+Processes:
+  Descriptions:
+    basicValidationDemo: Validate single fields.
+    serverSideValidationDemo: Validate multiple fields server-side.
+  Names:
+    basicValidationDemo: Basic Validation
+    serverSideValidationDemo: Server Side Validation
 Validation:
-  dateNotInFuture: '{0}: Please select a future date.'
+  dateNotInFuture: '{0}: Date must be in the future.'
   fromAfterToDate: From date ({0}) is after To date ({1}).
   isRequired: '{0}: Value is required'
