@@ -108,14 +108,12 @@ The parallel tasks pattern is designed to manage a dynamic number of concurrent 
 a unique id and the individual tasks are started by a signal. The unique id is later used to signal the end of
 all tasks and/or to cancel tasks if the administrator decides.
 
-#### Demo Scenario
+#### Demo
 
 The included demo illustrates a practical use case:
 
 * A main process creates a unique id for the task group and sends a signal to trigger several parallel tasks.
-
 * These tasks execute concurrently, simulating real-world workloads.
-
 * The main process waits for all tasks to finish or allows an admin to skip stalled tasks via an admin task interface.
 
 In this demo, every task notifies it's "FINISHED" status directly in a task custom field. When a task is
@@ -123,6 +121,14 @@ finished, it checks whether all other tasks are finished as well by simply count
 in the current group. In real word scenarios, business objects might represent the total finished state
 or more complex handling after finishing might be required (e.g. canceling of tasks because of a business
 condition) and therefore the pattern needs to be adapted to your requirements.
+
+### Validation
+
+The validation pattern shows some typical validation scenarios for
+
+* a simple field required validation
+* a field value validation
+* a multi-field validation with model mapping and server side logic
 
 ## Setup
 
