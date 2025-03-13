@@ -12,6 +12,8 @@ Dialogs:
               title: Basis-Validierung
               validate: validate
             ServerSideValidation:
+              buttonsDescription: "Button-Aktionen: <p> \"Validieren\" löst die Validierung der Felder aus (Leerfeld- und benutzerdefinierte Validierung). <p/> <p> \"Validierung deaktiviert\" ist ebenfalls eine Auslöseschaltfläche, aber die Validierung ist deaktiviert und wird daher nicht ausgeführt.\
+                \ Normalerweise wird diese Implementierung für Speicher-Schaltflächen verwendet. Speichern ohne Validierung. <p/> <p> \"Schließen\" schließt den Dialog ohne Validierung und bringt Sie zurück zur Dashboard-Seite. <p/>\n\r"
               description: Beispiel für serverseitige benutzerdefinierte Validierung.
               fromDate: Von
               fromToDescirption: Für ein Beispiel der Zweifeld-Validierung mit zwei Datumswählern führt das System zunächst eine clientseitige Validierung durch, um zu prüfen, ob sowohl das 'Von'- als auch das 'Bis'-Datum ausgewählt wurden (Leerfeldvalidierung), und führt dann eine serverseitige Validierung

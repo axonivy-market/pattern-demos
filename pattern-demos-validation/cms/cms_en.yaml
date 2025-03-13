@@ -12,6 +12,8 @@ Dialogs:
               title: Basic validation
               validate: Validate
             ServerSideValidation:
+              buttonsDescription: 'Button actions: <p> "Validate" will trigger the validation of fields (empty field and custom validation). <p/><p> "Validation disabled" is also trigger button, but the validation is diasabled therefore not triggered. Usually this implementation is used for save buttons.
+                Saving without validation. <p/><p> "Close" will close the dialog without validation and returns you to the dashboard page.<p/>'
               description: Example of server side custom validation.
               fromDate: From
               fromToDescirption: |+

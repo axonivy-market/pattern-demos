@@ -25,7 +25,7 @@ public class CheckFromToDates extends BaseValidatorSimple<ServerSideValidationCt
 
 		var fromDate = bean.getFromDate();
 		var toDate = bean.getToDate();
-		if(fromDate.isAfter(toDate)) {
+		if(fromDate != null && toDate!= null && fromDate.isAfter(toDate)) {
 			var fromAfterToMessage = Ivy.cms().co("/Validation/fromAfterToDate", Arrays.asList(toDefaultString(fromDate), toDefaultString(toDate)));
 			listFacesMessages.add(new FacesMessage(FacesMessage.SEVERITY_ERROR, fromAfterToMessage, fromAfterToMessage));
 		}
