@@ -130,6 +130,9 @@ The validation pattern shows some typical validation scenarios for
 * a field value validation
 * a multi-field validation with model mapping and server side logic
 
+Additionally a managed bean based pattern (`messages` bean) is shown which is an elegant way to
+re-use custom CMS messages for multiple fields.
+
 ## Setup
 
 This component is a repository for valuable patterns and demos. Typically they must be adapted to your
