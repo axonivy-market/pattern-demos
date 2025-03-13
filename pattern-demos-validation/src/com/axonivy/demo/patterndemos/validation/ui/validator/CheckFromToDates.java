@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.FacesValidator;
 import javax.faces.validator.ValidatorException;
 
+import com.axonivy.demo.patterndemos.validation.Constants;
 import com.axonivy.demo.patterndemos.validation.ui.ServerSideValidationCtrl;
 
 import ch.ivyteam.ivy.environment.Ivy;
@@ -43,7 +44,7 @@ public class CheckFromToDates extends BaseValidatorSimple<ServerSideValidationCt
 	 * @return String
 	 */
 	public String toDefaultString(LocalDate localDate) {
-		return localDate == null ? "" : localDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+		return localDate == null ? "" : localDate.format(DateTimeFormatter.ofPattern(Constants.DATE_PATTERN));
 	}
 
 

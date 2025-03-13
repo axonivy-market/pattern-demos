@@ -30,14 +30,14 @@
 					<p:spacer height="1em"/>
 					<div class="grid">
 						<div class="col-12 md:col-6 lg:col-2">
-							<h:outputLabel for="startDate" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/startDate')}" />
+							<p:outputLabel for="startDate" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/startDate')}" />
 						</div>
 						<div class="col-12 md:col-6 lg:col-4">
 							<p:datePicker id="startDate" showOnFocus="false" value="#{data.ctrl.startDate}" placeholder="#{constants['DATE_PLACEHOLDER']}"
 								showIcon="true" pattern="#{constants['DATE_PATTERN']}" yearRange="#{constants['DATE_YEAR_RANGE']}" yearNavigator="true" 
 								required="#{param['isValidationDisabled'] ne true}"
 								requiredMessage="#{messages.requiredMessage('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/startDate')}">
-								<f:validator validatorId="dateNotInFutureValidator" disabled="#{param['isValidationDisabled'] eq true}" />
+								<f:validator validatorId="futureDateValidator" disabled="#{param['isValidationDisabled'] eq true}" />
 								<f:param name="isValidationDisabled" value="#{true}" />
 							</p:datePicker>
 						</div>
@@ -51,7 +51,7 @@
 					<p:spacer height="1em"/>
 					<div class="grid">
 						<div class="col-12 md:col-6 lg:col-2">
-							<h:outputLabel for="fromDate" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/fromDate')}" />
+							<p:outputLabel for="fromDate" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/fromDate')}" />
 						</div>
 						<div class="col-12 md:col-6 lg:col-4">
 							<p:datePicker id="fromDate" showOnFocus="false" value="#{data.ctrl.fromDate}" placeholder="#{constants['DATE_PLACEHOLDER']}"
@@ -66,7 +66,7 @@
 					</div>
 					<div class="grid">
 						<div class="col-12 md:col-6 lg:col-2">
-							<h:outputLabel for="toDate" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/toDate')}" />
+							<p:outputLabel for="toDate" value="#{ivy.cms.co('/Dialogs/com/axonivy/demo/patterndemos/validation/ServerSideValidation/toDate')}" />
 						</div>
 						<div class="col-12 md:col-6 lg:col-4">
 							<p:datePicker id="toDate" showOnFocus="false" value="#{data.ctrl.toDate}" placeholder="#{constants['DATE_PLACEHOLDER']}"
