@@ -5,11 +5,11 @@ Dialogs:
         patterndemos:
           validation:
             BasicValidation:
-              apply: Übernehmen (nach Validierung)
+              apply: Übernehmen
               close: Schließen
-              description: Grundlegende clientseitige Validierung für Ihren Dialog mit Eingabefeldern.
+              description: Grundlegende clientseitige Validierung für Dialog mit einfachen Eingabefeldern.
+              firstName: Vorname
               lastName: Nachname
-              name: Name
               title: Basis-Validierung
             ServerSideValidation:
               apply: Übernehmen (nach Validierung)

@@ -5,11 +5,11 @@ Dialogs:
         patterndemos:
           validation:
             BasicValidation:
-              apply: Apply (after validation)
+              apply: Apply
               close: Close
-              description: Example of basic client side validation for your dialog with input fields.
+              description: Example of basic client side validation for dialogs with simple input fields.
+              firstName: First name
               lastName: Last name
-              name: Name
               title: Basic validation
             ServerSideValidation:
               apply: Apply (after validation)
