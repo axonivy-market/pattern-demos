@@ -79,8 +79,14 @@ initialization.
 
 ### Placeholder Evaluation
 
-Use the ReplacementService directly in your project or just as an example
-of a simple place-holder replacement in text. 
+Use this basic ReplacementService directly in your project or just as a start to implement your own
+text-based place-holder replacement.
+
+Notes:
+
+* Ivy allows the use of placeholders or script output already in certain elements.
+* DocFactory and Aspose implement mergefields or mustache placeholders in Word files.
+* Existing Java-based placeholder libraries can be added to an Ivy project.
 
 ### Primefaces Extensions
 
