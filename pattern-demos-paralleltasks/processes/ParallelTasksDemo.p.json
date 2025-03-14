@@ -15,6 +15,9 @@
           "description" : "Show how to handle a dynamic number of tasks."
         }
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 112, "y" : 192 }
       },

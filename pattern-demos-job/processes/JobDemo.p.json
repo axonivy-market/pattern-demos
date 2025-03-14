@@ -38,6 +38,9 @@
           "description" : "Show how to start a job manually."
         }
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 144 },
         "labelOffset" : { "x" : 1, "y" : 33 }

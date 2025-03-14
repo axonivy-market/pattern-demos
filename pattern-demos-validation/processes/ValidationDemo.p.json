@@ -15,6 +15,9 @@
           "description" : "<%=ivy.cms.co(\"/Processes/Descriptions/basicValidationDemo\")%>"
         }
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 192, "y" : 160 }
       },
@@ -39,6 +42,9 @@
           "description" : "<%=ivy.cms.co(\"/Processes/Descriptions/serverSideValidationDemo\")%>"
         }
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 192, "y" : 312 }
       },

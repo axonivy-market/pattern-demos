@@ -15,6 +15,9 @@
           "description" : "Show how to handle errors in background processes."
         }
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
       },

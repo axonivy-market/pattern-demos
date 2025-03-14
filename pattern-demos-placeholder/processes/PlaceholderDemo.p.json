@@ -15,6 +15,9 @@
           "description" : "Show a simple placeholder replacememt solution."
         }
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
       },

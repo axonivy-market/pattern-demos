@@ -15,6 +15,9 @@
           "description" : "Show how to implement Primefaces Extensions."
         }
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
       },
