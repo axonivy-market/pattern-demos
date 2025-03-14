@@ -7,7 +7,7 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "parallelTasksDemo",
+      "name" : "Parallel Tasks",
       "config" : {
         "signature" : "parallelTasksDemo",
         "request" : {

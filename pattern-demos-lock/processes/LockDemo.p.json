@@ -7,9 +7,9 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "lock",
+      "name" : "Lock",
       "config" : {
-        "signature" : "lock",
+        "signature" : "lockDemo",
         "request" : {
           "name" : "Lock",
           "description" : "Lock the demo lock."
@@ -52,9 +52,9 @@
     }, {
       "id" : "f8",
       "type" : "RequestStart",
-      "name" : "doLocked",
+      "name" : "Do Locked",
       "config" : {
-        "signature" : "doLocked",
+        "signature" : "doLockedDemo",
         "request" : {
           "name" : "Do Locked",
           "description" : "Do something locked."
@@ -97,9 +97,9 @@
     }, {
       "id" : "f3",
       "type" : "RequestStart",
-      "name" : "unlock",
+      "name" : "Unlock",
       "config" : {
-        "signature" : "unlock",
+        "signature" : "unlockDemo",
         "request" : {
           "name" : "Unlock",
           "description" : "Unlock the demo lock."

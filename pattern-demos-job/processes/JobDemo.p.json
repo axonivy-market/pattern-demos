@@ -27,14 +27,14 @@
       "type" : "RequestStart",
       "name" : "Manual job run",
       "config" : {
-        "signature" : "start",
+        "signature" : "manualJobRunDemo",
         "input" : {
           "map" : {
             "out.manual" : "true"
           }
         },
         "request" : {
-          "name" : "Manual job start",
+          "name" : "Manual job run",
           "description" : "Show how to start a job manually."
         }
       },

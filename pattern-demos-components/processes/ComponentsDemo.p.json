@@ -7,7 +7,7 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "componentsDemo",
+      "name" : "Components",
       "config" : {
         "signature" : "componentsDemo",
         "request" : {

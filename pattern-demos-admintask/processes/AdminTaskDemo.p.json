@@ -7,9 +7,9 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "adminTaskDemo",
+      "name" : "Admin Task",
       "config" : {
-        "signature" : "start",
+        "signature" : "adminTaskDemo",
         "request" : {
           "name" : "Admin Task",
           "description" : "Show how to handle errors in background processes."

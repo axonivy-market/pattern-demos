@@ -7,7 +7,7 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "Basic validation demo",
+      "name" : "Basic validation",
       "config" : {
         "signature" : "basicValidationDemo",
         "request" : {
@@ -34,7 +34,7 @@
     }, {
       "id" : "f5",
       "type" : "RequestStart",
-      "name" : "Server side validation demo",
+      "name" : "Server side validation",
       "config" : {
         "signature" : "serverSideValidationDemo",
         "request" : {
@@ -87,5 +87,17 @@
       "connect" : [
         { "id" : "f3", "to" : "f1" }
       ]
+    }, {
+      "id" : "f4",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "Basic validation shows validation of a single field.",
+        "",
+        "Server side validation shows a more complex example using validators and model-based validation of multiple fields."
+      ],
+      "visual" : {
+        "at" : { "x" : 768, "y" : 160 },
+        "size" : { "width" : 350, "height" : 78 }
+      }
     } ]
 }

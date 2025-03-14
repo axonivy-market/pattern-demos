@@ -7,7 +7,7 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "RequestStart",
-      "name" : "primefacesExtensionDemo",
+      "name" : "Primefaces Extensions",
       "config" : {
         "signature" : "primefacesExtensionDemo",
         "request" : {
