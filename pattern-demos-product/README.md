@@ -40,7 +40,7 @@ Note, that this pattern makes use of the `pattern-demos-lock` and the `pattern-d
 
 #### Job Behavior and Error Simulation
 
-The execution of the job — whether scheduled or manual — is influenced by the `forceError` variable in @variables.yaml@.
+The execution of the job — whether scheduled or manual — is influenced by the `forceError` variable in `variables.yaml`.
 Set the variable to `true`, to cause the job to simulate an error. This feature is particularly useful for testing the
 pattern’s error handling capabilities. To observe successful execution, set `forceError` to `false`.
 
