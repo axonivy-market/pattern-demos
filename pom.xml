@@ -13,12 +13,15 @@
 
 	<modules>
 		<module>${project.name}-admintask</module>
-		<module>${project.name}-lock</module>
+		<module>${project.name}-components</module>
 		<module>${project.name}-job</module>
+		<module>${project.name}-lock</module>
+		<module>${project.name}-paralleltasks</module>
 		<module>${project.name}-placeholder</module>
 		<module>${project.name}-primefacesextensions</module>
-		<module>${project.name}-test</module>
 		<module>${project.name}-product</module>
+		<module>${project.name}-test</module>
+		<module>${project.name}-validation</module>
 	</modules>
 
 	<scm>
