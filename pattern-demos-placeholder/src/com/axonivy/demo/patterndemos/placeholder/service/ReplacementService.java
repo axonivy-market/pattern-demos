@@ -5,6 +5,10 @@ import java.util.regex.Pattern;
 
 public class ReplacementService {
 	private static final ReplacementService INSTANCE = new ReplacementService();
+	/**
+	 * Regular expression pattern to match variables in the form {{var}}.
+	 * See {@link Pattern} for documentation about implementing your own expressions.
+	 */
 	public static final Pattern pattern = Pattern.compile("\\{\\{(.*?)\\}\\}");
 
 	/**
@@ -17,7 +21,7 @@ public class ReplacementService {
 	}
 
 	/**
-	 * Replace placeholders in a text and return the replaced text.
+	 * Example how to simple and quickly replace place-holders in a text and return the replaced text.
 	 *
 	 * @param content
 	 * @param map
