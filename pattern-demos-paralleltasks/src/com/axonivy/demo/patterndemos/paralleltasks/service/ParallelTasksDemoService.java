@@ -8,6 +8,13 @@ import ch.ivyteam.ivy.workflow.query.TaskQuery;
 
 public class ParallelTasksDemoService {
 	private static final ParallelTasksDemoService INSTANCE = new ParallelTasksDemoService();
+	private static final String CREATE_TASK_SIGNAL = "com:axonivy:demo:patterndemos:paralleltasks:createTask";
+	private static final String CANCEL_TASKS = "com:axonivy:demo:patterndemos:paralleltasks:cancelTasks:%s";
+	private static final String CONTINUE_AFTER_TASKS = "com:axonivy:demo:patterndemos:paralleltasks:continueAfterTasks:%s";
+	private static final String DEMO_TASK_NUMBER_FIELD = "DEMO_TASK_NUMBER";
+	private static final String DEMO_TASK_STATUS_FIELD = "DEMO_TASK_STATUS";
+	private static final String DEMO_TASK_ID_FIELD = "DEMO_TASK_ID";
+	private static final String FINISHED = "FINISHED";
 
 	/**
 	 * Returns instance of the class.
@@ -29,7 +36,7 @@ public class ParallelTasksDemoService {
 			Ivy.wf().signals().create()
 			.makeCurrentTaskPersistent()
 			.data(DemoData.create(uniqueId, i, count))
-			.send("com:axonivy:demo:patterndemos:paralleltasks:createTask");
+			.send(CREATE_TASK_SIGNAL);
 		}
 	}
 
@@ -39,7 +46,7 @@ public class ParallelTasksDemoService {
 	 * @param uniqueId
 	 */
 	public void cancelTasks(String uniqueId) {
-		Ivy.wf().signals().send("com:axonivy:demo:patterndemos:paralleltasks:cancelParallelTasks:%s".formatted(uniqueId));
+		Ivy.wf().signals().send(CANCEL_TASKS.formatted(uniqueId));
 	}
 
 	/**
@@ -48,7 +55,7 @@ public class ParallelTasksDemoService {
 	 * @param uniqueId
 	 */
 	public void signalFinished(String uniqueId) {
-		Ivy.wf().signals().send("com:axonivy:demo:patterndemos:paralleltasks:continueAfterParallelTask:%s".formatted(uniqueId));
+		Ivy.wf().signals().send(CONTINUE_AFTER_TASKS.formatted(uniqueId));
 	}
 
 	/**
@@ -64,8 +71,8 @@ public class ParallelTasksDemoService {
 		var done = Sudo.get(() -> {
 			return TaskQuery.create()
 					.where()
-					.customField().stringField("DEMO_TASK_ID").isEqual(demoData.getUniqueId()).and()
-					.customField().stringField("DEMO_TASK_STATUS").isEqual("FINISHED").executor().count();});
+					.customField().stringField(DEMO_TASK_ID_FIELD).isEqual(demoData.getUniqueId()).and()
+					.customField().stringField(DEMO_TASK_STATUS_FIELD).isEqual(FINISHED).executor().count();});
 
 		return done >= demoData.getTotalTasks();
 	}
@@ -77,8 +84,8 @@ public class ParallelTasksDemoService {
 	 * @param demoData
 	 */
 	public void finishTask(DemoData demoData) {
-		Ivy.wfTask().customFields().stringField("DEMO_TASK_ID").set(demoData.getUniqueId());
-		Ivy.wfTask().customFields().stringField("DEMO_TASK_STATUS").set("FINISHED");
-		Ivy.wfTask().customFields().numberField("DEMO_TASK_NUMBER").set(demoData.getTaskNumber());
+		Ivy.wfTask().customFields().stringField(DEMO_TASK_ID_FIELD).set(demoData.getUniqueId());
+		Ivy.wfTask().customFields().stringField(DEMO_TASK_STATUS_FIELD).set(FINISHED);
+		Ivy.wfTask().customFields().numberField(DEMO_TASK_NUMBER_FIELD).set(demoData.getTaskNumber());
 	}
 }

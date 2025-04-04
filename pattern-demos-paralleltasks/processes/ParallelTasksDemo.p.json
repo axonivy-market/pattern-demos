@@ -113,7 +113,7 @@
           "type" : "SignalBoundaryEvent",
           "name" : "Finished",
           "config" : {
-            "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:continueAfterParallelTask:<%=in.uniqueId%>"
+            "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:continueAfterTasks:<%=in.uniqueId%>"
           },
           "visual" : {
             "at" : { "x" : 552, "y" : 232 },
@@ -181,7 +181,7 @@
           "type" : "SignalBoundaryEvent",
           "name" : "Cancel",
           "config" : {
-            "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:cancelParallelTasks:<%=in.demoData.uniqueId%>"
+            "signalCode" : "com:axonivy:demo:patterndemos:paralleltasks:cancelTasks:<%=in.demoData.uniqueId%>"
           },
           "visual" : {
             "at" : { "x" : 312, "y" : 536 },
