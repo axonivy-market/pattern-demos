@@ -7,19 +7,31 @@
         "projects": [
           {
             "groupId": "com.axonivy.demo.patterndemos",
-            "artifactId": "pattern-demos-lock",
-            "version": "${version}",
-            "type": "iar"
-          },
-          {
-            "groupId": "com.axonivy.demo.patterndemos",
             "artifactId": "pattern-demos-admintask",
             "version": "${version}",
             "type": "iar"
           },
           {
             "groupId": "com.axonivy.demo.patterndemos",
+            "artifactId": "pattern-demos-components",
+            "version": "${version}",
+            "type": "iar"
+          },
+          {
+            "groupId": "com.axonivy.demo.patterndemos",
             "artifactId": "pattern-demos-job",
+            "version": "${version}",
+            "type": "iar"
+          },
+          {
+            "groupId": "com.axonivy.demo.patterndemos",
+            "artifactId": "pattern-demos-lock",
+            "version": "${version}",
+            "type": "iar"
+          },
+          {
+            "groupId": "com.axonivy.demo.patterndemos",
+            "artifactId": "pattern-demos-paralleltasks",
             "version": "${version}",
             "type": "iar"
           },
@@ -37,13 +49,7 @@
           },
           {
             "groupId": "com.axonivy.demo.patterndemos",
-            "artifactId": "pattern-demos-components",
-            "version": "${version}",
-            "type": "iar"
-          },
-          {
-            "groupId": "com.axonivy.demo.patterndemos",
-            "artifactId": "pattern-demos-paralleltasks",
+            "artifactId": "pattern-demos-validation",
             "version": "${version}",
             "type": "iar"
           }
