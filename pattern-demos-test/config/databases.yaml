@@ -3,5 +3,4 @@ Databases:
   pattern_demo_test:
     Url: jdbc:hsqldb:mem:pattern_demos_test
     Driver: org.hsqldb.jdbc.JDBCDriver
-    UserName: sa
     Password: ${decrypt:}
