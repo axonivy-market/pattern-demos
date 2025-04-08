@@ -13,6 +13,8 @@ import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.environment.Ivy;
 
 public class LockService {
+	private static final String LOCK_ERROR = "com:axonivy:demo:patterndemos:lock";
+	private static final String UNLOCK_ERROR = "com:axonivy:demo:patterndemos:unlock";
 	private static final LockService INSTANCE = new LockService();
 
 	private LockService() {
@@ -275,11 +277,11 @@ public class LockService {
 			}
 			finally {
 				if(!unlock(lockName)) {
-					throw BpmError.create("com:axonivy:demo:patterndemos:unlock").build();
+					throw BpmError.create(UNLOCK_ERROR).build();
 				}
 			}
 		} else {
-			throw BpmError.create("com:axonivy:demo:patterndemos:lock").build();
+			throw BpmError.create(LOCK_ERROR).build();
 		}
 
 		return result;
