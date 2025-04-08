@@ -29,6 +29,8 @@ import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.environment.Ivy;
 
 public class JobService {
+	private static final String WRONGJOBSTATUS_ERROR = "com:axonivy:demo:patterndemos:wrongjobstatus";
+	private static final String JOB_NOT_FOUND_ERROR = "com:axonivy:demo:patterndemos:job:not:found";
 	private static final JobService INSTANCE = new JobService();
 	public static String OK_MESSAGE = "OK";
 	private static final Map<String, JobDescription> jobRepository = Collections.synchronizedMap(new HashMap<>());
@@ -52,7 +54,7 @@ public class JobService {
 		var jobDescription = findJobDescription(jobName);
 		if(jobDescription == null) {
 			BpmError
-			.create("com:axonivy:demo:patterndemos:job:not:found")
+			.create(JOB_NOT_FOUND_ERROR)
 			.withMessage("Could not find job ''" + jobName + "'' in job repository.")
 			.throwError();
 		}
@@ -264,7 +266,7 @@ public class JobService {
 		var jobStatus = loadJobStatus(jobName);
 
 		if(jobStatus.getRunStatus() != JobRunStatus.RUNNING) {
-			BpmError.create("com:axonivy:demo:patterndemos:wrongjobstatus")
+			BpmError.create(WRONGJOBSTATUS_ERROR)
 			.withMessage("Cannot end job '" + jobName + "' because it is not marked as running.")
 			.throwError();
 		}

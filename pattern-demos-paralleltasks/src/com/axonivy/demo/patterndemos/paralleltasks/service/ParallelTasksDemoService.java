@@ -9,8 +9,8 @@ import ch.ivyteam.ivy.workflow.query.TaskQuery;
 public class ParallelTasksDemoService {
 	private static final ParallelTasksDemoService INSTANCE = new ParallelTasksDemoService();
 	private static final String CREATE_TASK_SIGNAL = "com:axonivy:demo:patterndemos:paralleltasks:createTask";
-	private static final String CANCEL_TASKS = "com:axonivy:demo:patterndemos:paralleltasks:cancelTasks:%s";
-	private static final String CONTINUE_AFTER_TASKS = "com:axonivy:demo:patterndemos:paralleltasks:continueAfterTasks:%s";
+	private static final String CANCEL_TASKS_SIGNAL = "com:axonivy:demo:patterndemos:paralleltasks:cancelTasks:%s";
+	private static final String CONTINUE_AFTER_TASKS_SIGNAL = "com:axonivy:demo:patterndemos:paralleltasks:continueAfterTasks:%s";
 	private static final String DEMO_TASK_NUMBER_FIELD = "DEMO_TASK_NUMBER";
 	private static final String DEMO_TASK_STATUS_FIELD = "DEMO_TASK_STATUS";
 	private static final String DEMO_TASK_ID_FIELD = "DEMO_TASK_ID";
@@ -46,7 +46,7 @@ public class ParallelTasksDemoService {
 	 * @param uniqueId
 	 */
 	public void cancelTasks(String uniqueId) {
-		Ivy.wf().signals().send(CANCEL_TASKS.formatted(uniqueId));
+		Ivy.wf().signals().send(CANCEL_TASKS_SIGNAL.formatted(uniqueId));
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class ParallelTasksDemoService {
 	 * @param uniqueId
 	 */
 	public void signalFinished(String uniqueId) {
-		Ivy.wf().signals().send(CONTINUE_AFTER_TASKS.formatted(uniqueId));
+		Ivy.wf().signals().send(CONTINUE_AFTER_TASKS_SIGNAL.formatted(uniqueId));
 	}
 
 	/**
