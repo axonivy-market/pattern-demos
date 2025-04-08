@@ -91,14 +91,16 @@ public class LockService {
 			lock.setName(name);
 		}
 
+		var curValidUntil = lock.getValidUntil() != null ? lock.getValidUntil() : "not set";
+
 		if(lock.isLocked() && (lock.getValidUntil() == null || Instant.now().isBefore(lock.getValidUntil()))) {
-			Ivy.log().info("Cannot get lock {0} because it is already locked, valid until is {1}", lock.getName(), lock.getValidUntil());
+			Ivy.log().info("Cannot get lock {0} because it is already locked, valid until is {1}", lock.getName(), curValidUntil);
 		}
 		else {
 			try {
 				lock.setLocked(true);
 				lock.setValidUntil(validUntil);
-				Ivy.log().info("Locking {0}, valid until is {1}.", lock.getName(), lock.getValidUntil());
+				Ivy.log().info("Locking {0}, valid until is {1}.", lock.getName(), curValidUntil);
 
 				lock = LockDAO.get().save(lock);
 				locked = lock.isLocked();
