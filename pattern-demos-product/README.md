@@ -114,8 +114,6 @@ The parallel tasks pattern is designed to manage a dynamic number of concurrent 
 a unique id and the individual tasks are started by a signal. The unique id is later used to signal the end of
 all tasks and/or to cancel tasks if the administrator decides.
 
-#### Demo
-
 The included demo illustrates a practical use case:
 
 * A main process creates a unique id for the task group and sends a signal to trigger several parallel tasks.
