@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/13.1.2/process.json",
   "id" : "19589A25A78319CA",
   "config" : {
     "data" : "com.axonivy.demo.patterndemos.validation.ValidationDemoData"
@@ -97,7 +97,10 @@
       ],
       "visual" : {
         "at" : { "x" : 768, "y" : 160 },
-        "size" : { "width" : 350, "height" : 78 }
+        "size" : { "width" : 350, "height" : 78 },
+        "description" : "",
+        "color" : "",
+        "icon" : ""
       }
     } ]
 }

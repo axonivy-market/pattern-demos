@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/13.1.2/process.json",
   "id" : "1957FF0D80BF5EFF",
   "config" : {
     "data" : "com.axonivy.demo.patterndemos.paralleltasks.ParallelTasksDemoData"
@@ -101,7 +101,9 @@
           "description" : "Wait for the specific finishing signals.",
           "category" : "ADMIN",
           "responsible" : {
-            "activator" : "Administrator"
+            "roles" : [
+              "Administrator"
+            ]
           }
         }
       },
@@ -228,7 +230,9 @@
       "visual" : {
         "at" : { "x" : 1113, "y" : 386 },
         "size" : { "width" : 526, "height" : 156 },
-        "color" : "default"
+        "description" : "",
+        "color" : "default",
+        "icon" : ""
       }
     }, {
       "id" : "f27",
@@ -240,7 +244,10 @@
       ],
       "visual" : {
         "at" : { "x" : 520, "y" : 81 },
-        "size" : { "width" : 207, "height" : 83 }
+        "size" : { "width" : 207, "height" : 83 },
+        "description" : "",
+        "color" : "",
+        "icon" : ""
       },
       "connect" : [
         { "id" : "f28", "to" : "f8" }
@@ -251,7 +258,10 @@
       "name" : "Cancel all active tasks by sending a signal.",
       "visual" : {
         "at" : { "x" : 768, "y" : 88 },
-        "size" : { "width" : 176, "height" : 64 }
+        "size" : { "width" : 176, "height" : 64 },
+        "description" : "",
+        "color" : "",
+        "icon" : ""
       },
       "connect" : [
         { "id" : "f32", "to" : "f14" }
@@ -262,7 +272,10 @@
       "name" : "The actual task, interruptable by a specific signal.",
       "visual" : {
         "at" : { "x" : 280, "y" : 420 },
-        "size" : { "width" : 112, "height" : 56 }
+        "size" : { "width" : 112, "height" : 56 },
+        "description" : "",
+        "color" : "",
+        "icon" : ""
       },
       "connect" : [
         { "id" : "f36", "to" : "f16" }
@@ -273,7 +286,10 @@
       "name" : "Tasks are created by sending a start signal.",
       "visual" : {
         "at" : { "x" : 280, "y" : 88 },
-        "size" : { "width" : 126, "height" : 46 }
+        "size" : { "width" : 126, "height" : 46 },
+        "description" : "",
+        "color" : "",
+        "icon" : ""
       },
       "connect" : [
         { "id" : "f38", "to" : "f6" }
