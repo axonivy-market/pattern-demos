@@ -126,7 +126,7 @@
         "output" : {
           "code" : [
             "import ch.ivyteam.ivy.bpm.error.BpmError;",
-            "if(Boolean.parseBoolean(ivy.var.com_axonivy_demo_patterndemos_admintask_forceError)) {",
+            "if(Boolean.parseBoolean(ivy.var.get(\"com.axonivy.demo.patterndemos.admintask.forceError\"))) {",
             "  ivy.log.error(\"A forced error will be thrown. To avoid this, change the value of the global variable 'forceError' to false\");",
             "  BpmError",
             "    .create(\"com:axonivy:demo:patterndemos:admintask:error\")",
