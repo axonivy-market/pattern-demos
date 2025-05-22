@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/13.1.2/process.json",
   "id" : "195422CD52B97552",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -155,7 +155,9 @@
           "description" : "<%=ivy.cms.co(\"/Tasks/Description/checkJobResult\", [in.jobName,in.result.getStatus()])%>",
           "category" : "ADMIN",
           "responsible" : {
-            "activator" : "Administrator"
+            "roles" : [
+              "Administrator"
+            ]
           }
         },
         "output" : {
@@ -243,7 +245,9 @@
           "name" : "<%=ivy.cms.co(\"/Processes/Names/backgroundJob\", [in1.jobName])%>",
           "description" : "<%=ivy.cms.co(\"/Processes/Descriptions/backgroundJob\")%>",
           "responsible" : {
-            "activator" : "SYSTEM"
+            "roles" : [
+              "SYSTEM"
+            ]
           }
         }
       },
@@ -260,8 +264,10 @@
       "name" : "Run job by the service class",
       "visual" : {
         "at" : { "x" : 880, "y" : 104 },
+        "size" : { "width" : 140, "height" : 60 },
         "description" : "Run the registered job by the JobService class. The job is specified by the the jobName.",
-        "color" : "Blue"
+        "color" : "Blue",
+        "icon" : ""
       },
       "connect" : [
         { "id" : "f1", "to" : "f6" }
@@ -272,7 +278,10 @@
       "name" : "If manual start or error by the job, then admin task created",
       "visual" : {
         "at" : { "x" : 1064, "y" : 336 },
-        "color" : "Blue"
+        "size" : { "width" : 140, "height" : 60 },
+        "description" : "",
+        "color" : "Blue",
+        "icon" : ""
       },
       "connect" : [
         { "id" : "f28", "to" : "f11" }
@@ -283,7 +292,10 @@
       "name" : "Job prestart dialog to start manually the job.",
       "visual" : {
         "at" : { "x" : 416, "y" : 352 },
-        "color" : "Blue"
+        "size" : { "width" : 140, "height" : 60 },
+        "description" : "",
+        "color" : "Blue",
+        "icon" : ""
       },
       "connect" : [
         { "id" : "f30", "to" : "f20" }
@@ -294,8 +306,10 @@
       "name" : "Set job to manual mode after the retry decision.",
       "visual" : {
         "at" : { "x" : 1344, "y" : 488 },
+        "size" : { "width" : 140, "height" : 60 },
         "description" : "Set job to manual mode after the retry decision if job was already manual or result was not ok and admin task was necessary.",
-        "color" : "Blue"
+        "color" : "Blue",
+        "icon" : ""
       },
       "connect" : [
         { "id" : "f32", "to" : "f17" }

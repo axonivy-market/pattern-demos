@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/13.1.2/process.json",
   "id" : "1957FF3DF72AF7B3",
   "config" : {
     "data" : "com.axonivy.demo.patterndemos.components.ComponentsDemoData"
@@ -50,7 +50,10 @@
       "name" : "This demonstration illustrates the process of creating components with sub-components and updating them during a save operation, for example.",
       "visual" : {
         "at" : { "x" : 798, "y" : 48 },
-        "size" : { "width" : 355, "height" : 63 }
+        "size" : { "width" : 355, "height" : 63 },
+        "description" : "",
+        "color" : "",
+        "icon" : ""
       }
     } ]
 }
