@@ -184,11 +184,11 @@ The managed bean `constants` is used as an elegant way to re-use project constan
 
 This demo shows an example of how to use the zip feature. 
 
-You can upload files from your computer. They will be processed and automatically added to an existing zip file. If no ZIP file exists, a new one will be created.\
-Click the Download button to download the ZIP file containing all the files you uploaded.\
+You can upload files from your computer. They will be processed and automatically added to an existing zip file. If no ZIP file exists, a new one will be created.
+Click the Download button to download the ZIP file containing all the files you uploaded.
 You can also click "Unpack" to extract all the files to your local Designer folder.
 
-![image](/pattern-demos-product/images/zip-demo.jpg)
+![image](images/zip-demo.jpg)
 
 ## Setup
 
@@ -232,5 +232,23 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 * Unpack this jar file (it is a zip file), and find the original javascript source of the component you want to change (typically at <JAR>/META-INF/resources/primefaces)
 
 ***Note***: If you modify the logic of a component, you should verify its functionality with each Ivy update, as these updates often include PrimeFaces updates that could result in compatibility issues.
+
+### PDF Viewer Demo
+
+The uploaded documents are stored in the memory and displayed in a table.
+In case it's downloaded or displayed, the PDF content is streamed to the corresponding PrimeFaces component.
+
+To display the PDF, two different components are demonstrated:
+* Document Viewer
+* Media
+
+The Document Viewer component is available as a PrimeFaces extension, whereas the Media feature is included in the main PrimeFaces package. The features and UX of both components are different.
+Prioritize using Media over Document Viewer, because Media executes faster. In cases where you want to use more features, such as editing documents, then use Document Viewer.
+
+  PDF Viewer Demo:
+![PdfViewerDemo](https://github.com/user-attachments/assets/eb5328b9-1d33-44a6-b722-24a2b24d9469)
+
+
+
 
 
