@@ -185,7 +185,9 @@ The managed bean `constants` is used as an elegant way to re-use project constan
 This demo shows an example of how to use the zip feature. 
 
 You can upload files from your computer. They will be processed and automatically added to an existing zip file. If no ZIP file exists, a new one will be created.
+
 Click the Download button to download the ZIP file containing all the files you uploaded.
+
 You can also click "Unpack" to extract all the files to your local Designer folder.
 
 ![image](images/zip-demo.jpg)
