@@ -3,8 +3,7 @@
 Pattern Demos are a collection of processes, dialogs, code, and other snippets that have proven useful in our projects and are shared publicly as best practices through this Market Extension.  
 To use a pattern, copy the necessary parts into your project and adapt them as needed. While the demos are kept as simple as possible, some may require additional infrastructure in your project.
 
-In detail, you will find solutions to the following typical problems:
-
+In detail, you will find solutions to the following typical problems:  
 - **Admintask**: In case of errors in the process execution an admin gets a task and can decide how to proceed.
 - **Component**: This demo shows how different parts of a user interface can easily share and update the same data by connecting through a common controller, ensuring changes are always in sync.
 - **Lock**: Prevents multiple executions of a task
@@ -29,13 +28,12 @@ You can **reuse the dialog** in your own project and follow this pattern wheneve
 
 > **Note:** Make sure the `persist` flag is set for the parameters `task` and `detail`, so they remain available when the administrator opens the task!
 
-![image](https://github.com/user-attachments/assets/82be6806-47d9-45f1-8a16-9af49908a871)
+![image](images/admin-tasks.png)
 
 
 ### Components
 
-This demo shows a pattern to allow referencing a parent owned object in one or more child components.
-
+This demo shows a pattern to allow referencing a parent owned object in one or more child components.  
 It uses Java based controllers which offer more flexibility than Ivy processes in complex UI scenarios.
 
 One object (in this example the `ParentCtrl`) owns a business object and implements a specific holder interface (in this example
@@ -46,7 +44,7 @@ automatic update will work even when a new instance of the `Person` is set by an
 
 Java controllers and similar patterns can be used for many complex situations (e.g. inheritance).
 
-![image](https://github.com/user-attachments/assets/edaa28ac-7ca3-48bb-934c-4d93ed61bba5)
+![image](images/parent-component.png)
 
 
 ### Lock
@@ -55,7 +53,7 @@ Use the LockService class to acquire system-wide locks for single-use actions. T
 is based on persistence-utils and needs a database connection. It saves locks in an optimistic
 locked entity to avoid race-conditions. 
 
-![image](https://github.com/user-attachments/assets/8e4d0b41-49ee-472e-82e5-9fa1007f7e70)
+![image](images/lock-service.png)
 
 
 ### Job
@@ -73,7 +71,7 @@ Use this as a starting point to explore and customize the pattern for your needs
 
 Note, that this pattern makes use of the `pattern-demos-lock` and the `pattern-demos-admintask` patterns.
 
-![image](https://github.com/user-attachments/assets/71c2623a-4b5d-4dc7-b8ec-2a98af621362)
+![image](images/demos-lock.png)
 
 #### Triggering the Job
 
@@ -137,7 +135,7 @@ in the current group. In real word scenarios, business objects might represent t
 or more complex handling after finishing might be required (e.g. canceling of tasks because of a business
 condition) and therefore the pattern needs to be adapted to your requirements.
 
-![image](https://github.com/user-attachments/assets/ad38ff79-0c8e-4a3a-a200-f58dd02e3aa8)
+![image](images/parallel-tasks.png)
 
 
 ### Placeholder Evaluation
@@ -145,11 +143,11 @@ condition) and therefore the pattern needs to be adapted to your requirements.
 Use this basic ReplacementService directly in your project or just as a start to implement your own
 text-based place-holder replacement.
 
-![image](https://github.com/user-attachments/assets/05cf2627-ff7b-4a84-8fe0-6905132b3f61)
+![image](images/placeholder-demo.png)
 
 After clicking "Replace" the following text has been generated:
 
-![image](https://github.com/user-attachments/assets/8ff0476d-d55b-4f93-aa54-6503246b228a)
+![image](images/replace-text.png)
 
 Notes:
 
@@ -162,7 +160,7 @@ Notes:
 Use these examples to see how Primefaces Widgets can be customized using the Primefaces client-side API of widgets.
 This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways: by refining the logic of its existing methods and by introducing new methods to the widget.
 
-![image](https://github.com/user-attachments/assets/5cd39912-9bb6-4c76-91bc-8d8eccff38d6)
+![image](images/primefaces-extensions.png)
 
 
 ### Validation
@@ -173,8 +171,8 @@ The validation pattern shows some typical validation scenarios for
 * a field value validation
 * a multi-field validation with model mapping and server side logic
 
-  Basic validation:
-  ![image](https://github.com/user-attachments/assets/18ce21cc-6714-45c3-b02b-d1859f34c481)
+  Basic validation:  
+  ![image](images/basic-validation.png)
 
 #### Managed beans
 
@@ -185,11 +183,9 @@ The managed bean `constants` is used as an elegant way to re-use project constan
 
 This demo shows an example of how to use the zip feature. 
 
-You can upload files from your computer. They will be processed and automatically added to an existing zip file. If no ZIP file exists, a new one will be created.
-
-Click the Download button to download the ZIP file containing all the files you uploaded.
-
-You can also click "Unpack" to extract all the files to your local Designer folder.
+You can upload files from your computer. They will be processed and automatically added to an existing zip file. If no ZIP file exists, a new one will be created.  
+Click the Download button to download the ZIP file containing all the files you uploaded.  
+You can also click "Unpack" to extract all the files to your local Designer folder.  
 
 ![image](images/zip-demo.jpg)
 
