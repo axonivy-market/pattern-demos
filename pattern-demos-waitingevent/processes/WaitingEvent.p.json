@@ -40,7 +40,7 @@
     }, {
       "id" : "f7",
       "type" : "RequestStart",
-      "name" : "firedEvent",
+      "name" : "fireEvent",
       "config" : {
         "signature" : "startFired",
         "request" : {
@@ -71,7 +71,7 @@
             "// Fill CaseId in input param ",
             "// of method fireIntermediateEventByEventId()",
             "// to fire the waiting event",
-            "IvyUtils.fireIntermediateEventByEventId(\"5\");"
+            "IvyUtils.fireIntermediateEventByEventId(\"1\");"
           ]
         },
         "sudo" : true
@@ -114,17 +114,17 @@
       "name" : [
         "Demo:",
         "",
-        "* Start the \"startWaiting\" process start, that will create a waiting task and stop the process. (Waiting task created with Event ID is caseId)",
-        "* Check the Runtime Log to get the caseId to fire the waiting event.",
-        "* Fill the caseId in to \"Fire event\" script and Start the \"fireEvent\" process start.",
+        "* Start the \"startWaiting\" process. This will create a waiting task and stop the process. The waiting task is created with the event ID equal to the caseId.",
+        "* Check the runtime log to get the caseId to fire the waiting event.",
+        "* Fill the caseId in to the \"Fire event\" script and start the \"fireEvent\" process.",
         "",
-        "* Additionally, the demo provides a REST API endpoint that allows external systems to trigger the waiting event by sending the corresponding Event ID.",
-        "The REST service receives the Event ID as a path parameter and fires the associated event internally.",
+        "* Additionally, the demo provides a REST API endpoint that allows external systems to trigger the waiting event by sending the corresponding event ID.",
+        "The REST service receives the event ID as a path parameter and fires the associated event.",
         "Access http://localhost:8081/dev-workflow-ui/faces/api-browser.xhtml to explore and test available REST APIs using Swagger UI."
       ],
       "visual" : {
-        "at" : { "x" : 775, "y" : 167 },
-        "size" : { "width" : 559, "height" : 183 }
+        "at" : { "x" : 1022, "y" : 201 },
+        "size" : { "width" : 1012, "height" : 222 }
       }
     }, {
       "id" : "f5",
