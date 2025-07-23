@@ -1,0 +1,236 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "1983036782831F69",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.multistageescalation.MultiStageEscalationData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "startMSE",
+      "config" : {
+        "signature" : "startMSE",
+        "task" : {
+          "name" : "Start task"
+        },
+        "case" : {
+          "name" : "Case - Demo MSE"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f5", "label" : {
+            "name" : "Stage 0",
+            "offset" : { "x" : 90, "y" : -10 }
+          } }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 816, "y" : 64 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f5",
+      "type" : "Script",
+      "name" : "Init standard config",
+      "config" : {
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.priority" : "2",
+            "out.stage" : "0",
+            "out.timeout" : "'2m'"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 472, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f8", "color" : "default" }
+      ]
+    }, {
+      "id" : "f7",
+      "type" : "ErrorStartEvent",
+      "name" : "Task expiry Error",
+      "config" : {
+        "errorCode" : "multistageescalation:timeout"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 240 },
+        "labelOffset" : { "x" : 17, "y" : -23 },
+        "color" : "default"
+      },
+      "connect" : [
+        { "id" : "f11", "to" : "f23" }
+      ]
+    }, {
+      "id" : "f8",
+      "type" : "Alternative",
+      "visual" : {
+        "at" : { "x" : 592, "y" : 64 },
+        "labelOffset" : { "x" : 14, "y" : 34 }
+      },
+      "connect" : [
+        { "id" : "f9", "to" : "f13", "color" : "default" }
+      ]
+    }, {
+      "id" : "f10",
+      "type" : "Script",
+      "name" : "Re-config for task",
+      "config" : {
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.priority" : "2",
+            "out.timeout" : "'2m'"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 472, "y" : 240 }
+      },
+      "connect" : [
+        { "id" : "f12", "to" : "f8", "via" : [ { "x" : 592, "y" : 240 } ] }
+      ]
+    }, {
+      "id" : "f13",
+      "type" : "UserTask",
+      "name" : "Main Task",
+      "config" : {
+        "task" : {
+          "name" : "Main Task MSE",
+          "priority" : {
+            "level" : "SCRIPT",
+            "script" : "in.priority"
+          },
+          "expiry" : {
+            "timeout" : "in.timeout",
+            "error" : "f7",
+            "responsible" : {
+              "type" : "DELETE_TASK"
+            }
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 704, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f14", "to" : "f1", "color" : "default" }
+      ]
+    }, {
+      "id" : "f3",
+      "type" : "Alternative",
+      "name" : "Stage",
+      "config" : {
+        "conditions" : {
+          "f4" : "in.stage == 1",
+          "f17" : "in.stage == 2",
+          "f18" : "in.stage == 3"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 352, "y" : 240 },
+        "labelOffset" : { "y" : -16 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f10", "label" : {
+            "name" : "1",
+            "offset" : { "x" : -7, "y" : -10 }
+          }, "color" : "default" },
+        { "id" : "f17", "to" : "f15", "via" : [ { "x" : 352, "y" : 336 } ], "label" : {
+            "name" : "2",
+            "segment" : 1.14,
+            "offset" : { "x" : 17, "y" : -6 }
+          } },
+        { "id" : "f18", "to" : "f16", "via" : [ { "x" : 352, "y" : 432 } ], "label" : {
+            "name" : "3",
+            "segment" : 0.84,
+            "offset" : { "x" : 32, "y" : 20 }
+          } }
+      ]
+    }, {
+      "id" : "f15",
+      "type" : "Script",
+      "name" : "Re-config for task",
+      "config" : {
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.priority" : "1",
+            "out.timeout" : "'1m'"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 472, "y" : 336 }
+      },
+      "connect" : [
+        { "id" : "f19", "to" : "f8", "via" : [ { "x" : 592, "y" : 336 } ] }
+      ]
+    }, {
+      "id" : "f16",
+      "type" : "Script",
+      "name" : "Re-config for task",
+      "config" : {
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.priority" : "0"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 472, "y" : 432 }
+      },
+      "connect" : [
+        { "id" : "f20", "to" : "f8", "via" : [ { "x" : 592, "y" : 432 } ] }
+      ]
+    }, {
+      "id" : "f23",
+      "type" : "Script",
+      "name" : "Increase stage",
+      "config" : {
+        "output" : {
+          "code" : [
+            "in.stage++;",
+            "ivy.task.setName(\"Task expiry error\");"
+          ]
+        },
+        "sudo" : true
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 240 }
+      },
+      "connect" : [
+        { "id" : "f24", "to" : "f3", "color" : "default" }
+      ]
+    }, {
+      "id" : "f28",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "Demo:",
+        "",
+        "* Start the startMSE process. This will create a Main Task with the default configuration.",
+        "",
+        "* Wait for the Main Task to expire. The \"Task Expiry Error\" will catch the expiry error from the Main Task and trigger a stage increment.",
+        "",
+        "* Based on the current stage, specific configurations will be set and applied to the Main Task.",
+        "",
+        "** Stage 0: Priority = Normal, Expiry = 2 minutes",
+        "** Stage 1: Priority = Normal, Expiry = 2 minutes",
+        "** Stage 2: Priority = High, Expiry = 1 minute",
+        "** Stage 3: Priority = Exception, Expiry = N/A"
+      ],
+      "visual" : {
+        "at" : { "x" : 850, "y" : 273 },
+        "size" : { "width" : 444, "height" : 222 },
+        "color" : "default"
+      }
+    } ]
+}

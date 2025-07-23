@@ -1,0 +1,17 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "MultiStageEscalationData",
+  "namespace" : "com.axonivy.demo.patterndemos.multistageescalation",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "stage",
+    "type" : "java.lang.Integer",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "priority",
+    "type" : "Integer"
+  }, {
+    "name" : "timeout",
+    "type" : "Duration"
+  } ]
+}
