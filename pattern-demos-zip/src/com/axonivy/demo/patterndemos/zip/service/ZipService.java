@@ -85,8 +85,8 @@ public class ZipService {
 		// iterates over entries in the zip file
 		while (entry != null) {
 			String filePath = destDirectory + java.io.File.separator + entry.getName();
-			java.nio.file.Path normalizedFilePath = Paths.get(filePath).normalize();
-			java.nio.file.Path normalizedDestDir = Paths.get(destDirectory).toAbsolutePath().normalize();
+			Path normalizedFilePath = Paths.get(filePath).normalize();
+			Path normalizedDestDir = Paths.get(destDirectory).toAbsolutePath().normalize();
 			if (!normalizedFilePath.startsWith(normalizedDestDir)) {
 				throw new IOException("Bad zip entry: " + entry.getName());
 			}
