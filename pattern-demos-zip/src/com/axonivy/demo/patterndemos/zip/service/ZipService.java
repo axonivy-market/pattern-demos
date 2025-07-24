@@ -85,12 +85,17 @@ public class ZipService {
 		// iterates over entries in the zip file
 		while (entry != null) {
 			String filePath = destDirectory + java.io.File.separator + entry.getName();
+			java.nio.file.Path normalizedFilePath = Paths.get(filePath).normalize();
+			java.nio.file.Path normalizedDestDir = Paths.get(destDirectory).toAbsolutePath().normalize();
+			if (!normalizedFilePath.startsWith(normalizedDestDir)) {
+				throw new IOException("Bad zip entry: " + entry.getName());
+			}
 			if (!entry.isDirectory()) {
 				// if the entry is a file, extracts it
-				extractFile(zipIn, filePath);
+				extractFile(zipIn, normalizedFilePath.toString());
 			} else {
 				// if the entry is a directory, make the directory
-				var dir = new java.io.File(filePath);
+				var dir = new java.io.File(normalizedFilePath.toString());
 				dir.mkdir();
 			}
 			zipIn.closeEntry();
