@@ -14,7 +14,7 @@ In detail, you will find solutions to the following typical problems:
 - **Validation**: Ensures user input is correct by checking required fields, valid values, and field combinations.
 - **ZIP**: This demo shows an example of how to use the zip feature.
 - **PDFViewer**: This demo shows how to upload and view PDF file.
-
+- **Multi Stage Escalation Management**: This demo shows how to implement a multi stage escalation management.
 ## Demo
 
 ### Admin Task
@@ -203,6 +203,33 @@ Prioritize using Media over Document Viewer, because Media executes faster. In c
 
   PDF Viewer Demo:
 ![image](images/pdf-viewer-demo.jpg)
+
+### Multi Stage Escalation Management Demo
+
+This demo demonstrates how to implement **Multi-Stage Escalation Management** in a workflow/process.
+#### Key Concepts
+
+- **Task Creation & Expiry Configuration**:  
+  A task is created and configured with an expiry timestamp based on the current escalation stage.
+
+- **Error Start Trigger on Expiry**:  
+  An error start event is defined and linked to the task. When the task expires, this event is triggered automatically.
+
+- **Stage-Based Reconfiguration**:  
+  The current escalation stage is persisted in **Process Data**. Upon task expiry, the stage is incremented, and a new task is created with updated configurations—priority and expiry time—based on the next stage.
+
+From a technical perspective, the expired task is deleted, and a new task is generated with the appropriate settings for the current stage.
+
+![image](images/MSEProcess.jpg)
+
+#### Additional
+We also provide an alternative version of the demo with most of the logic implemented in Java classes.
+Check the MSEJava process for more details. This version is suitable for scenarios where escalation logic and task handling are better managed through code for improved flexibility and maintainability.
+
+![image](images/MSE_Java.jpg)
+
+**Limitation**:
+This pattern results in multiple tasks being created throughout the escalation process, which may affect task history tracking and system performance in high-load scenarios.
 
 ## Setup
 
