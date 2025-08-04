@@ -14,7 +14,7 @@ In detail, you will find solutions to the following typical problems:
 - **Validation**: Ensures user input is correct by checking required fields, valid values, and field combinations.
 - **ZIP**: This demo shows an example of how to use the zip feature.
 - **PDFViewer**: This demo shows how to upload and view PDF file.
-- **Waiting Event**: This demo shows how can interrupt a process execution and continue when an external event to occur.
+- **Waiting Event**: This demo shows how to interrupt a process execution and continue when an external event to occur.
 
 ## Demo
 

@@ -4,7 +4,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import com.axonivy.demo.patterndemos.waitingevent.utils.IvyUtils;
+import com.axonivy.demo.patterndemos.waitingevent.utils.IvyService;
 
 /**
  * REST service for handling "waiting" events in the system.
@@ -15,7 +15,7 @@ import com.axonivy.demo.patterndemos.waitingevent.utils.IvyUtils;
  */
 
 @Path("waiting")
-public class WaitingService {
+public class WaitingResource {
 
 	/**
 	 * Fire an intermediate event based on the given event ID.
@@ -29,6 +29,6 @@ public class WaitingService {
 	@GET
 	@Path("/fire/{eventId}")
 	public void fireWaitingEvent(@PathParam("eventId") String eventId) {
-		IvyUtils.fireIntermediateEventByEventId(eventId);
+		IvyService.get().fireIntermediateEventByEventId(eventId);
 	}
 }

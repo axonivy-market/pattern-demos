@@ -67,11 +67,11 @@
       "config" : {
         "output" : {
           "code" : [
-            "import com.axonivy.demo.patterndemos.waitingevent.utils.IvyUtils;",
+            "import com.axonivy.demo.patterndemos.waitingevent.utils.IvyService;",
             "// Fill CaseId in input param ",
             "// of method fireIntermediateEventByEventId()",
-            "// to fire the waiting event",
-            "IvyUtils.fireIntermediateEventByEventId(\"1\");"
+            "// to fire the waiting event.",
+            "IvyService.get().fireIntermediateEventByEventId(\"1\");"
           ]
         },
         "sudo" : true
