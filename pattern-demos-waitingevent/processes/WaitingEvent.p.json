@@ -10,6 +10,11 @@
       "name" : "startWaiting",
       "config" : {
         "signature" : "startWaiting",
+        "input" : {
+          "map" : {
+            "out.eventID" : "java.util.UUID.randomUUID().toString()"
+          }
+        },
         "request" : {
           "name" : "Start Waiting",
           "description" : "Start to create Waiting event"
@@ -68,7 +73,7 @@
         "output" : {
           "code" : [
             "import com.axonivy.demo.patterndemos.waitingevent.utils.IvyService;",
-            "// Fill CaseId in input param ",
+            "// Fill EventID in input param ",
             "// of method fireIntermediateEventByEventId()",
             "// to fire the waiting event.",
             "IvyService.get().fireIntermediateEventByEventId(\"1\");"
@@ -94,11 +99,11 @@
       "type" : "WaitEvent",
       "name" : "Waiting task",
       "config" : {
-        "eventId" : "ivy.case.getId().toString()",
+        "eventId" : "in.eventID",
         "task" : {
           "name" : "Waiting task",
           "description" : "Case ID: <%=ivy.case.getId()%>",
-          "code" : "ivy.log.info(\"=== CaseId to fire event: \" + ivy.case.getId());"
+          "code" : "ivy.log.info(\"=== EventID: \" + in.eventID);"
         }
       },
       "visual" : {
@@ -114,17 +119,17 @@
       "name" : [
         "Demo:",
         "",
-        "* Start the \"startWaiting\" process. This will create a waiting task and stop the process. The waiting task is created with the event ID equal to the caseId.",
-        "* Check the runtime log to get the caseId to fire the waiting event.",
-        "* Fill the caseId in to the \"Fire event\" script and start the \"fireEvent\" process.",
+        "* Start the \"startWaiting\" process. This will create a waiting task and stop the process. The waiting task is created with the event ID is an random UUID.",
+        "* Check the runtime log to get the EventID to fire the waiting event.",
+        "* Fill the EventID in to the \"Fire event\" script and start the \"fireEvent\" process.",
         "",
         "* Additionally, the demo provides a REST API endpoint that allows external systems to trigger the waiting event by sending the corresponding event ID.",
         "The REST service receives the event ID as a path parameter and fires the associated event.",
         "Access http://localhost:8081/dev-workflow-ui/faces/api-browser.xhtml to explore and test available REST APIs using Swagger UI."
       ],
       "visual" : {
-        "at" : { "x" : 1022, "y" : 201 },
-        "size" : { "width" : 1012, "height" : 222 }
+        "at" : { "x" : 934, "y" : 201 },
+        "size" : { "width" : 836, "height" : 222 }
       }
     }, {
       "id" : "f5",

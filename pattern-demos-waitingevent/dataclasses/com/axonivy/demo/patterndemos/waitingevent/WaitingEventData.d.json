@@ -2,5 +2,10 @@
   "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
   "simpleName" : "WaitingEventData",
   "namespace" : "com.axonivy.demo.patterndemos.waitingevent",
-  "isBusinessCaseData" : false
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "eventID",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
 }

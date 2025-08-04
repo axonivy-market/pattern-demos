@@ -208,7 +208,7 @@ Prioritize using Media over Document Viewer, because Media executes faster. In c
 ### Waiting Event
 
 This module demonstrates a technical pattern for handling asynchronous process continuation using intermediate events.
-It includes two primary process entries: **startWaiting**, which initiates a process and suspends it at a defined wait state, and **fireEvent**, which triggers the continuation by referencing a specific **Event ID**—typically aligned with the process **caseId**.
+It includes two primary process entries: **startWaiting**, which initiates a process and suspends it at a defined wait state, and **fireEvent**, which triggers the continuation by referencing a specific **Event ID**—an random UUID.
 
 In addition to internal invocation, the demo exposes a RESTful endpoint (/waiting/fire/{eventId}) that enables external systems or services to resume suspended processes by issuing a simple HTTP GET request. This is particularly useful in integration scenarios where the process must wait for a callback, external system response, or event-driven signal.
 
