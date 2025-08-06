@@ -27,12 +27,11 @@ public class IvyService {
 		var query = IntermediateEventQuery.create();
 		query.where().eventId().isEqual(eventId);
 
-		var ies = Ivy.wf().getIntermediateEventQueryExecutor().getResults(query);
-		
-		ies.forEach(ie -> 
-			Ivy.wf().fireIntermediateEvent(ie.getIntermediateEventElement(), eventId, null, null)
-		);
+		var intermediateEvents = Ivy.wf().getIntermediateEventQueryExecutor().getResults(query);
 
-		return CollectionUtils.isNotEmpty(ies);
+		intermediateEvents.forEach(intermediateEvent -> Ivy.wf()
+				.fireIntermediateEvent(intermediateEvent.getIntermediateEventElement(), eventId, null, null));
+
+		return CollectionUtils.isNotEmpty(intermediateEvents);
 	}
 }

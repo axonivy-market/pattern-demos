@@ -12,7 +12,7 @@
         "signature" : "startWaiting",
         "input" : {
           "map" : {
-            "out.eventID" : "java.util.UUID.randomUUID().toString()"
+            "out.eventId" : "java.util.UUID.randomUUID().toString()"
           }
         },
         "request" : {
@@ -76,7 +76,7 @@
             "// Fill EventID in input param ",
             "// of method fireIntermediateEventByEventId()",
             "// to fire the waiting event.",
-            "IvyService.get().fireIntermediateEventByEventId(\"1\");"
+            "IvyService.get().fireIntermediateEventByEventId(\"3653cdcf-67ad-44a9-9fed-a0788926c666\");"
           ]
         },
         "sudo" : true
@@ -103,7 +103,7 @@
         "task" : {
           "name" : "Waiting task",
           "description" : "Case ID: <%=ivy.case.getId()%>",
-          "code" : "ivy.log.info(\"=== EventID: \" + in.eventID);"
+          "code" : "ivy.log.info(\"=== EventID: \" + in.eventId);"
         }
       },
       "visual" : {

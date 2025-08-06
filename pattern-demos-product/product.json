@@ -67,7 +67,7 @@
           },
 		  {
             "groupId": "com.axonivy.demo.patterndemos",
-            "artifactId": "pattern-demos-pdfviewer",
+            "artifactId": "pattern-demos-waitingevent",
             "version": "${version}",
             "type": "iar"
           }
