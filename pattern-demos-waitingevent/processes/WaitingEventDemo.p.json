@@ -1,0 +1,159 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "19808130961D8483",
+  "config" : {
+    "data" : "com.axonivy.demo.patterndemos.waitingevent.WaitingEventData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "startWaiting",
+      "config" : {
+        "signature" : "startWaiting",
+        "input" : {
+          "map" : {
+            "out.eventId" : "java.util.UUID.randomUUID().toString()"
+          }
+        },
+        "request" : {
+          "name" : "Start Waiting",
+          "description" : "Start to create Waiting event"
+        },
+        "task" : {
+          "name" : "Start task"
+        },
+        "case" : {
+          "name" : "Waiting process"
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 112 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 432, "y" : 112 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f7",
+      "type" : "RequestStart",
+      "name" : "fireEvent",
+      "config" : {
+        "signature" : "startFired",
+        "request" : {
+          "name" : "Fire Waiting Event",
+          "description" : "Start to Fire Waiting Event"
+        },
+        "task" : {
+          "name" : "start2"
+        }
+      },
+      "tags" : [
+        "demo"
+      ],
+      "visual" : {
+        "at" : { "x" : 96, "y" : 288 }
+      },
+      "connect" : [
+        { "id" : "f10", "to" : "f12" }
+      ]
+    }, {
+      "id" : "f12",
+      "type" : "Script",
+      "name" : "Fire event",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.demo.patterndemos.waitingevent.utils.IvyService;",
+            "// Fill EventID in input param ",
+            "// of method fireIntermediateEventByEventId()",
+            "// to fire the waiting event.",
+            "IvyService.get().fireIntermediateEventByEventId(\"3653cdcf-67ad-44a9-9fed-a0788926c666\");"
+          ]
+        },
+        "sudo" : true
+      },
+      "visual" : {
+        "at" : { "x" : 272, "y" : 288 }
+      },
+      "connect" : [
+        { "id" : "f13", "to" : "f9", "color" : "default" }
+      ]
+    }, {
+      "id" : "f9",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 432, "y" : 288 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "WaitEvent",
+      "name" : "Waiting task",
+      "config" : {
+        "eventId" : "in.eventID",
+        "task" : {
+          "name" : "Waiting task",
+          "description" : "Case ID: <%=ivy.case.getId()%>",
+          "code" : "ivy.log.info(\"=== EventID: \" + in.eventId);"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 272, "y" : 112 },
+        "labelOffset" : { "x" : 14, "y" : 34 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f1", "color" : "default" }
+      ]
+    }, {
+      "id" : "f28",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "Demo:",
+        "",
+        "* Start the \"startWaiting\" process. This will create a waiting task and stop the process. The waiting task is created with the event ID is an random UUID.",
+        "* Check the runtime log to get the EventID to fire the waiting event.",
+        "* Fill the EventID in to the \"Fire event\" script and start the \"fireEvent\" process.",
+        "",
+        "* Additionally, the demo provides a REST API endpoint that allows external systems to trigger the waiting event by sending the corresponding event ID.",
+        "The REST service receives the event ID as a path parameter and fires the associated event.",
+        "Access http://localhost:8081/dev-workflow-ui/faces/api-browser.xhtml to explore and test available REST APIs using Swagger UI."
+      ],
+      "visual" : {
+        "at" : { "x" : 934, "y" : 201 },
+        "size" : { "width" : 836, "height" : 222 }
+      }
+    }, {
+      "id" : "f5",
+      "type" : "ProcessAnnotation",
+      "name" : "Waiting task created and waiting for an external event to occur",
+      "visual" : {
+        "at" : { "x" : 272, "y" : 40 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f3" }
+      ]
+    }, {
+      "id" : "f8",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "Fire the waiting task by eventId",
+        "The process above will be continue"
+      ],
+      "visual" : {
+        "at" : { "x" : 272, "y" : 200 },
+        "size" : { "width" : 198, "height" : 54 }
+      },
+      "connect" : [
+        { "id" : "f11", "to" : "f12" }
+      ]
+    } ]
+}

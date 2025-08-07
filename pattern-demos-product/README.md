@@ -14,6 +14,7 @@ In detail, you will find solutions to the following typical problems:
 - **Validation**: Ensures user input is correct by checking required fields, valid values, and field combinations.
 - **ZIP**: This demo shows an example of how to use the zip feature.
 - **PDFViewer**: This demo shows how to upload and view PDF file.
+- **Waiting Event**: This demo shows how to interrupt a process execution and continue when an external event to occur.
 
 ## Demo
 
@@ -203,6 +204,17 @@ Prioritize using Media over Document Viewer, because Media executes faster. In c
 
   PDF Viewer Demo:
 ![image](images/pdf-viewer-demo.jpg)
+
+### Waiting Event
+
+This module demonstrates a technical pattern for handling asynchronous process continuation using intermediate events.
+It includes two primary process entries: **startWaiting**, which initiates a process and suspends it at a defined wait state, and **fireEvent**, which triggers the continuation by referencing a specific **Event ID** — a randomly generated UUID.
+
+In addition to internal invocation, the demo exposes a RESTful endpoint ('/waiting/fire/{eventId}') that enables external systems or services to resume suspended processes by issuing a simple HTTP GET request. This is particularly useful in integration scenarios where the process must wait for a callback, an external system response, or an event-driven signal.
+
+The solution is lightweight, stateless, and easily adaptable to various business requirements.
+
+![image](images/waiting-event-demo.jpg)
 
 ## Setup
 
