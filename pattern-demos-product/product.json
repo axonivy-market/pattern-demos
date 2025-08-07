@@ -65,7 +65,7 @@
             "version": "${version}",
             "type": "iar"
           },
-		  {
+          {
             "groupId": "com.axonivy.demo.patterndemos",
             "artifactId": "pattern-demos-waitingevent",
             "version": "${version}",
