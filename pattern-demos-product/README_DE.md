@@ -1,378 +1,388 @@
-# Muster Demos
+# Muster-Demos
 
-Muster Demos sind eine Sammlung Arbeitsgänge, Zwiegespräche, Code, und anderen
-#Schnipsel dass haben bewiesen nützlich in unseren Projekten und sind geteilt
-öffentlich da best Fahrpraxen durch diese Markt Extension.\
-Zu benutzen ein Muster, kopiert die nötigen Teile hinein eure Projekt und
-adaptieren ihnen da brauchten. #Während sind behalten die Demos da simpel da
-möglich, etwas dürfen bedürfen zuzügliche Infrastruktur in eurem Projekt.
+Musterdemos sind eine Sammlung von Prozessen, Dialogen, Code und anderen
+Schnipseln, die sich in unseren Projekten als nützlich erwiesen haben und über
+diese Market Extension als Best Practices öffentlich geteilt werden.\
+Um ein Muster zu verwenden, kopieren Sie die erforderlichen Teile in Ihr Projekt
+und passen Sie sie nach Bedarf an. Die Demos sind so einfach wie möglich
+gehalten, einige erfordern jedoch möglicherweise zusätzliche Infrastruktur in
+Ihrem Projekt.
 
-Ausführlich, du willst Lösungen zu den folgenden typischen Problemen finden:
-- **Admintask**: Dabei #Im Fall von Fehler Exekution eine admin bekommt einen
-  Task und kann beschließen wie zu verfahren.
-- **Komponente**: Diese Demo Vorstellungen wie verschiedene Teile von eine
-  Nutzer Schnittstelle kann sicher teilen und verbessern #ebensolche #gleich
-  #Daten mal #Anschluss- durch einem allgemeinen Controller, sichernd Änderungen
-  sind immer herein synchronisieren.
-- **Locke**: Verhindert mehrfache Exekutionen von einem Task
-- **Beruf**: Dieses Muster hilft du bringst fertig automatisiert backend Berufe
-  in #Axon Efeu, mit Optionen zu starten ihnen manuell und Henkel Fehler durch
-  admin Tasks—machend Berufe leichter zu regulieren, Monitor, und erholen von
-  Misserfolge.
-- **Paralleltasks**: Diese Muster Hilfen fertigbringen mehrfache Tasks rennend
-  zugleich.
-- **Platzhalter**: Tausch aus Platzhalter in Text (gleichnamig `{{name}}`) mit
-  real Werte benutzend ein #errichtet-in #bespringen.
-- **Primefaceextension**: Benutz diese Beispiele zu sehen wie Primefaces Dinge
-  können sein angepasst benutzen die Primefaces Kunden-unterstützen API von
-  Dinge.
-- **Bestätigung**: Sichert Nutzer Input ist mal richtig überprüfen bedürfte
-  Felder, gültige Werte, und Feld Kombinationen.
-- **REIßVERSCHLUSS**: Diese Demo zeigt ein Beispiel von wie zu benutzen den
-  Reißverschluss Charakterzug.
-- **PDFViewer**: Diese Demo Vorstellungen zu #hochladen wie und Ausblick #PDF
-  Datei.
-- **Wartend Ereignis**: Diese Demo Vorstellungen zu unterbrechen wie eine
-  Arbeitsgang Exekution und fortdauern als zu geschehen ein externes Ereignis.
+Im Einzelnen finden Sie Lösungen für die folgenden typischen Probleme:
+- **Admintask-**: Bei Fehlern in der Prozessausführung erhält ein Administrator
+  eine Aufgabe und kann entscheiden, wie weiter vorgegangen werden soll.
+- **Komponente „** “: Diese Demo zeigt, wie verschiedene Teile einer
+  Benutzeroberfläche dieselben Daten einfach gemeinsam nutzen und aktualisieren
+  können, indem sie über einen gemeinsamen Controller verbunden werden, sodass
+  Änderungen immer synchronisiert sind.
+- **Lock-**: Verhindert die mehrfache Ausführung einer Aufgabe.
+- **Job-**: Dieses Muster hilft Ihnen bei der Verwaltung automatisierter
+  Backend-Jobs in Axon Ivy. Es bietet Optionen zum manuellen Starten der Jobs
+  und zur Fehlerbehandlung über Admin-Aufgaben, wodurch sich Jobs einfacher
+  steuern, überwachen und nach Ausfällen wiederherstellen lassen.
+- **Paralleltasks**: Dieses Muster hilft bei der Verwaltung mehrerer
+  gleichzeitig ausgeführter Aufgaben.
+- **Platzhalter-**: Ersetzen Sie Platzhalter im Text (wie `{{name}}`) durch
+  echte Werte, indem Sie einen integrierten Dienst verwenden.
+- **Primefaceextension**: Anhand dieser Beispiele können Sie sehen, wie
+  Primefaces-Widgets mithilfe der clientseitigen API von Primefaces angepasst
+  werden können.
+- **Validierungs-**: Stellt sicher, dass die Benutzereingaben korrekt sind,
+  indem erforderliche Felder, gültige Werte und Feldkombinationen überprüft
+  werden.
+- **ZIP-**: Diese Demo zeigt ein Beispiel für die Verwendung der ZIP-Funktion.
+- **PDFViewer**: Diese Demo zeigt, wie man PDF-Dateien hochlädt und anzeigt.
+- **Warten auf Ereignis**: Diese Demo zeigt, wie Sie die Ausführung eines
+  Prozesses unterbrechen und fortsetzen können, wenn ein externes Ereignis
+  eintritt.
 
 ## Demo
 
-### Admin Task
+### Admin-Aufgabe
 
-Benutz ein Admin Task zu fangen Fehler herein unbehandelt backend-Berufe. #Im
-Fall von Fehler, #ein admin Rolle bekommt einen Task mit den Resultaten und
-können beschließen ob sollte den Beruf sein retried oder ließ aus.
+Verwenden Sie eine Admin-Aufgabe, um Fehler in unbeaufsichtigten Backend-Jobs zu
+erkennen. Im Falle von Fehlern erhält eine Admin-Rolle eine Aufgabe mit den
+Ergebnissen und kann entscheiden, ob der Job wiederholt oder übersprungen werden
+soll.
 
-Diese Demo schafft eine **Hintergrund Arbeitsgang** gerannt #bei dem System dass
-absichtlich löst aus einen Fehler. Der Fehler ist gezeigt herein ein
-**AdminTask**, #wo können ein Administrator auswählen zu **Wiederholung** der
-Arbeitsgang oder **überhört** den Fehler. Bevor retrying, der Sachverhalt sollte
-sein gelöst manuell. In dieser Demo, der "Fehler" kann sein angebracht mal die
-globale Variable setzen `forceError` zu `falsch` und dann retrying.
+Diese Demo erstellt einen Hintergrundprozess **background process**, der vom
+System ausgeführt wird und absichtlich einen Fehler auslöst. Der Fehler wird in
+einem AdminTask **AdminTask** angezeigt, wo ein Administrator wählen kann, ob er
+**den Prozess erneut versuchen** oder **den Fehler ignorieren** möchte. Vor dem
+erneuten Versuch sollte das Problem manuell behoben werden. In dieser Demo kann
+der „Fehler” behoben werden, indem die globale Variable `forceError` auf `false`
+gesetzt und dann erneut versucht wird.
 
-Du kannst **#wiederbenutzen das Zwiegespräch** in eurem eigenen Projekt und
-folgen #wann immer dieses Muster du brauchst zu exekutieren Hintergrund
-Funktionalität und möchte bedienen #sichtlich Fehler.
+Sie können **den Dialog** in Ihrem eigenen Projekt wiederverwenden und diesem
+Muster folgen, wann immer Sie Hintergrundfunktionen ausführen und Fehler
+sichtbar behandeln möchten.
 
-> **Note:** Machen sicher das `beharren` #beflaggen ist gesetzt für die
-> Parameter `Task` und `Detail`, so verharren sie verfügbar als öffnet den
-> Administrator den Task!
+> **Hinweis:** Stellen Sie sicher, dass das Flag „ `persist”` für die Parameter
+> „ `” task` und „ `” detail` gesetzt ist, damit sie verfügbar bleiben, wenn der
+> Administrator die Aufgabe öffnet!
 
-![Image](images/admin-tasks.png)
+![Bild](images/admin-tasks.png)
 
 
 ### Komponenten
 
-Diese Demo zeigt ein Muster zu erlauben #referenzieren einen Elter besessen
-Objekt in #man oder #mehr Kind Komponenten.\
-Es benutzt #Java basisbezogen Controller welcher bietet an #mehr Flexibilität
-als #Ivy verarbeitet in vielschichtig UI Szenarios.
+Diese Demo zeigt ein Muster, mit dem in einer oder mehreren untergeordneten
+Komponenten auf ein übergeordnetes Objekt verwiesen werden kann.\
+Es verwendet Java-basierte Controller, die in komplexen UI-Szenarien mehr
+Flexibilität bieten als Ivy-Prozesse.
 
-#Man wendet ein (in diesem Beispiel dem `ParentCtrl`) besitzt ein dienstliches
-Objekt und implementiert eine spezifische Fassung Schnittstelle (in diesem
-Beispiel dem `PersonHolder`) #welche erlaubt bekommen und setzen von dem
-`Person` dienstliches Objekt. Anderen Controller sind geschafft mal die
-`ParentCtrl` und bekommen einen Verweis zu den `ParentCtrl` (wer ist den
-`PersonHolder`). Deswegen haben beide Controller Zugang zu den `Person`. Hier
-eine Änderung in der Komponente will automatisch sein wiedergegeben ebenso in
-dem Elter #und umgedreht. Note, dass das automatische Update will arbeiten sogar
-als eine neue Instanz von die `Person` ist gesetzt #bei irgendwelcher
-Komponente.
+Ein Objekt (in diesem Beispiel „ `“ ParentCtrl`) besitzt ein Geschäftsobjekt und
+implementiert eine bestimmte Halter-Schnittstelle (in diesem Beispiel „ `“
+PersonHolder`), die das Abrufen und Festlegen des Geschäftsobjekts „ `“ Person`
+ermöglicht. Andere Controller werden von „ `“ ParentCtrl` erstellt und erhalten
+einen Verweis auf „ `“ ParentCtrl` (das „ `“ PersonHolder` ist). Daher haben
+beide Controller Zugriff auf „ `“ Person`. Auf diese Weise wird eine Änderung in
+der Komponente automatisch auch im übergeordneten Element widergespiegelt und
+umgekehrt. Beachten Sie, dass die automatische Aktualisierung auch dann
+funktioniert, wenn eine neue Instanz der Person „ `”` von einer beliebigen
+Komponente festgelegt wird.
 
-#Java Controller und ähnliche Muster können sein benutzt für #viel
-vielschichtige Situationen (z.B. Erben).
+Java-Controller und ähnliche Muster können für viele komplexe Situationen (z. B.
+Vererbung) verwendet werden.
 
-![Image](images/parent-component.png)
-
-
-### Locke
-
-Benutz das LockService Klasse zu aneignen System-weite Locken für #Einweg-
-Aktionen. Das LockService ist gegründet auf Beharrlichkeit-utils und braucht
-einen Datenbank Zusammenhang. Es speichert herein Locken eine optimistische
-verschlossene Entität zu vermeiden Wettrennen-Zustände.
-
-![Image](images/lock-service.png)
+![Bild](images/parent-component.png)
 
 
-### #Job
+### Sperren
 
-Benutz dieses Beruf Muster für jede eure unbehandeltes backend Berufe zu machen
-ihnen startable manuell und #im Fall von manuell Start oder Fehler, schafft #ein
-admin Task zu lassen den admin Rolle beschließt wie zu fortdauern.
+Verwenden Sie die LockService-Klasse, um systemweite Sperren für einmalige
+Aktionen zu erwerben. Der LockService basiert auf Persistence-Utils und benötigt
+eine Datenbankverbindung. Er speichert Sperren in einer optimistisch gesperrten
+Entität, um Race-Bedingungen zu vermeiden.
 
-Das Beruf Muster demonstriert ein flexibles und #wiederverwendbar Konzept zu
-einplanen und #regelnd periodische Tasks innerhalb #Axon Efeu. Diese Muster
-Eingeweihte #ein subprocess zu bedienen einen Demo Beruf, Opfergabe zwei genaue
-Methoden zu auslösen Exekution, zusammen mit stabil Fehler bedienen via der
-AdminTask Begriff.
+![Bild](images/lock-service.png)
 
-Das eingeschlossen Demo Vitrinen ein typisches Szenario für das Beruf Muster. Es
-bebildert wie ist #auslösen den Beruf (via #Terminplaner oder Zwiegespräch), wie
-ist gespielt ein Misserfolg (benutzend `forceError`), und wie der AdminTask
-aktiviert bedienen von jenem Misserfolg mit Optionen gleichnamige "Wiederholung"
-und "Überhören." Benutz dies wie ein startend Punkt zu erkunden und anpassen das
-Muster für eure Notwendigkeiten.
 
-Note, dass dieses Muster nützt von das `Muster-Demos-Locke` und die
-`Muster-Demos-admintask` Muster.
+### Job
 
-![Image](images/demos-lock.png)
+Verwenden Sie dieses Jobmuster für alle Ihre unbeaufsichtigten Backend-Jobs,
+damit diese manuell gestartet werden können. Erstellen Sie für den Fall eines
+manuellen Starts oder von Fehlern eine Admin-Aufgabe, damit die Admin-Rolle
+entscheiden kann, wie fortzufahren ist.
 
-#### #Auslösen den Beruf
+Das Job-Muster demonstriert einen flexiblen und wiederverwendbaren Ansatz für
+die Planung und Verwaltung periodischer Aufgaben innerhalb von Axon Ivy. Dieses
+Muster initiiert einen Unterprozess zur Bearbeitung eines Demo-Jobs und bietet
+zwei unterschiedliche Methoden zum Auslösen der Ausführung sowie eine robuste
+Fehlerbehandlung über das AdminTask-Konzept.
 
-- **Fahrplanmäßig #Auslösen:** Der Beruf kann sein automatisch aktivierte
-  benutzen ein TimerBean. Dies ist konfiguriert durch der globalen Variable
-  `demoJobTimerConfiguration` (#z.B., `0 0 * * ` für täglich Exekution
-  #mitternachts).
-- **Handbuch #Auslösen:** #Alternativ, der Beruf kann sein gestartet manuell via
-  ein Nutzer Zwiegespräch. Diese Methode versieht weiter-Nachfrage Flexibilität,
-  erlaubend Nutzer zu anlaufen #wann immer der Beruf nötig.
+Die enthaltene Demo zeigt ein typisches Szenario für das Job-Muster. Sie
+veranschaulicht, wie der Job ausgelöst wird (über Scheduler oder Dialog), wie
+ein Fehler simuliert wird (mit `forceError`) und wie die AdminTask die
+Behandlung dieses Fehlers mit Optionen wie „Wiederholen” und „Ignorieren”
+ermöglicht. Verwenden Sie dies als Ausgangspunkt, um das Muster zu erkunden und
+an Ihre Bedürfnisse anzupassen.
 
-#### #Job Benehmen und Fehler Simulation
+Beachten Sie, dass dieses Muster die Muster „ `” (pattern-demos-lock)` und „ `”
+(pattern-demos-admintask)` verwendet.
 
-Die Exekution von dem Beruf — eingeplant ob oder Handbuch — ist beeinflusst mal
-das `forceError` Variable herein `Variablen.yaml`. Gesetzt das variables zu
-`wahr`, zu veranlassen den Beruf zu spielen einen Fehler. Dieser Charakterzug
-ist #genauer nützlich für testen das MustersFehler bedienend Fähigkeiten. Zu
-einhalten erfolgreiche Exekution, gesetzt `forceError` zu `falsch`.
+![Bild](images/demos-lock.png)
 
-#### Fehler Bedienen mit AdminTask
+#### Auslösen des Auftrags
 
-Wann der Beruf scheitert—auch dank ein gespielt Fehler oder einen effektiven
-Sachverhalt—einen AdminTask ist geschafft zu fertigbringen die Situation.
-Zugewiesen zu die Administrator Rolle und kategorisierte da ADMIN, dieser Task
-versieht ein Fachwerk für Administrator Intervention. Die verfügbaren Aktionen
-einschließen:
+- **Geplante Auslösung:** Der Job kann mithilfe eines TimerBean automatisch
+  aktiviert werden. Dies wird über die globale Variable
+  `demoJobTimerConfiguration` konfiguriert (z. B. `0 0 * * *` für die tägliche
+  Ausführung um Mitternacht).
+- **Manuelles Auslösen:** Alternativ kann der Auftrag manuell über einen
+  Benutzerdialog gestartet werden. Diese Methode bietet Flexibilität nach
+  Bedarf, sodass Benutzer den Auftrag jederzeit starten können, wenn dies
+  erforderlich ist.
 
-- **Wiederholung:** Reattempt Der Beruf zu erreichen erfolgreichen Abschluss.
-- **Überhören:** Entlässt den Misserfolg, erlaubend die nächste fahrplanmäßige
-  Instanz (ob anwendbar) zu verfahren da geplant.
-- **Überprüfen Nachher:** Verschiebt den Entscheid bei streichen aus dem Task,
-  behaltend es offen für später Review.
+#### Jobverhalten und Fehlersimulation
 
-Diese Optionen sind konzeptionell und müssen sein geschneidert zu eurem
-spezifischen Arbeitsgang. Übergib zu das "Admin Task" Sektion unter
-"Einrichtung" für #mehr Details auf #anpassen die AdminTask für eure
-Notwendigkeiten.
+Die Ausführung des Jobs – ob geplant oder manuell – wird durch die Variable „
+`forceError“` in „ `variables.yaml“` beeinflusst. Setzen Sie die Variable auf „
+`true“`, damit der Job einen Fehler simuliert. Diese Funktion ist besonders
+nützlich, um die Fehlerbehandlungsfunktionen des Musters zu testen. Um eine
+erfolgreiche Ausführung zu beobachten, setzen Sie „ `forceError“` auf „
+`false“`.
 
-#### Zuzügliche Charakterzüge
+#### Fehlerbehandlung mit AdminTask
+
+Wenn der Auftrag fehlschlägt – entweder aufgrund eines simulierten Fehlers oder
+eines tatsächlichen Problems – wird eine AdminTask erstellt, um die Situation zu
+bewältigen. Diese Aufgabe wird der Administratorrolle zugewiesen und als ADMIN
+kategorisiert und bietet einen Rahmen für Administratorinterventionen. Zu den
+verfügbaren Aktionen gehören:
+
+- **Wiederholen Sie den Versuch:** Wiederholen Sie den Auftrag, um ihn
+  erfolgreich abzuschließen.
+- **Ignorieren:** Verwerfen Sie den Fehler, damit die nächste geplante Instanz
+  (falls zutreffend) wie vorgesehen fortgesetzt werden kann.
+- **Später prüfen:** Verschieben Sie die Entscheidung, indem Sie die Aufgabe
+  abbrechen und sie zur späteren Überprüfung offen lassen.
+
+Diese Optionen sind konzeptionell und müssen an Ihren spezifischen Prozess
+angepasst werden. Weitere Informationen zum Anpassen der AdminTask an Ihre
+Anforderungen finden Sie im Abschnitt „Admin Task” unter „Setup”.
+
+#### Zusätzliche Funktionen
 
 ##### ServiceResult
 
-Das Muster bietet an auch eine Klasse `ServiceResult` welcher kann sein benutzt
-zu einsammeln mehrfache Resultate welcher ist oft der Fall in regelmäßig Berufe.
-Benutz diese Klasse in eurem Beruf-Ausführung zu generieren `OK`, `WARNUNG` und
-`FEHLER` Meldungen. Das Beruf Muster gezeigt hier will generieren #kein Admin
-Task ob einen `ServiceResult` zügelt etwas nicht OK Eintrag.
+Das Muster bietet auch eine Klasse `ServiceResult`, mit der mehrere Ergebnisse
+gesammelt werden können, was bei regulären Jobs häufig der Fall ist. Verwenden
+Sie diese Klasse in Ihrer Job-Implementierung, um die folgenden Meldungen zu
+generieren: `OK`, `WARNING` und `ERROR`. Das hier gezeigte Job-Muster generiert
+automatisch eine Admin-Aufgabe, wenn ein `ServiceResult` einen nicht OK-Eintrag
+enthält.
 
-##### Beruf #Abschließen
+##### Job-Sperrung
 
-Typischerweise wollen Berufe sein gestartet verschlossen ohne Zeitüberschreitung
-benutzend die `Muster-Demos-Locke` Muster. Dieses Mittel, jener nur eins Instanz
-von einem Beruf kann sein rennen #fristgemäß an einem Punkt und Locken wollen
-nie Zeitüberschreitung.
+In der Regel werden Jobs ohne Zeitlimit gesperrt gestartet, wobei das Muster „
+`pattern-demos-lock` pattern” verwendet wird. Das bedeutet, dass zu einem
+bestimmten Zeitpunkt nur eine Instanz eines Jobs ausgeführt werden kann und
+Sperren niemals zeitlich begrenzt sind.
 
-##### #Job Steckbrief
+##### Stellenbeschreibung
 
-Zu vermeiden versehen viele Parameter für einen Beruf startet, einen
-`JobDescription` kann sein gebaut und gelegt da hinein einen Beruf
-Aufbewahrungsort gezeigt in dieser Demo. Note, jene Laufen Berufe #bei dem Namen
-von ihr `JobDescription` will nur arbeiten, #nachdem dem `JobDescription` ist
-#zufügen zu dem Aufbewahrungsort. Dies kann sein getan in mehrfach Wege
-(StartEventBean, statische Aufgaben,...) Und die Demo Vorstellungen ein simples
-Beispiel benutzend statische #Initialisierung.
+Um zu vermeiden, dass viele Parameter für einen Jobstart angegeben werden
+müssen, kann eine `JobDescription` erstellt und in ein Job-Repository eingefügt
+werden, wie in dieser Demo gezeigt. Beachten Sie, dass die Ausführung von Jobs
+unter dem Namen ihrer `JobDescription` nur funktioniert, nachdem die
+`JobDescription` zum Repository hinzugefügt wurde. Dies kann auf verschiedene
+Weise erfolgen (StartEventBean, statische Funktionen, ...), und die Demo zeigt
+ein einfaches Beispiel mit statischer Initialisierung.
 
-### Parallele Tasks
+### Parallele Aufgaben
 
-Die parallelen Tasks Muster ist gestaltet zu fertigbringen eine dynamische
-Nummer von simultan Tasks. Die Task Gruppe ist #zuweisen ein einmaliges id und
-die individuellen Tasks sind gestartet #bei einem Signal. Das einmaliges id ist
-nachher benutzt zu melden das Ende von alle Tasks und/oder zu streichen Tasks ob
-den Administrator beschließt.
+Das parallele Aufgabenmuster dient zur Verwaltung einer dynamischen Anzahl
+gleichzeitiger Aufgaben. Der Aufgabengruppe wird eine eindeutige ID zugewiesen,
+und die einzelnen Aufgaben werden durch ein Signal gestartet. Die eindeutige ID
+wird später verwendet, um das Ende aller Aufgaben zu signalisieren und/oder
+Aufgaben abzubrechen, wenn der Administrator dies beschließt.
 
-Das eingeschlossen Demo bebildert eine praktische Nutzung Fall:
+Die beigefügte Demo veranschaulicht einen praktischen Anwendungsfall:
 
-* Ein hauptsächlicher Arbeitsgang schafft ein einmaliges id für die Task Gruppe
-  und sendet ein Signal zu auslösen #mehrere parallelen Tasks.
-* Diese Tasks exekutieren zugleich, spielend real-Welt Arbeitspensen.
-* Der hauptsächliche Arbeitsgang wartet auf alle Tasks zu beenden oder erlauben
-  #ein admin zu Sprung starb ab Tasks via #ein admin Task Schnittstelle.
+* Ein Hauptprozess erstellt eine eindeutige ID für die Aufgabengruppe und sendet
+  ein Signal, um mehrere parallele Aufgaben auszulösen.
+* Diese Aufgaben werden gleichzeitig ausgeführt und simulieren reale
+  Arbeitslasten.
+* Der Hauptprozess wartet, bis alle Aufgaben abgeschlossen sind, oder ermöglicht
+  es einem Administrator, über eine Admin-Aufgabenschnittstelle festgefahrene
+  Aufgaben zu überspringen.
 
-In dieser Demo, jeder Task #bekannt geben es ist "direkt FERTIGER" Zustand in
-einem Task #benutzerdefiniert Feld. Wann ein Task ist beendet, es überprüft ob
-alle sind beendet anderen Tasks ebenso mal einfach zählend die Nummer Tasks in
-der gängigen Gruppe. In real Wort Szenarios, dienstliche Objekte dürfen die
-Summe fertig Staat oder More vertreten vielschichtiges Handing nach beenden darf
-sein bedürft (#z.B. streichen von Tasks punkto einem dienstlichen Zustand) und
-#deshalb zu sein die Muster Notwendigkeiten adaptiert zu euren Forderungen.
+In dieser Demo wird jeder Status „FINISHED” direkt in einem benutzerdefinierten
+Feld der Aufgabe angezeigt. Wenn eine Aufgabe abgeschlossen ist, wird überprüft,
+ob auch alle anderen Aufgaben abgeschlossen sind, indem einfach die Anzahl der
+Aufgaben in der aktuellen Gruppe gezählt wird. In realen Szenarien können
+Geschäftsobjekte den Gesamtstatus „abgeschlossen” darstellen, oder es kann eine
+komplexere Bearbeitung nach Abschluss erforderlich sein (z. B. Stornierung von
+Aufgaben aufgrund einer Geschäftsbedingung), sodass das Muster an Ihre
+Anforderungen angepasst werden muss.
 
-![Image](images/parallel-tasks.png)
-
-
-### Platzhalter Evaluation
-
-Benutz dieses einfaches ReplacementService direkt in eurem Projekt oder ebenso
-zu implementieren einen Start euren eigenen Text-basisbezogene #Ort-Fassung
-Auswechselung.
-
-![Image](images/placeholder-demo.png)
-
-Nach klicken "#Austauschen" den folgenden Text hat gewesen generiert:
-
-![Image](images/replace-text.png)
-
-Noten:
-
-* #Ivy erlaubt die Nutzung Platzhalter oder #skripten #ausgeben schon in gewiss
-  Elemente.
-* DocFactory Und Aspose implementieren mergefields oder Schnurrbart Platzhalter
-  in Wort Dateien.
-* #Existierend #Java-basisbezogene Platzhalter Bibliotheken können sein zugefügt
-  zu einem Efeu projiziert.
-
-### Primefaces Extensionen
-
-Benutz diese Beispiele zu sehen wie Primefaces Dinge können sein angepasst
-benutzen die Primefaces Kunden-unterstützen API von Dinge. Diese Demonstration
-bebildert wie die Funktionalität zu erweitern von die PrimeFaces InputText Ding
-in zwei Wege: Mal frischen die Logik von seinen #existierend Methoden und mal
-hereinbringen neue Methoden zu dem Ding.
-
-![Image](images/primefaces-extensions.png)
+![Bild](images/parallel-tasks.png)
 
 
-### Bestätigung
+### Platzhalterauswertung
 
-Das Bestätigung Muster Vorstellungen einige typische Bestätigung Szenarios für
+Verwenden Sie diesen einfachen ReplacementService direkt in Ihrem Projekt oder
+als Ausgangspunkt für die Implementierung Ihres eigenen textbasierten
+Platzhalter-Ersatzes.
 
-* Ein simples Feld bedürft Bestätigung
-* Ein Feld Wert Bestätigung
-* Ein multi-Feld Bestätigung mit Model Vermessung und Server Hang Logik
+![Bild](images/placeholder-demo.png)
 
-  Einfache Bestätigung:\
-  ![Image](images/basic-validation.png)
+Nach dem Klicken auf „Ersetzen” wurde der folgende Text generiert:
 
-#### Fertiggebracht Bohnen
+![Bild](images/replace-text.png)
 
-Das fertiggebracht Bohne `Meldungen` sind benutzt da einem eleganten Weg zu
-re-benutzt #benutzerdefiniert CMS Meldungen für mehrfach Felder. Das
-fertiggebracht Bohne `Konstanten` sind benutzt da einem eleganten Weg zu
-re-Nutzung Projekt Konstanten in dem Code und herein dem UI.
+Hinweise:
 
-### Reißverschluss Demo
+* Ivy erlaubt die Verwendung von Platzhaltern oder Skriptausgaben bereits in
+  bestimmten Elementen.
+* DocFactory und Aspose implementieren Mergefields oder Mustache-Platzhalter in
+  Word-Dateien.
+* Bestehende Java-basierte Platzhalterbibliotheken können zu einem Ivy-Projekt
+  hinzugefügt werden.
 
-Diese Demo zeigt ein Beispiel von wie zu benutzen den Reißverschluss
-Charakterzug.
+### Primefaces-Erweiterungen
 
-Du kannst Dateien von eurem Computer #hochladen. Sie wollen sein verarbeitet und
-automatisch zugefügt zu einem #existierend Reißverschluss Datei. Ob keine
-REIßVERSCHLUSS Datei existiert, ein neues will #man sein geschafft.\
-Klick den #Herunterladen Knopf zu herunterladen die REIßVERSCHLUSS Datei zügelnd
-alle die Dateien #hochladen du.\
-Du kannst auch klicken "Auspacken" zu gewinnen alle die Dateien zu eurem lokalen
-Designer Ordner.
+Anhand dieser Beispiele können Sie sehen, wie Primefaces-Widgets mithilfe der
+clientseitigen API von Primefaces angepasst werden können. Diese Demonstration
+veranschaulicht, wie die Funktionalität des PrimeFaces InputText-Widgets auf
+zwei Arten verbessert werden kann: durch Verfeinerung der Logik der vorhandenen
+Methoden und durch Einführung neuer Methoden für das Widget.
 
-![Image](images/zip-demo.jpg)
+![Bild](images/primefaces-extensions.png)
 
-### #PDF Beschauer Demo
 
-Das #hochladen Dokumente sind gelagert in dem Gedächtnis und gezeigt in einem
-Tisch. #Im Fall lädt herunter/ladet herunter es oder #gezeigt, der #PDF Inhalt
-ist geströmt zu das #entsprechend PrimeFaces Komponente.
+### Validierung
 
-Zu zeigen das #PDF, zwei verschiedene Komponenten sind demonstriert:
-* Dokument Beschauer
+Das Validierungsmuster zeigt einige typische Validierungsszenarien für
+
+* Eine einfache Feldvalidierung ist erforderlich.
+* Eine Feldwertvalidierung
+* Eine Multi-Feld-Validierung mit Modellzuordnung und serverseitiger Logik.
+
+  Grundlegende Validierung:\
+  ![Bild](images/basic-validation.png)
+
+#### Verwaltete Beans
+
+Die verwaltete Bean „ `-messages”` wird verwendet, um benutzerdefinierte
+CMS-Meldungen für mehrere Felder auf elegante Weise wiederzuverwenden. Die
+verwaltete Bean „ `-constants”` wird verwendet, um Projektkonstanten im Code und
+in der Benutzeroberfläche auf elegante Weise wiederzuverwenden.
+
+### Zip-Demo
+
+Diese Demo zeigt ein Beispiel für die Verwendung der Zip-Funktion.
+
+Sie können Dateien von Ihrem Computer hochladen. Diese werden verarbeitet und
+automatisch zu einer bestehenden ZIP-Datei hinzugefügt. Wenn keine ZIP-Datei
+vorhanden ist, wird eine neue erstellt.\
+Klicken Sie auf die Schaltfläche „Herunterladen“, um die ZIP-Datei mit allen von
+Ihnen hochgeladenen Dateien herunterzuladen.\
+Sie können auch auf „Entpacken“ klicken, um alle Dateien in Ihren lokalen
+Designer-Ordner zu extrahieren.
+
+![Bild](images/zip-demo.jpg)
+
+### PDF-Viewer-Demo
+
+Die hochgeladenen Dokumente werden im Speicher abgelegt und in einer Tabelle
+angezeigt. Beim Herunterladen oder Anzeigen wird der PDF-Inhalt an die
+entsprechende PrimeFaces-Komponente gestreamt.
+
+Um die PDF-Datei anzuzeigen, werden zwei verschiedene Komponenten demonstriert:
+* Dokument-Viewer
 * Medien
 
-Der Dokument Beschauer Komponente ist verfügbar wie eine PrimeFaces Extension,
-#wohingegen ist #einschließen der Medien Charakterzug #großteils PrimeFaces
-Päckchen. Die Charakterzüge und UX von beiden Komponenten sind verschieden.
-#Priorisieren benutzen Medien über Dokument Beschauer, weil exekutieren Medien
-schneller. In Fälle #wo möchtest du benutzen #mehr Charakterzüge, wie bearbeiten
-Dokumente, dann Nutzung Dokument Beschauer.
+Die Komponente „Document Viewer” ist als PrimeFaces-Erweiterung verfügbar,
+während die Medienfunktion im Hauptpaket von PrimeFaces enthalten ist. Die
+Funktionen und die Benutzererfahrung beider Komponenten unterscheiden sich.
+Verwenden Sie vorrangig „Media” anstelle von „Document Viewer”, da „Media”
+schneller ausgeführt wird. Wenn Sie weitere Funktionen nutzen möchten, z. B. das
+Bearbeiten von Dokumenten, verwenden Sie „Document Viewer”.
 
-#PDF Beschauer Demo: ![Image](images/pdf-viewer-demo.jpg)
+PDF-Viewer-Demo: ![Bild](images/pdf-viewer-demo.jpg)
 
-### Wartend Ereignis
+### Warteereignis
 
-Dieses Modul demonstriert ein technisches Muster für bedienen asynchrone
-Arbeitsgang Fortsetzung benutzend zwischenzeitliche Ereignisse. Es schließt ein
-zwei primären Arbeitsgang Einträge: **startWaiting**, Welcher läuft an einen
-Arbeitsgang und unterbricht es an einer #abgesteckt Wartezeit Staat, und
-**fireEvent**, welcher löst aus mal die Fortsetzung #referenzieren ein
-#Spezifikum **Ereignis ID** — ein #stichprobenweise generierte UUID.
+Dieses Modul demonstriert ein technisches Muster für die Handhabung der
+asynchronen Prozessfortsetzung unter Verwendung von Zwischenereignissen. Es
+umfasst zwei primäre Prozesseinträge: **startWaiting**, der einen Prozess
+initiiert und ihn in einem definierten Wartezustand unterbricht, und
+**fireEvent**, der die Fortsetzung auslöst, indem er auf eine bestimmte
+**Event-ID** – eine zufällig generierte UUID – verweist.
 
-Außer innerparteilich Aufruf, die Demo legt dar einen erholsamen Endpunkt
-('/#Bedienen/feuert/{eventId}s) jener aktiviert externe Systeme oder Bedienungen
-zu fortfahren mal #abgehängt Arbeitsgänge herausgeben ein simples HTTP BEKOMMT
-Bitte. Dies ist #genauer nützlich in Integration Szenarios #wo muss der
-Arbeitsgang warten auf einen Rückruf, ein externes System Antwort, oder ein
-Ereignis-#getrieben Signal.
+Zusätzlich zur internen Aufrufung stellt die Demo einen RESTful-Endpunkt
+(„/waiting/fire/{eventId}“) bereit, über den externe Systeme oder Dienste
+angehaltene Prozesse durch eine einfache HTTP-GET-Anfrage fortsetzen können.
+Dies ist besonders nützlich in Integrationsszenarien, in denen der Prozess auf
+einen Rückruf, eine Antwort eines externen Systems oder ein ereignisgesteuertes
+Signal warten muss.
 
-Die Lösung ist leichtgewichtig, stateless, und sicher anpassungsfähig zu
-verschiedene Geschäft Forderungen.
+Die Lösung ist leichtgewichtig, zustandslos und lässt sich leicht an
+verschiedene Geschäftsanforderungen anpassen.
 
-![Image](images/waiting-event-demo.jpg)
+![Bild](images/waiting-event-demo.jpg)
 
 ## Einrichtung
 
-Diese Komponente ist ein Aufbewahrungsort für kostbar Muster und Demos.
-Typischerweise müssen sie sein adaptiert zu eure Projekt Situation. Bitte kopier
-und adaptieren das pattens und Beispiele dass du möchtest benutzen direkt zu
-eurem Projekt.
+Diese Komponente ist ein Repository für wertvolle Muster und Demos. In der Regel
+müssen diese an Ihre Projektsituation angepasst werden. Bitte kopieren Sie die
+Muster und Beispiele, die Sie verwenden möchten, direkt in Ihr Projekt und
+passen Sie sie dort an.
 
-### Admin Task
+### Admin-Aufgabe
 
-Das AdminTask zeigt einen Begriff und muss sein adaptiert zu euren
-Notwendigkeiten und Gebrauch-Orte weil hängt ab es auf eurem Arbeitsgang. Die
-verfügbaren Knöpfe können sein ausgewählt auf einem Fall-mal-Fall Basis und du
-musst denken was eine "Wiederholung" oder eine "Überhört" wollte bedeuten in
-eurem Kontext oder ob du beschließt zu erlauben diese Knöpfe es alle. Aus der
-Schachtel, der AdminTask bedient "Nachher Kontrolle" bei #sich (mal gerade
-streichen aus dem Task). Zu benutzen das AdminTask in euren Projekten, kopiert
-das Zwiegespräch zu eurem Projekt, pass an ihm zu euren Notwendigkeiten und
-benutzen ihm überhaupt Hintergrund Aktivitäten dass konnten scheitern und
-bedürfen Administrator Pflege. Die Demo Vorstellungen eine typische Situation
-und ein simples Beispiel von bedienen "Wiederholung" und "Überhören".
+Die AdminTask zeigt ein Konzept und muss an Ihre Bedürfnisse und Einsatzorte
+angepasst werden, da sie von Ihrem Prozess abhängt. Die verfügbaren
+Schaltflächen können von Fall zu Fall ausgewählt werden, und Sie müssen
+überlegen, was „Wiederholen” oder „Ignorieren” in Ihrem Kontext bedeuten würde
+oder ob Sie diese Schaltflächen überhaupt zulassen möchten. Standardmäßig hat
+die AdminTask „Später prüfen” selbstständig verarbeitet (indem sie die Aufgabe
+einfach abgebrochen hat). Um die AdminTask in Ihren Projekten zu verwenden,
+kopieren Sie den Dialog in Ihr Projekt, passen Sie ihn an Ihre Bedürfnisse an
+und verwenden Sie ihn bei allen Hintergrundaktivitäten, die fehlschlagen könnten
+und die Aufmerksamkeit des Administrators erfordern. Die Demo zeigt eine
+typische Situation und ein einfaches Beispiel für die Verwendung von
+„Wiederholen” und „Ignorieren”.
 
-Note, dass der Task und Details Parameter von der AdminTask sollte sein ständig
-(#d.h. haben die ständige Fahne Apparat in #eure #Daten-#eingruppieren). Dies
-ist #damit nötig die Werte wollen sein verfügbar, als die Admin öffnen nachher
-den Task.
+Beachten Sie, dass die Parameter „task” und „details” von AdminTask persistent
+sein sollten (d. h. das Persistenzflag sollte in Ihrer Datenklasse gesetzt
+sein). Dies ist erforderlich, damit die Werte verfügbar sind, wenn der
+Administrator die Aufgabe später öffnet.
 
-Die Demo assignes der Task zu den Rolle Administrator und kategorisiert wie den
-Task den ADMIN Kategorie. Wechsel ihm zu euren Notwendigkeiten.
+Die Demo weist die Aufgabe der Rolle „Administrator” zu und kategorisiert die
+Aufgabe als ADMIN-Kategorie. Passen Sie dies nach Bedarf an.
 
-### Primefaces Extensionen
+### Primefaces-Erweiterungen
 
-Diese Demonstration bebildert wie die Funktionalität zu erweitern von die
-PrimeFaces InputText Ding in zwei Wege:
+Diese Demonstration veranschaulicht, wie Sie die Funktionalität des PrimeFaces
+InputText-Widgets auf zwei Arten verbessern können:
 
-* Frischend die Logik von #existierend Methoden
-* #Hereinbringen neue Ding Methoden
+* Verfeinerung der Logik bestehender Methoden
+* Einführung neuer Widget-Methoden
 
-Ob du wolltest mögen zu erweitern oder verbessern die Funktionalität von eine
-Primefaces Komponente, folg diese Stufen:
+Wenn Sie die Funktionalität einer Primefaces-Komponente erweitern oder
+verbessern möchten, gehen Sie wie folgt vor:
 
-* Schaff eine Extension Javascript an <PROJECT>/webContent/js/MyExtension.js
-* Benutz den Kunden API Dokumentation von Primefaces.
-* In euren Seiten zufügen ein Band zu eure JavaScript: <h:outputscript
-  name="js/MyExtension.js"></h:outputscript>
+* Erstellen Sie eine Javascript-Erweiterung unter
+  <PROJECT>/webContent/js/MyExtension.js.
+* Verwenden Sie die Client-API-Dokumentation von Primefaces.
+* Fügen Sie in Ihren Seiten einen Link zu Ihrem JavaScript hinzu:
+  <h:outputscript name="js/MyExtension.js"></h:outputscript>
 
-Ob du möchtest direkt Benehmen austauschen von #existierend Dinge, du musst
-finden zuerst das originales Javascript Code von eurem Ding:
+Wenn Sie das Verhalten bestehender Widgets direkt ersetzen möchten, müssen Sie
+zunächst den ursprünglichen Javascript-Code Ihres Widgets finden:
 
-* Finde das zurzeit benutzt Primefaces Bibliothek. Du solltest finden es an
-  <DESIGNER>/webapps/Efeu/WEB-INF/lib/primefaces...Gefäß
-* Pack aus diese Gefäß Datei (es ist eine Reißverschluss Datei), und finden das
-  originales javascript Quelle von der Komponente möchtest du wechseln
-  (typischerweise an <JAR>/META-INF/Ressourcen/primefaces)
+* Suchen Sie die aktuell verwendete Primefaces-Bibliothek. Sie sollten sie unter
+  <DESIGNER>/webapps/ivy/WEB-INF/lib/primefaces...jar finden.
+* Entpacken Sie diese JAR-Datei (es handelt sich um eine ZIP-Datei) und suchen
+  Sie die ursprüngliche JavaScript-Quelle der Komponente, die Sie ändern möchten
+  (in der Regel unter <JAR>/META-INF/resources/primefaces).
 
-**Note**: Ob du modifizierst die Logik von einer Komponente, du solltest seine
-Funktionalität mit jedem Efeu überprüfen verbessert, da diese Updates
-einschließen oft PrimeFaces verbessern jener konnte resultieren in
-Kompatibilität Sachverhalte.
+***Hinweis***: Wenn Sie die Logik einer Komponente ändern, sollten Sie deren
+Funktionalität bei jedem Ivy-Update überprüfen, da diese Updates häufig
+PrimeFaces-Updates enthalten, die zu Kompatibilitätsproblemen führen können.
 
 
 
