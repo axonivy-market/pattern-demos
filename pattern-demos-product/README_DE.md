@@ -324,7 +324,7 @@ verschiedene Geschäftsanforderungen anpassen.
 
 ![Bild](images/waiting-event-demo.jpg)
 
-## Einrichtung
+## Setup
 
 Diese Komponente ist ein Repository für wertvolle Muster und Demos. In der Regel
 müssen diese an Ihre Projektsituation angepasst werden. Bitte kopieren Sie die
