@@ -137,7 +137,7 @@ public class ZipService {
 			zipEntry.setSize(inputStream.available());
 
 			zos.putNextEntry(zipEntry);
-			copy(inputStream, zos);
+			inputStream.transferTo(zos);
 
 			zos.closeEntry();
 		}

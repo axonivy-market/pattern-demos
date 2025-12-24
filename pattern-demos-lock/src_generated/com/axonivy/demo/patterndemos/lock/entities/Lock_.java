@@ -1,21 +1,53 @@
 package com.axonivy.demo.patterndemos.lock.entities;
 
+import com.axonivy.utils.persistence.beans.AuditableIdEntity_;
+import jakarta.persistence.metamodel.EntityType;
+import jakarta.persistence.metamodel.SingularAttribute;
+import jakarta.persistence.metamodel.StaticMetamodel;
 import java.time.Instant;
-import javax.annotation.Generated;
-import javax.persistence.metamodel.SingularAttribute;
-import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
+/**
+ * Static metamodel for {@link com.axonivy.demo.patterndemos.lock.entities.Lock}
+ **/
 @StaticMetamodel(Lock.class)
-public abstract class Lock_ extends com.axonivy.utils.persistence.beans.AuditableIdEntity_ {
+public abstract class Lock_ extends AuditableIdEntity_ {
 
-	public static volatile SingularAttribute<Lock, String> name;
-	public static volatile SingularAttribute<Lock, Instant> validUntil;
-	public static volatile SingularAttribute<Lock, Boolean> locked;
-
+	
+	/**
+	 * @see #name
+	 **/
 	public static final String NAME = "name";
-	public static final String VALID_UNTIL = "validUntil";
+	
+	/**
+	 * @see #locked
+	 **/
 	public static final String LOCKED = "locked";
+	
+	/**
+	 * @see #validUntil
+	 **/
+	public static final String VALID_UNTIL = "validUntil";
+
+	
+	/**
+	 * Static metamodel type for {@link com.axonivy.demo.patterndemos.lock.entities.Lock}
+	 **/
+	public static volatile EntityType<Lock> class_;
+	
+	/**
+	 * Static metamodel for attribute {@link com.axonivy.demo.patterndemos.lock.entities.Lock#name}
+	 **/
+	public static volatile SingularAttribute<Lock, String> name;
+	
+	/**
+	 * Static metamodel for attribute {@link com.axonivy.demo.patterndemos.lock.entities.Lock#locked}
+	 **/
+	public static volatile SingularAttribute<Lock, Boolean> locked;
+	
+	/**
+	 * Static metamodel for attribute {@link com.axonivy.demo.patterndemos.lock.entities.Lock#validUntil}
+	 **/
+	public static volatile SingularAttribute<Lock, Instant> validUntil;
 
 }
 
