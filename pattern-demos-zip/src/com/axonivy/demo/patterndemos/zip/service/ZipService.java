@@ -2,7 +2,6 @@ package com.axonivy.demo.patterndemos.zip.service;
 
 import static java.nio.file.FileSystems.newFileSystem;
 import static org.apache.commons.collections4.CollectionUtils.isEmpty;
-import static org.hibernate.engine.jdbc.StreamUtils.copy;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -137,7 +136,7 @@ public class ZipService {
 			zipEntry.setSize(inputStream.available());
 
 			zos.putNextEntry(zipEntry);
-			copy(inputStream, zos);
+			inputStream.transferTo(zos);
 
 			zos.closeEntry();
 		}
