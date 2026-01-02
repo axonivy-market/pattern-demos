@@ -9,7 +9,7 @@
   </parent>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-pdfviewer</artifactId>
-  <version>13.2.0</version>
+  <version>13.2.1-SNAPSHOT</version>
   <packaging>iar</packaging>
   <dependencies>
     <dependency>
