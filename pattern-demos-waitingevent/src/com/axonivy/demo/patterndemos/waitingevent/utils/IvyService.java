@@ -1,7 +1,5 @@
 package com.axonivy.demo.patterndemos.waitingevent.utils;
 
-import org.apache.commons.collections.CollectionUtils;
-
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.workflow.query.IntermediateEventQuery;
 
@@ -32,6 +30,6 @@ public class IvyService {
 		intermediateEvents.forEach(intermediateEvent -> Ivy.wf()
 				.fireIntermediateEvent(intermediateEvent.getIntermediateEventElement(), eventId, null, null));
 
-		return CollectionUtils.isNotEmpty(intermediateEvents);
+		return !intermediateEvents.isEmpty();
 	}
 }

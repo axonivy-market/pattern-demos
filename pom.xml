@@ -3,31 +3,31 @@
 	<groupId>com.axonivy.demo.patterndemos</groupId>
 	<name>pattern-demos</name>
 	<artifactId>pattern-demos-modules</artifactId>
-	<version>12.0.3-SNAPSHOT</version>
+	<version>13.2.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<modules>
-		<module>${project.name}-admintask</module>
-		<module>${project.name}-components</module>
-		<module>${project.name}-job</module>
-		<module>${project.name}-lock</module>
-		<module>${project.name}-paralleltasks</module>
-		<module>${project.name}-placeholder</module>
-		<module>${project.name}-primefacesextensions</module>
-		<module>${project.name}-product</module>
-		<module>${project.name}-test</module>
-		<module>${project.name}-validation</module>
-		<module>${project.name}-zip</module>
-		<module>${project.name}-pdfviewer</module>
-		<module>${project.name}-waitingevent</module>
+		<module>pattern-demos-admintask</module>
+		<module>pattern-demos-components</module>
+		<module>pattern-demos-job</module>
+		<module>pattern-demos-lock</module>
+		<module>pattern-demos-paralleltasks</module>
+		<module>pattern-demos-placeholder</module>
+		<module>pattern-demos-primefacesextensions</module>
+		<module>pattern-demos-product</module>
+		<module>pattern-demos-test</module>
+		<module>pattern-demos-validation</module>
+		<module>pattern-demos-zip</module>
+		<module>pattern-demos-pdfviewer</module>
+		<module>pattern-demos-waitingevent</module>
 	</modules>
 
 	<scm>
 		<developerConnection>
-			scm:git:https://github.com/axonivy-market/${project.name}.git</developerConnection>
+			scm:git:https://github.com/axonivy-market/pattern-demos.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
