@@ -1,1 +1,1 @@
-admintask, patterndemos
+admintask, patterndemos, mergefields, Primefaceextension, Paralleltasks, backgroundjobs
