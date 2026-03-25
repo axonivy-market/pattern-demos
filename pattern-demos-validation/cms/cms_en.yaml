@@ -15,7 +15,7 @@ Dialogs:
               apply: Apply (after validation)
               buttonsDescription: |
                 <p><b>Apply</b> accepts the field values and triggers the complete validation. This typically results in a save operation, continues the process and ensures that all required values have been filled correctly.<p/>
-                <p><b>Intermdiate Save</b> accepts the field values but does not validate them. This can be useful in large dialogs to save the intermediate values without being forced to fill in all values correctly. The process typically remains in the current task.</p>
+                <p><b>Intermediate Save</b> accepts the field values but does not validate them. This can be useful in large dialogs to save the intermediate values without being forced to fill in all values correctly. The process typically remains in the current task.</p>
                 <p><b>Cancel</b> does not perform a validation and ignores field values.<p/>
               cancel: Cancel
               description: Example of server side validation.

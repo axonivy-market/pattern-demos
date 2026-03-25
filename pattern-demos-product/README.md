@@ -235,7 +235,7 @@ Note, that the task and details parameter of the AdminTask should be persistent 
 flag set in your data-class). This is necessary so that the values will be available, when the Admin opens
 the task later.
 
-The demo assignes the task to the role Administrator and categorizes the task as the ADMIN category.
+The demo assigns the task to the role Administrator and categorizes the task as the ADMIN category.
 Change it to your needs.
 
 ### Primefaces Extensions 

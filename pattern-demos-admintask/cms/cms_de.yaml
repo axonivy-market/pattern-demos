@@ -15,8 +15,8 @@ Dialogs:
               done: Erledigt
               doneTooltip: Erledigt, im Prozess weitergehen
               ignore: Ignorieren
-              ignoreConfirmatationHeader: Weiter?
-              ignoreConfirmatationMessage: Wollen Sie wirklich ignorieren und im Prozess weitergehen?
+              ignoreConfirmationHeader: Weiter?
+              ignoreConfirmationMessage: Wollen Sie wirklich ignorieren und im Prozess weitergehen?
               ignoreTooltip: Ignorieren und im Prozess weitergehen
               pageTitle: Admin Task
               retry: Erneut versuchen
