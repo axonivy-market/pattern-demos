@@ -351,8 +351,8 @@ sein sollten (d. h. das Persistenzflag sollte in Ihrer Datenklasse gesetzt
 sein). Dies ist erforderlich, damit die Werte verfügbar sind, wenn der
 Administrator die Aufgabe später öffnet.
 
-Die Demo weist die Aufgabe der Rolle „Administrator” zu und kategorisiert die
-Aufgabe als ADMIN-Kategorie. Passen Sie dies nach Bedarf an.
+The demo assigns the task to the role Administrator and categorizes the task as
+the ADMIN category. Change it to your needs.
 
 ### Primefaces-Erweiterungen
 
