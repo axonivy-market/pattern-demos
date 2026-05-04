@@ -16,6 +16,15 @@ In detail, you will find solutions to the following typical problems:
 - **PDFViewer**: This demo shows how to upload and view PDF file.
 - **Waiting Event**: This demo shows how to interrupt a process execution and continue when an external event to occur.
 
+### Key features
+
+- Practical, reuse-first patterns for robust background processing and admin-driven error recovery.
+- Reusable UI component controllers that keep dialog and page state synchronized across components.
+- A lightweight Locking Service to prevent concurrent executions and avoid race conditions.
+- A flexible Job pattern for scheduled and manual jobs with admin-reviewed retry workflows.
+- Patterns for orchestrating parallel tasks and for interrupting/resuming processes via external events.
+- Utilities and examples including placeholder replacement, PDF viewing, ZIP handling, and PrimeFaces extension examples.
+
 ## Demo
 
 ### Admin Task
@@ -218,6 +227,10 @@ The solution is lightweight, stateless, and easily adaptable to various business
 
 ## Setup
 
+```
+@variables.yaml@
+```
+
 This component is a repository for valuable patterns and demos. Typically they must be adapted to your
 project situation. Please copy and adapt the pattens and examples that you want to use directly to your project.
 
@@ -259,8 +272,153 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 
 ***Note***: If you modify the logic of a component, you should verify its functionality with each Ivy update, as these updates often include PrimeFaces updates that could result in compatibility issues.
 
+## Components
 
+- **pattern-demos-admintask**: AdminTask pattern for error handling and manual interventions.
+- **pattern-demos-lock**: Locking utilities to avoid concurrent executions.
+- **pattern-demos-job**: Job scheduling and resilient job execution patterns.
+- **pattern-demos-paralleltasks**: Patterns for running and coordinating parallel tasks.
+- **pattern-demos-pdfviewer**, **pattern-demos-zip**, **pattern-demos-placeholder**: small utilities and UI helpers.
+ 
+### Callable Sub Processes
 
+- `pattern-demos-job/processes/Functional Processes/Job.p.json`
+  - **Signature:** `runJob(String, Boolean)`
+  - **Inputs:**
+    - `jobName` (String) — the job identifier to run
+    - `manual` (Boolean) — when true, run the job in manual mode
+  - **Notes:** the job callable sub triggers an Admin Task on errors or manual starts and passes results via `out.result`.
 
+### Form components
 
+- `pattern-demos-admintask/src_hd/com/axonivy/demo/patterndemos/admintask/AdminTask/AdminTask.xhtml`
+  - **Purpose:** Dialog to inspect error details and let an administrator choose an action (Retry / Ignore / Done / Check Later).
+  - **Main actions:** shows task title and details, conditionally renders buttons driven by `AdminTaskCtrl`, and invokes listeners such as `logic.ignore`, `logic.done`, `logic.retry`, and `ivyWorkflowView.cancelToHome()`.
 
+- `pattern-demos-admintask/src/com/axonivy/demo/patterndemos/admintask/ui/AdminTaskCtrl.java`
+  - **Purpose:** server-side controller that provides button visibility and binds task/details parameters for the dialog.
+
+### Maven artifacts
+
+Artifacts declared in `pattern-demos-product/product.json` (version derived from repository `pom.xml`: `13.2.1`):
+
+1. com.axonivy.demo.patterndemos:pattern-demos-admintask (iar)
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-admintask</artifactId>
+  <version>13.2.1</version>
+  <type>iar</type>
+</dependency>
+```
+
+2. com.axonivy.demo.patterndemos:pattern-demos-components (iar)
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-components</artifactId>
+  <version>13.2.1</version>
+  <type>iar</type>
+</dependency>
+```
+
+3. com.axonivy.demo.patterndemos:pattern-demos-job (iar)
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-job</artifactId>
+  <version>13.2.1</version>
+  <type>iar</type>
+</dependency>
+```
+
+4. com.axonivy.demo.patterndemos:pattern-demos-lock (iar)
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-lock</artifactId>
+  <version>13.2.1</version>
+  <type>iar</type>
+</dependency>
+```
+
+5. com.axonivy.demo.patterndemos:pattern-demos-paralleltasks (iar)
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-paralleltasks</artifactId>
+  <version>13.2.1</version>
+  <type>iar</type>
+</dependency>
+```
+
+6. com.axonivy.demo.patterndemos:pattern-demos-placeholder (iar)
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-placeholder</artifactId>
+  <version>13.2.1</version>
+  <type>iar</type>
+</dependency>
+```
+
+7. com.axonivy.demo.patterndemos:pattern-demos-primefacesextensions (iar)
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-primefacesextensions</artifactId>
+  <version>13.2.1</version>
+  <type>iar</type>
+</dependency>
+```
+
+8. com.axonivy.demo.patterndemos:pattern-demos-pdfviewer (iar)
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-pdfviewer</artifactId>
+  <version>13.2.1</version>
+  <type>iar</type>
+</dependency>
+```
+
+9. com.axonivy.demo.patterndemos:pattern-demos-validation (iar)
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-validation</artifactId>
+  <version>13.2.1</version>
+  <type>iar</type>
+</dependency>
+```
+
+10. com.axonivy.demo.patterndemos:pattern-demos-zip (iar)
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-zip</artifactId>
+  <version>13.2.1</version>
+  <type>iar</type>
+</dependency>
+```
+
+11. com.axonivy.demo.patterndemos:pattern-demos-waitingevent (iar)
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-waitingevent</artifactId>
+  <version>13.2.1</version>
+  <type>iar</type>
+</dependency>
+```
