@@ -274,151 +274,111 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 
 ## Components
 
-- **pattern-demos-admintask**: AdminTask pattern for error handling and manual interventions.
-- **pattern-demos-lock**: Locking utilities to avoid concurrent executions.
-- **pattern-demos-job**: Job scheduling and resilient job execution patterns.
-- **pattern-demos-paralleltasks**: Patterns for running and coordinating parallel tasks.
-- **pattern-demos-pdfviewer**, **pattern-demos-zip**, **pattern-demos-placeholder**: small utilities and UI helpers.
- 
-### Callable Sub Processes
-
-- `pattern-demos-job/processes/Functional Processes/Job.p.json`
-  - **Signature:** `runJob(String, Boolean)`
-  - **Inputs:**
-    - `jobName` (String) — the job identifier to run
-    - `manual` (Boolean) — when true, run the job in manual mode
-  - **Notes:** the job callable sub triggers an Admin Task on errors or manual starts and passes results via `out.result`.
-
 ### Form components
 
-- `pattern-demos-admintask/src_hd/com/axonivy/demo/patterndemos/admintask/AdminTask/AdminTask.xhtml`
-  - **Purpose:** Dialog to inspect error details and let an administrator choose an action (Retry / Ignore / Done / Check Later).
-  - **Main actions:** shows task title and details, conditionally renders buttons driven by `AdminTaskCtrl`, and invokes listeners such as `logic.ignore`, `logic.done`, `logic.retry`, and `ivyWorkflowView.cancelToHome()`.
-
-- `pattern-demos-admintask/src/com/axonivy/demo/patterndemos/admintask/ui/AdminTaskCtrl.java`
-  - **Purpose:** server-side controller that provides button visibility and binds task/details parameters for the dialog.
+#### ParentData
+- **Name Space**: com.axonivy.demo.patterndemos.Parent
+- **Component type**: HTML_DIALOG
+- **Parameter**:
+  - ctrl (com.axonivy.demo.patterndemos.ui.ParentCtrl)
 
 ### Maven artifacts
 
-Artifacts declared in `pattern-demos-product/product.json` (version derived from repository `pom.xml`: `13.2.1`):
-
-1. com.axonivy.demo.patterndemos:pattern-demos-admintask (iar)
-
+1. pattern-demos-admintask
 ```xml
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-admintask</artifactId>
-  <version>13.2.1</version>
   <type>iar</type>
 </dependency>
 ```
 
-2. com.axonivy.demo.patterndemos:pattern-demos-components (iar)
-
+2. pattern-demos-components
 ```xml
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-components</artifactId>
-  <version>13.2.1</version>
   <type>iar</type>
 </dependency>
 ```
 
-3. com.axonivy.demo.patterndemos:pattern-demos-job (iar)
-
+3. pattern-demos-job
 ```xml
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-job</artifactId>
-  <version>13.2.1</version>
   <type>iar</type>
 </dependency>
 ```
 
-4. com.axonivy.demo.patterndemos:pattern-demos-lock (iar)
-
+4. pattern-demos-lock
 ```xml
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-lock</artifactId>
-  <version>13.2.1</version>
   <type>iar</type>
 </dependency>
 ```
 
-5. com.axonivy.demo.patterndemos:pattern-demos-paralleltasks (iar)
-
+5. pattern-demos-paralleltasks
 ```xml
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-paralleltasks</artifactId>
-  <version>13.2.1</version>
   <type>iar</type>
 </dependency>
 ```
 
-6. com.axonivy.demo.patterndemos:pattern-demos-placeholder (iar)
-
+6. pattern-demos-placeholder
 ```xml
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-placeholder</artifactId>
-  <version>13.2.1</version>
   <type>iar</type>
 </dependency>
 ```
 
-7. com.axonivy.demo.patterndemos:pattern-demos-primefacesextensions (iar)
-
+7. pattern-demos-primefacesextensions
 ```xml
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-primefacesextensions</artifactId>
-  <version>13.2.1</version>
   <type>iar</type>
 </dependency>
 ```
 
-8. com.axonivy.demo.patterndemos:pattern-demos-pdfviewer (iar)
-
+8. pattern-demos-pdfviewer
 ```xml
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-pdfviewer</artifactId>
-  <version>13.2.1</version>
   <type>iar</type>
 </dependency>
 ```
 
-9. com.axonivy.demo.patterndemos:pattern-demos-validation (iar)
-
+9. pattern-demos-validation
 ```xml
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-validation</artifactId>
-  <version>13.2.1</version>
   <type>iar</type>
 </dependency>
 ```
 
-10. com.axonivy.demo.patterndemos:pattern-demos-zip (iar)
-
+10. pattern-demos-zip
 ```xml
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-zip</artifactId>
-  <version>13.2.1</version>
   <type>iar</type>
 </dependency>
 ```
 
-11. com.axonivy.demo.patterndemos:pattern-demos-waitingevent (iar)
-
+11. pattern-demos-waitingevent
 ```xml
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-waitingevent</artifactId>
-  <version>13.2.1</version>
   <type>iar</type>
 </dependency>
 ```
