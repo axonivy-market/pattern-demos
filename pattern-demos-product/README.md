@@ -274,6 +274,9 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 
 ## Components
 
+### Exposed CALLABLE_SUB processes
+No callable sub delivered by this extension.
+
 ### Form components
 
 #### ParentData
@@ -281,6 +284,9 @@ If you want to directly replace behaviour of existing widgets, you have to find 
 - **Component type**: HTML_DIALOG
 - **Parameter**:
   - ctrl (com.axonivy.demo.patterndemos.ui.ParentCtrl)
+
+### Open API resources
+No public OpenAPI specs delivered by this extension.
 
 ### Maven artifacts
 
@@ -382,3 +388,4 @@ If you want to directly replace behaviour of existing widgets, you have to find 
   <type>iar</type>
 </dependency>
 ```
+</dependency>
