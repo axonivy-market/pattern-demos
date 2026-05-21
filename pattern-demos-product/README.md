@@ -1,63 +1,87 @@
 # Pattern Demos
 
-A collection of Axon Ivy demo modules showcasing common integration and UI patterns such as admin tasks, parallel tasks, PDF viewer, form components, and more. Use these examples to learn patterns and adapt them into your own Axon Ivy projects.
-
-![Admin tasks](images/admin-tasks.png)
+Pattern Demos is a collection of reusable processes, dialogs, and code snippets designed to enhance Axon Ivy projects. These demos, such as Lock, Job, and Admin Task, provide adaptable patterns for common scenarios like task management and error handling, requiring customization to fit specific project needs. Ideal for developers, they offer a starting point to streamline implementation while leveraging additional infrastructure like database connections.
 
 ## Key features
 
-- Manage administrative background errors through a dedicated Admin Task dialog, enabling operators to inspect and retry failed jobs.
-- Provide reusable form components and dialogs that simplify UI development and improve user experience.
-- Demonstrate parallel task execution patterns to coordinate concurrent workflows reliably.
-- Integrate PDF viewing and document processing features for rich document handling in processes.
-- Include validation and placeholder components to streamline input handling and error cases.
-- Offer ready-to-import IAR artifacts so you can quickly add the demos to your workspace.
+1. Ready-to-use demo processes and dialogs to accelerate implementation and learning.
+2. Demonstrates job automation patterns (scheduled and manual) with admin task integration.
+3. Provides locking utilities and examples to avoid race conditions across processes.
+4. Reusable UI form components and dialogs for faster UX assembly.
+5. Examples for PDF viewing and ZIP file handling within Axon Ivy flows.
+6. Packaged Maven artifacts for easy import and modular deployment.
 
 ## Demo
 
-- No information was delivered for this section.
+Check the demo implementations provided across the modules. Each demo illustrates a focused scenario (Lock, Job, PDF Viewer, Zip, etc.) and can be run in a local Axon Ivy runtime.
 
 ### Demo workflows
 
-- No information was delivered for this section.
+#### Lock (pattern-demos-lock)
+
+##### Lock
+1. Launch the Lock demo from the demo menu.
+2. Click the button to acquire the demo lock.
+3. Observe the confirmation dialog showing the lock state.
+4. If the lock is already taken, the demo explains how to resolve it.
+
+##### Do Locked
+1. Start the Do Locked demo from the demo menu.
+2. The process attempts to acquire the lock and runs only when the lock is available.
+3. Observe the behaviour and the status dialog that shows whether the action succeeded.
+
+##### Unlock
+1. Launch the Unlock demo from the demo menu.
+2. Click to release the demo lock.
+3. Confirm the unlock status in the resulting dialog.
+
+#### Zip (pattern-demos-zip)
+
+##### Zip Demo
+1. Open the Zip demo dialog.
+2. Upload or select files to include in the archive.
+3. Click the download action to receive the zipped file.
 
 ## Setup
 
-- **Roles:** Administrator (configured in pattern-demos-admintask/config/roles.xml)
+- **Roles:** Everybody (configured in config/roles.xml)
+
 - **OpenAPI:** No public OpenAPI specs delivered by this extension.
 
 ### Variables
 
-```
-# yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/variables.json
-Variables:
-  com:
-    axonivy:
-      demo:
-        patterndemos:
-          admintask:
-            # Change value to false to avoid error and admin task in the demo.
-            forceError: true
-```
+- No variables were detected.
 
-- No information was delivered for this section.
+1. Import the product artifacts into your Axon Ivy workspace using the provided `product.json` installer (see `product.json` in this module).
+2. Build and deploy the required modules to your Axon Ivy engine (import the generated IARs or use the Maven-import installer included).
+3. Start the demo processes from the Demo menu in the runtime to explore behavior and UI dialogs.
 
 ## Components
 
-### Connector processes
+### Connector Processes
 
-- No information was delivered for this section.
+#### Job.p.json
 
-### Form components
+- **runJob(String jobName, Boolean manual) -> (none)**
+    - Input:
+        - `jobName` (String) - The name of the job to run
+        - `manual` (Boolean) - Whether this is a manual run
+    - Result:
+        - (none)
 
-#### AdminTask — Handle background errors and allow administrators to retry or ignore tasks
+### Form Components
 
-- **Namespace:** com.axonivy.demo.patterndemos.admintask.AdminTask
-- **Component type:** HTML_DIALOG
+#### ParentData — UI controller holder
+- **Namespace:** com.axonivy.demo.patterndemos.Parent
+- **Component type:** Data Class
 - **Fields:**
-   - `ctrl` (com.axonivy.demo.patterndemos.admintask.ui.AdminTaskCtrl) — Persistent controller with task details and UI state
-- **Where used:** AdminTaskDemo (pattern-demos-admintask/processes/AdminTaskDemo.p.json)
-- **Purpose:** Show an Admin Task dialog allowing administrators to inspect and handle errors from background processes.
+   - `ctrl` (com.axonivy.demo.patterndemos.ui.ParentCtrl) — controller instance (persistent)
+
+#### ChildData — UI controller holder
+- **Namespace:** com.axonivy.demo.patterndemos.components.Child
+- **Component type:** Data Class
+- **Fields:**
+   - `ctrl` (com.axonivy.demo.patterndemos.ui.components.ChildCtrl) — controller instance (persistent)
 
 ### Maven artifacts
 
@@ -122,61 +146,6 @@ Variables:
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-placeholder</artifactId>
-  <version>@version@</version>
-  <type>iar</type>
-</dependency>
-```
-
-7. pattern-demos-primefacesextensions
-
-```xml
-<dependency>
-  <groupId>com.axonivy.demo.patterndemos</groupId>
-  <artifactId>pattern-demos-primefacesextensions</artifactId>
-  <version>@version@</version>
-  <type>iar</type>
-</dependency>
-```
-
-8. pattern-demos-pdfviewer
-
-```xml
-<dependency>
-  <groupId>com.axonivy.demo.patterndemos</groupId>
-  <artifactId>pattern-demos-pdfviewer</artifactId>
-  <version>@version@</version>
-  <type>iar</type>
-</dependency>
-```
-
-9. pattern-demos-validation
-
-```xml
-<dependency>
-  <groupId>com.axonivy.demo.patterndemos</groupId>
-  <artifactId>pattern-demos-validation</artifactId>
-  <version>@version@</version>
-  <type>iar</type>
-</dependency>
-```
-
-10. pattern-demos-zip
-
-```xml
-<dependency>
-  <groupId>com.axonivy.demo.patterndemos</groupId>
-  <artifactId>pattern-demos-zip</artifactId>
-  <version>@version@</version>
-  <type>iar</type>
-</dependency>
-```
-
-11. pattern-demos-waitingevent
-
-```xml
-<dependency>
-  <groupId>com.axonivy.demo.patterndemos</groupId>
-  <artifactId>pattern-demos-waitingevent</artifactId>
   <version>@version@</version>
   <type>iar</type>
 </dependency>
