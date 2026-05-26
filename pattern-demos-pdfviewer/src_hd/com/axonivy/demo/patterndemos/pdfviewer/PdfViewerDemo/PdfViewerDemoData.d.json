@@ -1,15 +1,12 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "PdfViewerDemoData",
   "namespace" : "com.axonivy.demo.patterndemos.pdfviewer.PdfViewerDemo",
-  "isBusinessCaseData" : false,
   "fields" : [ {
     "name" : "ctrl",
-    "type" : "com.axonivy.demo.patterndemos.pdfviewer.ui.PdfViewerCtrl",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.demo.patterndemos.pdfviewer.ui.PdfViewerCtrl"
   }, {
     "name" : "contentFileDownload",
-    "type" : "org.primefaces.model.StreamedContent",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "org.primefaces.model.StreamedContent"
   } ]
 }
