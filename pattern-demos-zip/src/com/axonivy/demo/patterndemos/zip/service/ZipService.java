@@ -2,7 +2,6 @@ package com.axonivy.demo.patterndemos.zip.service;
 
 import static java.nio.file.FileSystems.newFileSystem;
 import static org.apache.commons.collections4.CollectionUtils.isEmpty;
-import static org.hibernate.engine.jdbc.StreamUtils.copy;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -85,12 +84,17 @@ public class ZipService {
 		// iterates over entries in the zip file
 		while (entry != null) {
 			String filePath = destDirectory + java.io.File.separator + entry.getName();
+			Path normalizedFilePath = Paths.get(filePath).normalize();
+			Path normalizedDestDir = Paths.get(destDirectory).toAbsolutePath().normalize();
+			if (!normalizedFilePath.startsWith(normalizedDestDir)) {
+				throw new IOException("Bad zip entry: " + entry.getName());
+			}
 			if (!entry.isDirectory()) {
 				// if the entry is a file, extracts it
-				extractFile(zipIn, filePath);
+				extractFile(zipIn, normalizedFilePath.toString());
 			} else {
 				// if the entry is a directory, make the directory
-				var dir = new java.io.File(filePath);
+				var dir = new java.io.File(normalizedFilePath.toString());
 				dir.mkdir();
 			}
 			zipIn.closeEntry();
@@ -132,7 +136,7 @@ public class ZipService {
 			zipEntry.setSize(inputStream.available());
 
 			zos.putNextEntry(zipEntry);
-			copy(inputStream, zos);
+			inputStream.transferTo(zos);
 
 			zos.closeEntry();
 		}

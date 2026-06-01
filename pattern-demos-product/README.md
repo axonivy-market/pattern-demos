@@ -15,6 +15,8 @@ In detail, you will find solutions to the following typical problems:
 - **ZIP**: This demo shows an example of how to use the zip feature.
 - **PDFViewer**: This demo shows how to upload and view PDF file.
 - **Multi Stage Escalation Management**: This demo shows how to implement a multi stage escalation management.
+- **Waiting Event**: This demo shows how to interrupt a process execution and continue when an external event to occur.
+
 ## Demo
 
 ### Admin Task
@@ -231,6 +233,17 @@ Check the MSEJava process for more details. This version is suitable for scenari
 **Limitation**:
 This pattern results in multiple tasks being created throughout the escalation process, which may affect task history tracking and system performance in high-load scenarios.
 
+### Waiting Event
+
+This module demonstrates a technical pattern for handling asynchronous process continuation using intermediate events.
+It includes two primary process entries: **startWaiting**, which initiates a process and suspends it at a defined wait state, and **fireEvent**, which triggers the continuation by referencing a specific **Event ID** — a randomly generated UUID.
+
+In addition to internal invocation, the demo exposes a RESTful endpoint ('/waiting/fire/{eventId}') that enables external systems or services to resume suspended processes by issuing a simple HTTP GET request. This is particularly useful in integration scenarios where the process must wait for a callback, an external system response, or an event-driven signal.
+
+The solution is lightweight, stateless, and easily adaptable to various business requirements.
+
+![image](images/waiting-event-demo.jpg)
+
 ## Setup
 
 This component is a repository for valuable patterns and demos. Typically they must be adapted to your
@@ -250,7 +263,7 @@ Note, that the task and details parameter of the AdminTask should be persistent 
 flag set in your data-class). This is necessary so that the values will be available, when the Admin opens
 the task later.
 
-The demo assignes the task to the role Administrator and categorizes the task as the ADMIN category.
+The demo assigns the task to the role Administrator and categorizes the task as the ADMIN category.
 Change it to your needs.
 
 ### Primefaces Extensions 
