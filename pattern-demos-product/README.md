@@ -1,266 +1,392 @@
 # Pattern Demos
 
-Pattern Demos are a collection of processes, dialogs, code, and other snippets that have proven useful in our projects and are shared publicly as best practices through this Market Extension.  
-To use a pattern, copy the necessary parts into your project and adapt them as needed. While the demos are kept as simple as possible, some may require additional infrastructure in your project.
+Pattern Demos is a collection of reusable Axon Ivy patterns you can copy, adapt, and combine in your own solutions.
 
-In detail, you will find solutions to the following typical problems:  
-- **Admintask**: In case of errors in the process execution an admin gets a task and can decide how to proceed.
-- **Component**: This demo shows how different parts of a user interface can easily share and update the same data by connecting through a common controller, ensuring changes are always in sync.
-- **Lock**: Prevents multiple executions of a task
-- **Job**: This pattern helps you manage automated backend jobs in Axon Ivy, with options to start them manually and handle errors through admin tasks—making jobs easier to control, monitor, and recover from failures.
-- **Paralleltasks**: This pattern helps manage multiple tasks running at the same time.
-- **Placeholder**: Replace placeholders in text (like `{{name}}`) with real values using a built-in service.
-- **Primefaceextension**: Use these examples to see how Primefaces Widgets can be customized using the Primefaces client-side API of widgets.
-- **Validation**: Ensures user input is correct by checking required fields, valid values, and field combinations.
-- **ZIP**: This demo shows an example of how to use the zip feature.
-- **PDFViewer**: This demo shows how to upload and view PDF file.
-- **Waiting Event**: This demo shows how to interrupt a process execution and continue when an external event to occur.
+![Reusable parent-child component state](images/parent-component.png)
+
+It helps you accelerate implementation for common process challenges such as background error handling, task synchronization, validation, file handling, and UI composition.
+
+**Key features**
+
+- Manage background work with admin follow-up tasks, including job handling and waiting events when a process needs to pause and resume later.
+- Reuse shared UI components to keep parent and child dialogs synchronized while saving shared state safely.
+- Coordinate parallel and locked work so multiple tasks run without conflicts and can be controlled from one place.
+- Validate forms from simple required fields to full server-side model checks before a user continues.
+- Move documents and files through ZIP upload/download flows and PDF viewing without leaving the app.
+- Extend PrimeFaces widgets and placeholder replacement behavior to tailor the UI for specific use cases.
 
 ## Demo
 
-### Admin Task
+Explore the demo modules below to see how each pattern behaves in a real app. For the broader repository context, see the root [README](../README.md).
 
-Use an Admin Task to catch errors in unattended backend-jobs. In case of errors,
-an admin role gets a task with the results and can decide whether the job should be retried or skipped.
+### Demo Workflows
 
-This demo creates a **background process** run by the system that intentionally triggers an error. The error is displayed in an **AdminTask**, where an administrator can choose to **retry** the process or **ignore** the error. Before retrying, the issue should be resolved manually. In this demo, the "error" can be fixed by setting the global variable `forceError` to `false` and then retrying.
+#### Admin Task (pattern-demos-admintask)
 
-You can **reuse the dialog** in your own project and follow this pattern whenever you need to execute background functionality and want to handle errors visibly.
+![Admin Task demo showing error decision interface](images/admin-tasks.png)
 
-> **Note:** Make sure the `persist` flag is set for the parameters `task` and `detail`, so they remain available when the administrator opens the task!
+##### Admin Task
 
-![image](images/admin-tasks.png)
+1. Start the Admin Task demo.
+2. Let the background process raise the simulated error and hand you an administrator task.
+3. Review the task details and choose whether to retry, ignore, or check later.
+4. Confirm your choice and watch the process continue or stop.
 
+#### Components (pattern-demos-components)
 
-### Components
+##### Components
 
-This demo shows a pattern to allow referencing a parent owned object in one or more child components.  
-It uses Java based controllers which offer more flexibility than Ivy processes in complex UI scenarios.
+1. Start the Components demo.
+2. Review the parent person object shown on the page.
+3. Change values inside the child component.
+4. Save the page and see the shared state stay in sync.
 
-One object (in this example the `ParentCtrl`) owns a business object and implements a specific holder interface (in this example
-the `PersonHolder`) which allows getting and setting of the `Person` business object. Other controllers are created by the
-`ParentCtrl` and get a reference to the `ParentCtrl` (who is the `PersonHolder`). Therefore both controllers have access to the
-`Person`. This way a change in the component will automatically be reflected in the parent as well and vice versa. Note, that the
-automatic update will work even when a new instance of the `Person` is set by any component.
+#### Job (pattern-demos-job)
 
-Java controllers and similar patterns can be used for many complex situations (e.g. inheritance).
+##### Manual job run
 
-![image](images/parent-component.png)
+1. Start the manual job run demo.
+2. Review the background job note and launch the job manually.
+3. If the job needs attention, open the admin task and inspect the result.
+4. Retry, check later, or continue based on the outcome.
 
+#### Lock (pattern-demos-lock)
 
-### Lock
+![Lock demo concurrent access prevention](images/demos-lock.png)
+![Lock service API illustration](images/lock-service.png)
 
-Use the LockService class to acquire system-wide locks for single-use actions. The LockService
-is based on persistence-utils and needs a database connection. It saves locks in an optimistic
-locked entity to avoid race-conditions. 
+##### Lock
 
-![image](images/lock-service.png)
+1. Start Lock to acquire the demo lock manually.
+2. Review the status message that confirms whether the lock was set.
+3. Keep the lock in place while another process is running.
 
+##### Do Locked
 
-### Job
+1. Start Do Locked while the lock is already held.
+2. Observe whether the process can continue or whether it has to wait.
+3. Unlock the demo and try again if the lock is still busy.
 
-Use this job pattern for all your unattended backend jobs to make them startable manually and in case of manual
-start or errors, create an admin task to let the admin role decide how to continue.
+##### Unlock
 
-The Job Pattern demonstrates a flexible and reusable approach to scheduling and managing periodic tasks within Axon Ivy.
-This pattern initiates a subprocess to handle a demo job, offering two distinct methods to trigger execution, along with
-robust error handling via the AdminTask concept.
+1. Start Unlock to release the demo lock.
+2. Check the status message that confirms the unlock result.
+3. Run the other demo again to verify the lock is available.
 
-The included demo showcases a typical scenario for the Job Pattern. It illustrates how the job is triggered (via scheduler or dialog),
-how a failure is simulated (using `forceError`), and how the AdminTask enables handling of that failure with options like "Retry" and "Ignore."
-Use this as a starting point to explore and customize the pattern for your needs.
+#### Parallel Tasks (pattern-demos-paralleltasks)
 
-Note, that this pattern makes use of the `pattern-demos-lock` and the `pattern-demos-admintask` patterns.
+![Parallel task execution with task group](images/parallel-tasks.png)
 
-![image](images/demos-lock.png)
+##### Parallel Tasks
 
-#### Triggering the Job
+1. Start the Parallel Tasks demo.
+2. Let the process create a small group of tasks in parallel.
+3. Complete the tasks or use the administrator task to postpone, ignore, or cancel them.
+4. Return to the main process once every task is finished.
 
-- **Scheduled Triggering:** The job can be automatically activated using a TimerBean. This is configured through the global variable `demoJobTimerConfiguration` (e.g., `0 0 * * *` for daily execution at midnight).
-- **Manual Triggering:** Alternatively, the job can be started manually via a user dialog. This method provides on-demand flexibility, allowing users to initiate the job whenever necessary.
+#### Placeholder Replacement (pattern-demos-placeholder)
 
-#### Job Behavior and Error Simulation
+![Placeholder token replacement example](images/placeholder-demo.png)
+![Text replacement result](images/replace-text.png)
 
-The execution of the job — whether scheduled or manual — is influenced by the `forceError` variable in `variables.yaml`.
-Set the variable to `true`, to cause the job to simulate an error. This feature is particularly useful for testing the
-pattern’s error handling capabilities. To observe successful execution, set `forceError` to `false`.
+##### Placeholder Replacement
 
-#### Error Handling with AdminTask
+1. Start the placeholder replacement demo.
+2. Edit the template text or the replacement table.
+3. Click Replace to substitute the placeholder values.
+4. Review the generated text and finish when you're done.
 
-When the job fails—either due to a simulated error or an actual issue—an AdminTask is created to manage the situation.
-Assigned to the Administrator role and categorized as ADMIN, this task provides a framework for administrator intervention.
-The available actions include:
+#### PrimeFaces Extensions (pattern-demos-primefacesextensions)
 
-- **Retry:** Reattempt the job to achieve successful completion.
-- **Ignore:** Dismiss the failure, allowing the next scheduled instance (if applicable) to proceed as planned.
-- **Check Later:** Postpone the decision by canceling out of the task, keeping it open for later review.
+![PrimeFaces widget extension example](images/primefaces-extensions.png)
 
-These options are conceptual and must be tailored to your specific process. Refer to the "Admin Task" section under "Setup" for more details on customizing the AdminTask for your needs.
+##### Primefaces Extensions
 
-#### Additional Features
+1. Start the PrimeFaces Extensions demo.
+2. Enter text that contains umlauts or emoji.
+3. Watch the input enforce a 10-byte limit instead of a simple character count.
+4. Notice how the widget changes when the extension blocks more input.
 
-##### ServiceResult
+#### Validation (pattern-demos-validation)
 
-The pattern also offers a class `ServiceResult` which can be used to collect multiple results which are often the case in
-regular jobs. Use this class in your job-implementation to generate `OK`, `WARNING` and `ERROR` messages. The Job pattern shown
-here will automatically generate an Admin Task if a `ServiceResult` contains any not OK entry.
+![Single-field validation form](images/basic-validation.png)
 
-##### Job Locking
+##### Basic Validation
 
-Typically jobs will be started locked without timeout using the `pattern-demos-lock` pattern. This means, that only one instance of
-a job can be running at a point in time and locks will never timeout.
+1. Start the basic validation demo.
+2. Fill in the first name and last name fields.
+3. Click Apply to trigger client-side validation.
+4. Fix missing values and continue once the form is valid.
 
-##### Job Description
+##### Server Side Validation
 
-To avoid providing many parameters for a Job start, a `JobDescription` can be built and put into a
-job repository as shown in this demo. Note, that running jobs by the name of their `JobDescription`
-will only work, after the `JobDescription` is added to the repository. This can be done in multiple
-ways (StartEventBean, static functions,...) and the demo shows a simple example using static
-initialization.
+1. Start the server-side validation demo.
+2. Set the start date and then choose the from/to dates.
+3. Use Apply for full validation or Intermediate Save when you want to store partial input.
+4. Review the validation messages and continue only when the dates are valid.
 
-### Parallel Tasks
+#### ZIP Demo (pattern-demos-zip)
 
-The parallel tasks pattern is designed to manage a dynamic number of concurrent tasks. The task group is assigned
-a unique id and the individual tasks are started by a signal. The unique id is later used to signal the end of
-all tasks and/or to cancel tasks if the administrator decides.
+![ZIP file upload and archive management](images/zip-demo.jpg)
 
-The included demo illustrates a practical use case:
+##### Zip Demo
 
-* A main process creates a unique id for the task group and sends a signal to trigger several parallel tasks.
-* These tasks execute concurrently, simulating real-world workloads.
-* The main process waits for all tasks to finish or allows an admin to skip stalled tasks via an admin task interface.
+1. Start the ZIP demo.
+2. Upload one or more files to add them to the archive.
+3. Download the ZIP file or unpack it into the local designer folder.
+4. Review the archive contents and total sizes.
 
-In this demo, every task notifies it's "FINISHED" status directly in a task custom field. When a task is
-finished, it checks whether all other tasks are finished as well by simply counting the number of tasks
-in the current group. In real word scenarios, business objects might represent the total finished state
-or more complex handling after finishing might be required (e.g. canceling of tasks because of a business
-condition) and therefore the pattern needs to be adapted to your requirements.
+#### PDF Viewer (pattern-demos-pdfviewer)
 
-![image](images/parallel-tasks.png)
+![PDF file upload and viewer interface](images/pdf-viewer-demo.jpg)
 
+##### View PDF document
 
-### Placeholder Evaluation
+1. Start the PDF viewer demo.
+2. Upload a PDF file from your computer.
+3. Switch between the two viewer modes to compare the output.
+4. Download the file again if you want to confirm the document flow.
 
-Use this basic ReplacementService directly in your project or just as a start to implement your own
-text-based place-holder replacement.
+#### Waiting Event (pattern-demos-waitingevent)
 
-![image](images/placeholder-demo.png)
+![Waiting event with fire trigger](images/waiting-event-demo.jpg)
 
-After clicking "Replace" the following text has been generated:
+##### Start Waiting
 
-![image](images/replace-text.png)
+1. Start the waiting event demo.
+2. Note the generated event ID in the log and keep the waiting task open.
+3. Fire the matching event from the second demo start or via `http://localhost:8081/dev-workflow-ui/faces/api-browser.xhtml`.
+4. Watch the waiting case continue once the event is received.
 
-Notes:
+##### Fire Waiting Event
 
-* Ivy allows the use of placeholders or script output already in certain elements.
-* DocFactory and Aspose implement mergefields or mustache placeholders in Word files.
-* Existing Java-based placeholder libraries can be added to an Ivy project.
-
-### Primefaces Extensions
-
-Use these examples to see how Primefaces Widgets can be customized using the Primefaces client-side API of widgets.
-This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways: by refining the logic of its existing methods and by introducing new methods to the widget.
-
-![image](images/primefaces-extensions.png)
-
-
-### Validation
-
-The validation pattern shows some typical validation scenarios for
-
-* a simple field required validation
-* a field value validation
-* a multi-field validation with model mapping and server side logic
-
-  Basic validation:  
-  ![image](images/basic-validation.png)
-
-#### Managed beans
-
-The managed bean `messages` is used as an elegant way to re-use custom CMS messages for multiple fields.
-The managed bean `constants` is used as an elegant way to re-use project constants in the code and in the UI.
-
-### Zip Demo
-
-This demo shows an example of how to use the zip feature. 
-
-You can upload files from your computer. They will be processed and automatically added to an existing zip file. If no ZIP file exists, a new one will be created.  
-Click the Download button to download the ZIP file containing all the files you uploaded.  
-You can also click "Unpack" to extract all the files to your local Designer folder.  
-
-![image](images/zip-demo.jpg)
-
-### PDF Viewer Demo
-
-The uploaded documents are stored in the memory and displayed in a table.
-In case it's downloaded or displayed, the PDF content is streamed to the corresponding PrimeFaces component.
-
-To display the PDF, two different components are demonstrated:
-* Document Viewer
-* Media
-
-The Document Viewer component is available as a PrimeFaces extension, whereas the Media feature is included in the main PrimeFaces package. The features and UX of both components are different.
-Prioritize using Media over Document Viewer, because Media executes faster. In cases where you want to use more features, such as editing documents, then use Document Viewer.
-
-  PDF Viewer Demo:
-![image](images/pdf-viewer-demo.jpg)
-
-### Waiting Event
-
-This module demonstrates a technical pattern for handling asynchronous process continuation using intermediate events.
-It includes two primary process entries: **startWaiting**, which initiates a process and suspends it at a defined wait state, and **fireEvent**, which triggers the continuation by referencing a specific **Event ID** — a randomly generated UUID.
-
-In addition to internal invocation, the demo exposes a RESTful endpoint ('/waiting/fire/{eventId}') that enables external systems or services to resume suspended processes by issuing a simple HTTP GET request. This is particularly useful in integration scenarios where the process must wait for a callback, an external system response, or an event-driven signal.
-
-The solution is lightweight, stateless, and easily adaptable to various business requirements.
-
-![image](images/waiting-event-demo.jpg)
+1. Start the fire event workflow.
+2. Reuse the event ID from the waiting process.
+3. Start the fire action to trigger the waiting event.
+4. Confirm that the waiting process continues.
 
 ## Setup
 
-This component is a repository for valuable patterns and demos. Typically they must be adapted to your
-project situation. Please copy and adapt the pattens and examples that you want to use directly to your project.
+This repository keeps configuration close to each demo module. There is no shared setup guide in the product module; each module carries its own variables and runtime behavior.
 
-### Admin Task
+- **Roles:** Everybody (configured in config/roles.xml)
+- **OpenAPI:** No information was delivered for this section.
 
-The AdminTask shows a concept and must be adapted to your needs and usage-places because it depends on your
-process. The available buttons can be selected on a case-by-case base and you must think what a "Retry"
-or an "Ignore" would mean in your context or if you decide to allow these buttons it all. Out of the box, the
-AdminTask handled "Check Later" by itself (by just canceling out of the task). To use the AdminTask in
-your projects, copy the Dialog to your project, adjust it to your needs and use it at all background
-activities that could fail and require Administrator attention. The demo shows a typical situation and
-a simple example of handling "Retry" and "Ignore".
+Some workflows create administrator tasks at runtime, so you need an Administrator role in the runtime even though the repository role file currently only defines Everybody.
 
-Note, that the task and details parameter of the AdminTask should be persistent (i.e. have the persistent
-flag set in your data-class). This is necessary so that the values will be available, when the Admin opens
-the task later.
+### Variables
 
-The demo assigns the task to the role Administrator and categorizes the task as the ADMIN category.
-Change it to your needs.
+```text
+@variables.yaml@
+```
 
-### Primefaces Extensions 
+## Components
 
-This demonstration illustrates how to enhance the functionality of the PrimeFaces InputText widget in two ways:
+### Callable Subprocesses
 
-* refining the logic of existing methods
-* introducing new widget methods
+The repository exposes one callable subprocess that handles the registered job pattern.
 
-If you would like to extend or improve the functionality of a Primefaces component, follow these steps:
+#### Functional Processes/Job.p.json
 
-* Create an extension Javascript at <PROJECT>/webContent/js/MyExtension.js
-* Use the Client API documentation of Primefaces.
-* In your pages add a link to your JavaScript:
-        <h:outputScript name="js/MyExtension.js"/>
+- **Signature**: runJob(String jobName, Boolean manual)
+    - Input:
+        - `jobName` (String) - Name of the job to run.
+        - `manual` (Boolean) - Marks whether the job was started manually.
+    - Result: (none)
+- **Purpose:** Executes the registered job and lets the surrounding process decide whether the result needs admin review.
 
-If you want to directly replace behaviour of existing widgets, you have to find first the original Javascript code of your widget:
+### Dialog Components
 
-* Find the currently used Primefaces library. You should find it at <DESIGNER>/webapps/ivy/WEB-INF/lib/primefaces...jar
-* Unpack this jar file (it is a zip file), and find the original javascript source of the component you want to change (typically at <JAR>/META-INF/resources/primefaces)
+#### AdminTask — Lets administrators decide how a failing background step should continue
+- **Namespace:** com.axonivy.demo.patterndemos.admintask.AdminTask
+- **Component type:** UI dialog
+- **Fields:**
+  - `task` (String) - Task title shown to the administrator.
+  - `details` (String) - Additional execution details shown in the dialog.
+  - `buttons` (List<com.axonivy.demo.patterndemos.admintask.enums.AdminDecision>) - Decision buttons that appear in the dialog.
+- **Purpose:** Presents a review task for background failures and lets the user retry, ignore, or postpone the work.
 
-***Note***: If you modify the logic of a component, you should verify its functionality with each Ivy update, as these updates often include PrimeFaces updates that could result in compatibility issues.
+#### Parent — Hosts the reusable parent/child synchronization example
+- **Namespace:** com.axonivy.demo.patterndemos.Parent
+- **Component type:** Component dialog
+- **Fields:** - (none)
+- **Purpose:** Shows how a parent dialog keeps shared state and a child component synchronized during saves.
 
+#### Child — Edits the shared person object inside the reusable component
+- **Namespace:** com.axonivy.demo.patterndemos.components.Child
+- **Component type:** Component dialog
+- **Fields:**
+  - `childCtrl` (com.axonivy.demo.patterndemos.ui.components.ChildCtrl) - Controller reference passed from the parent dialog.
+- **Purpose:** Lets the reusable child component edit the shared person data.
 
+#### JobBackgroundNote — Explains the job run and unlock flow
+- **Namespace:** com.axonivy.demo.patterndemos.job.JobBackgroundNote
+- **Component type:** UI dialog
+- **Fields:**
+  - `jobName` (String) - Name of the job shown in the note dialog.
+- **Purpose:** Shows whether the job is locked and lets the user start or unlock it.
 
+#### LockDemo — Shows the lock status and the next action
+- **Namespace:** com.axonivy.demo.patterndemos.lock.LockDemo
+- **Component type:** UI dialog
+- **Fields:**
+  - `message` (String) - Status message displayed in the dialog.
+- **Purpose:** Displays the current lock status and lets the user continue after locking or unlocking the demo lock.
 
+#### DemoTask — Represents one task in the parallel task demo
+- **Namespace:** com.axonivy.demo.patterndemos.paralleltasks.DemoTask
+- **Component type:** UI dialog
+- **Fields:**
+  - `demoData` (com.axonivy.demo.patterndemos.paralleltasks.pojos.DemoData) - Shared task metadata for this parallel task instance.
+- **Purpose:** Shows one parallel task and lets the user complete it or postpone it for later.
 
+#### PlaceholderDemo — Demonstrates placeholder replacement
+- **Namespace:** com.axonivy.demo.patterndemos.placeholder.PlaceholderDemo
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Provides a template editor and replacement table for placeholder substitution.
 
+#### PdfViewerDemo — Lets users upload and preview PDF documents
+- **Namespace:** com.axonivy.demo.patterndemos.pdfviewer.PdfViewerDemo
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Lets the user upload a PDF, preview it in two viewer modes, and download the file again if needed.
+
+#### PrimefacesExtensions — Demonstrates the byte-based text limit extension
+- **Namespace:** com.axonivy.demo.patterndemos.primefacesextensions.PrimefacesExtensions
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Shows how a PrimeFaces input can be extended to limit input by bytes instead of characters.
+
+#### BasicValidation — Demonstrates required-field validation
+- **Namespace:** com.axonivy.demo.patterndemos.validation.BasicValidation
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Presents a simple form that demonstrates client-side validation for required fields.
+
+#### ServerSideValidation — Demonstrates client-side and server-side date checks
+- **Namespace:** com.axonivy.demo.patterndemos.validation.ServerSideValidation
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Shows how to validate dates on the client and on the server, including intermediate save behavior.
+
+#### ZipDemo — Manages file uploads, ZIP creation, and unpacking
+- **Namespace:** com.axonivy.demo.patterndemos.zip.ZipDemo
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Lets users upload files, build a ZIP archive, download it, or unpack it locally.
+
+### Web Services
+
+- No information was delivered for this section.
+### Maven Artifacts
+
+1. pattern-demos-admintask
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-admintask</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+2. pattern-demos-components
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-components</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+3. pattern-demos-job
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-job</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+4. pattern-demos-lock
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-lock</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+5. pattern-demos-paralleltasks
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-paralleltasks</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+6. pattern-demos-placeholder
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-placeholder</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+7. pattern-demos-primefacesextensions
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-primefacesextensions</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+8. pattern-demos-validation
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-validation</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+9. pattern-demos-zip
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-zip</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+10. pattern-demos-pdfviewer
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-pdfviewer</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+11. pattern-demos-waitingevent
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-waitingevent</artifactId>
+  <type>iar</type>
+</dependency>
+```
