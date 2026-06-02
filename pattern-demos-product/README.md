@@ -1,217 +1,285 @@
 # Pattern Demos
 
-Pattern Demos is a collection of reusable processes, dialogs, and code snippets designed to enhance Axon Ivy projects. These demos, such as Lock, Job, and Admin Task, provide adaptable patterns for common scenarios like task management and error handling, requiring customization to fit specific project needs. Ideal for developers, they offer a starting point to streamline implementation while leveraging additional infrastructure like database connections.
+Pattern Demos is a collection of reusable Axon Ivy patterns you can copy, adapt, and combine in your own solutions.
 
-## Key features
+![Reusable parent-child component state](images/parent-component.png)
 
-- Ready-to-use demo processes and dialogs that accelerate implementation and learning.
-- Simplify job automation with scheduled and manual job patterns integrated with Admin Tasks.
-- Prevent race conditions using built-in locking utilities for reliable concurrent processing.
-- Reusable UI form components and dialogs for faster user interface assembly.
-- Preview PDFs and handle ZIP file operations directly in your Axon Ivy flows.
-- Packaged Maven artifacts for easy import and modular deployment.
+It helps you accelerate implementation for common process challenges such as background error handling, task synchronization, validation, file handling, and UI composition.
+
+**Key features**
+
+- Manage background work with admin follow-up tasks, including job handling and waiting events when a process needs to pause and resume later.
+- Reuse shared UI components to keep parent and child dialogs synchronized while saving shared state safely.
+- Coordinate parallel and locked work so multiple tasks run without conflicts and can be controlled from one place.
+- Validate forms from simple required fields to full server-side model checks before a user continues.
+- Move documents and files through ZIP upload/download flows and PDF viewing without leaving the app.
+- Extend PrimeFaces widgets and placeholder replacement behavior to tailor the UI for specific use cases.
 
 ## Demo
 
-Check the demo implementations provided across the modules. Each demo illustrates a focused scenario (Lock, Job, PDF Viewer, Zip, etc.) and can be run in a local Axon Ivy runtime.
+Explore the demo modules below to see how each pattern behaves in a real app. For the broader repository context, see the root [README](../README.md).
 
-### Demo workflows
+### Demo Workflows
 
-#### pattern-demos-admintask (pattern-demos-admintask)
+#### Admin Task (pattern-demos-admintask)
+
+![Admin Task demo showing error decision interface](images/admin-tasks.png)
 
 ##### Admin Task
 
-1. Launch the Admin Task demo from the demo menu.
-2. The demo creates an admin task to review background errors or decisions.
+1. Start the Admin Task demo.
+2. Let the background process raise the simulated error and hand you an administrator task.
+3. Review the task details and choose whether to retry, ignore, or check later.
+4. Confirm your choice and watch the process continue or stop.
 
-![Admin Task demo](images/admin-tasks.png)
-
-3. Choose an action (Retry, Ignore, Check later) to resolve or escalate.
-
-#### pattern-demos-components (pattern-demos-components)
+#### Components (pattern-demos-components)
 
 ##### Components
 
-1. Launch the Components demo from the demo menu.
-2. Interact with the demo UI to create and update components and sub-components.
+1. Start the Components demo.
+2. Review the parent person object shown on the page.
+3. Change values inside the child component.
+4. Save the page and see the shared state stay in sync.
 
-![Parent component example](images/parent-component.png)
-
-3. Observe the resulting dialogs and confirmation messages.
-4. Use the provided dialogs to save and persist component state.
-
-#### pattern-demos-job (pattern-demos-job)
+#### Job (pattern-demos-job)
 
 ##### Manual job run
 
-1. Launch the Manual job run demo from the demo menu.
-2. Fill in the job parameters and start the job.
-3. An Admin Task is created to review job results and decide on retry or ignore.
+1. Start the manual job run demo.
+2. Review the background job note and launch the job manually.
+3. If the job needs attention, open the admin task and inspect the result.
+4. Retry, check later, or continue based on the outcome.
 
-##### Automatic job run
+#### Lock (pattern-demos-lock)
 
-1. The Automatic job run is triggered by a timer (configured via a global variable).
-2. The job runs in the background; failures generate an Admin Task for follow-up.
-
-#### pattern-demos-lock (pattern-demos-lock)
+![Lock demo concurrent access prevention](images/demos-lock.png)
+![Lock service API illustration](images/lock-service.png)
 
 ##### Lock
 
-1. Launch the Lock demo from the demo menu.
-2. Click the button to acquire the demo lock.
-
-![Lock dialog](images/lock-service.png)
-
-3. Observe the confirmation dialog showing the lock state.
-4. If the lock is already taken, the demo explains how to resolve it.
+1. Start Lock to acquire the demo lock manually.
+2. Review the status message that confirms whether the lock was set.
+3. Keep the lock in place while another process is running.
 
 ##### Do Locked
 
-1. Start the Do Locked demo from the demo menu.
-2. The process attempts to acquire the lock and runs only when the lock is available.
-
-![Do Locked demo](images/demos-lock.png)
-
-3. Observe the behaviour and the status dialog that shows whether the action succeeded.
+1. Start Do Locked while the lock is already held.
+2. Observe whether the process can continue or whether it has to wait.
+3. Unlock the demo and try again if the lock is still busy.
 
 ##### Unlock
 
-1. Launch the Unlock demo from the demo menu.
-2. Click to release the demo lock.
-3. Confirm the unlock status in the resulting dialog.
+1. Start Unlock to release the demo lock.
+2. Check the status message that confirms the unlock result.
+3. Run the other demo again to verify the lock is available.
 
-#### pattern-demos-paralleltasks (pattern-demos-paralleltasks)
+#### Parallel Tasks (pattern-demos-paralleltasks)
+
+![Parallel task execution with task group](images/parallel-tasks.png)
 
 ##### Parallel Tasks
 
-1. Launch the Parallel Tasks demo from the demo menu.
-2. The process creates a group of parallel tasks (e.g., 3 tasks).
+1. Start the Parallel Tasks demo.
+2. Let the process create a small group of tasks in parallel.
+3. Complete the tasks or use the administrator task to postpone, ignore, or cancel them.
+4. Return to the main process once every task is finished.
 
-![Parallel tasks example](images/parallel-tasks.png)
+#### Placeholder Replacement (pattern-demos-placeholder)
 
-3. Monitor or cancel individual tasks as needed.
-4. The main process waits until all parallel tasks are finished.
-
-#### pattern-demos-pdfviewer (pattern-demos-pdfviewer)
-
-##### View PDF document
-
-1. Launch the View PDF document demo from the demo menu.
-2. Upload a PDF file or select one to preview.
-
-![PDF viewer demo](images/pdf-viewer-demo.jpg)
-
-3. The PDF displays in the viewer for preview and navigation.
-4. Use viewer controls to zoom or download the document if available.
-
-#### pattern-demos-placeholder (pattern-demos-placeholder)
+![Placeholder token replacement example](images/placeholder-demo.png)
+![Text replacement result](images/replace-text.png)
 
 ##### Placeholder Replacement
 
-1. Launch the Placeholder demo to explore placeholder functionality.
-2. Follow on-screen instructions to exercise replacement or transformation features.
+1. Start the placeholder replacement demo.
+2. Edit the template text or the replacement table.
+3. Click Replace to substitute the placeholder values.
+4. Review the generated text and finish when you're done.
 
-![Placeholder demo](images/placeholder-demo.png)
+#### PrimeFaces Extensions (pattern-demos-primefacesextensions)
 
-#### pattern-demos-primefacesextensions (pattern-demos-primefacesextensions)
+![PrimeFaces widget extension example](images/primefaces-extensions.png)
 
-##### Primefaces Extensions Demo
+##### Primefaces Extensions
 
-1. Launch the Primefaces Extensions demo.
-2. Interact with enhanced UI components demonstrating the extensions.
+1. Start the PrimeFaces Extensions demo.
+2. Enter text that contains umlauts or emoji.
+3. Watch the input enforce a 10-byte limit instead of a simple character count.
+4. Notice how the widget changes when the extension blocks more input.
 
-![Primefaces Extensions](images/primefaces-extensions.png)
+#### Validation (pattern-demos-validation)
 
-3. Use the demo to copy patterns into your own UI implementations.
+![Single-field validation form](images/basic-validation.png)
 
-#### pattern-demos-validation (pattern-demos-validation)
+##### Basic Validation
 
-##### Basic validation
+1. Start the basic validation demo.
+2. Fill in the first name and last name fields.
+3. Click Apply to trigger client-side validation.
+4. Fix missing values and continue once the form is valid.
 
-1. Launch the Basic validation demo.
-2. Fill a field with invalid input to see immediate validation feedback.
+##### Server Side Validation
 
-![Basic validation example](images/basic-validation.png)
+1. Start the server-side validation demo.
+2. Set the start date and then choose the from/to dates.
+3. Use Apply for full validation or Intermediate Save when you want to store partial input.
+4. Review the validation messages and continue only when the dates are valid.
 
-3. Correct the input and confirm the validation passes.
+#### ZIP Demo (pattern-demos-zip)
 
-##### Server side validation
-
-1. Launch the Server side validation demo.
-2. Provide inputs that require model-based or server-side validation.
-3. Review validation errors returned from the server and resolve them.
-
-#### pattern-demos-zip (pattern-demos-zip)
+![ZIP file upload and archive management](images/zip-demo.jpg)
 
 ##### Zip Demo
 
-1. Open the Zip demo dialog.
-2. Upload or select files to include in the archive.
+1. Start the ZIP demo.
+2. Upload one or more files to add them to the archive.
+3. Download the ZIP file or unpack it into the local designer folder.
+4. Review the archive contents and total sizes.
 
-![Zip demo](images/zip-demo.jpg)
+#### PDF Viewer (pattern-demos-pdfviewer)
 
-3. Click the download action to receive the zipped file.
-4. Optionally unzip the file into your local designer folder.
+![PDF file upload and viewer interface](images/pdf-viewer-demo.jpg)
 
-#### pattern-demos-waitingevent (pattern-demos-waitingevent)
+##### View PDF document
+
+1. Start the PDF viewer demo.
+2. Upload a PDF file from your computer.
+3. Switch between the two viewer modes to compare the output.
+4. Download the file again if you want to confirm the document flow.
+
+#### Waiting Event (pattern-demos-waitingevent)
+
+![Waiting event with fire trigger](images/waiting-event-demo.jpg)
 
 ##### Start Waiting
 
-1. Launch the Start Waiting demo from the demo menu.
-2. The demo creates a waiting task and provides an Event ID in the runtime log.
-
-![Waiting event demo](images/waiting-event-demo.jpg)
-
-3. Retrieve the Event ID from the runtime log.
-4. Use the Fire Waiting Event demo or the REST API to trigger the waiting event and resume the task.
+1. Start the waiting event demo.
+2. Note the generated event ID in the log and keep the waiting task open.
+3. Fire the matching event from the second demo start or via `http://localhost:8081/dev-workflow-ui/faces/api-browser.xhtml`.
+4. Watch the waiting case continue once the event is received.
 
 ##### Fire Waiting Event
 
-1. Launch the Fire Waiting Event demo.
-2. Enter the Event ID and execute the action to fire the event.
-3. The corresponding waiting task resumes and completes.
+1. Start the fire event workflow.
+2. Reuse the event ID from the waiting process.
+3. Start the fire action to trigger the waiting event.
+4. Confirm that the waiting process continues.
 
 ## Setup
 
-- **Roles:** - No information was delivered for this section.
-- **OpenAPI:** No public OpenAPI specs delivered by this extension.
+This repository keeps configuration close to each demo module. There is no shared setup guide in the product module; each module carries its own variables and runtime behavior.
+
+- **Roles:** Everybody (configured in config/roles.xml)
+- **OpenAPI:** No information was delivered for this section.
+
+Some workflows create administrator tasks at runtime, so you need an Administrator role in the runtime even though the repository role file currently only defines Everybody.
 
 ### Variables
 
-- No variables were detected.
-
-- No information was delivered for this section.
+```text
+@variables.yaml@
+```
 
 ## Components
 
-### Connector Processes
+### Callable Subprocesses
 
-#### Job.p.json
+The repository exposes one callable subprocess that handles the registered job pattern.
 
-- **runJob(String jobName, Boolean manual) -> (none)**
+#### Functional Processes/Job.p.json
+
+- **Signature**: runJob(String jobName, Boolean manual)
     - Input:
-        - `jobName` (String) - The name of the job to run
-        - `manual` (Boolean) - Whether this is a manual run
-    - Result:
-        - (none)
+        - `jobName` (String) - Name of the job to run.
+        - `manual` (Boolean) - Marks whether the job was started manually.
+    - Result: (none)
+- **Purpose:** Executes the registered job and lets the surrounding process decide whether the result needs admin review.
 
-### Form Components
+### Dialog Components
 
-#### ParentData — UI controller holder
+#### AdminTask — Lets administrators decide how a failing background step should continue
+- **Namespace:** com.axonivy.demo.patterndemos.admintask.AdminTask
+- **Component type:** UI dialog
+- **Fields:**
+  - `task` (String) - Task title shown to the administrator.
+  - `details` (String) - Additional execution details shown in the dialog.
+  - `buttons` (List<com.axonivy.demo.patterndemos.admintask.enums.AdminDecision>) - Decision buttons that appear in the dialog.
+- **Purpose:** Presents a review task for background failures and lets the user retry, ignore, or postpone the work.
 
+#### Parent — Hosts the reusable parent/child synchronization example
 - **Namespace:** com.axonivy.demo.patterndemos.Parent
-- **Component type:** Data Class
-- **Fields:**
-   - `ctrl` (com.axonivy.demo.patterndemos.ui.ParentCtrl) — controller instance (persistent)
+- **Component type:** Component dialog
+- **Fields:** - (none)
+- **Purpose:** Shows how a parent dialog keeps shared state and a child component synchronized during saves.
 
-#### ChildData — UI controller holder
-
+#### Child — Edits the shared person object inside the reusable component
 - **Namespace:** com.axonivy.demo.patterndemos.components.Child
-- **Component type:** Data Class
+- **Component type:** Component dialog
 - **Fields:**
-   - `ctrl` (com.axonivy.demo.patterndemos.ui.components.ChildCtrl) — controller instance (persistent)
+  - `childCtrl` (com.axonivy.demo.patterndemos.ui.components.ChildCtrl) - Controller reference passed from the parent dialog.
+- **Purpose:** Lets the reusable child component edit the shared person data.
 
-### Maven artifacts
+#### JobBackgroundNote — Explains the job run and unlock flow
+- **Namespace:** com.axonivy.demo.patterndemos.job.JobBackgroundNote
+- **Component type:** UI dialog
+- **Fields:**
+  - `jobName` (String) - Name of the job shown in the note dialog.
+- **Purpose:** Shows whether the job is locked and lets the user start or unlock it.
+
+#### LockDemo — Shows the lock status and the next action
+- **Namespace:** com.axonivy.demo.patterndemos.lock.LockDemo
+- **Component type:** UI dialog
+- **Fields:**
+  - `message` (String) - Status message displayed in the dialog.
+- **Purpose:** Displays the current lock status and lets the user continue after locking or unlocking the demo lock.
+
+#### DemoTask — Represents one task in the parallel task demo
+- **Namespace:** com.axonivy.demo.patterndemos.paralleltasks.DemoTask
+- **Component type:** UI dialog
+- **Fields:**
+  - `demoData` (com.axonivy.demo.patterndemos.paralleltasks.pojos.DemoData) - Shared task metadata for this parallel task instance.
+- **Purpose:** Shows one parallel task and lets the user complete it or postpone it for later.
+
+#### PlaceholderDemo — Demonstrates placeholder replacement
+- **Namespace:** com.axonivy.demo.patterndemos.placeholder.PlaceholderDemo
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Provides a template editor and replacement table for placeholder substitution.
+
+#### PdfViewerDemo — Lets users upload and preview PDF documents
+- **Namespace:** com.axonivy.demo.patterndemos.pdfviewer.PdfViewerDemo
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Lets the user upload a PDF, preview it in two viewer modes, and download the file again if needed.
+
+#### PrimefacesExtensions — Demonstrates the byte-based text limit extension
+- **Namespace:** com.axonivy.demo.patterndemos.primefacesextensions.PrimefacesExtensions
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Shows how a PrimeFaces input can be extended to limit input by bytes instead of characters.
+
+#### BasicValidation — Demonstrates required-field validation
+- **Namespace:** com.axonivy.demo.patterndemos.validation.BasicValidation
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Presents a simple form that demonstrates client-side validation for required fields.
+
+#### ServerSideValidation — Demonstrates client-side and server-side date checks
+- **Namespace:** com.axonivy.demo.patterndemos.validation.ServerSideValidation
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Shows how to validate dates on the client and on the server, including intermediate save behavior.
+
+#### ZipDemo — Manages file uploads, ZIP creation, and unpacking
+- **Namespace:** com.axonivy.demo.patterndemos.zip.ZipDemo
+- **Component type:** UI dialog
+- **Fields:** - (none)
+- **Purpose:** Lets users upload files, build a ZIP archive, download it, or unpack it locally.
+
+### Web Services
+
+- No information was delivered for this section.
+### Maven Artifacts
 
 1. pattern-demos-admintask
 
@@ -219,7 +287,6 @@ Check the demo implementations provided across the modules. Each demo illustrate
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-admintask</artifactId>
-  <version>@version@</version>
   <type>iar</type>
 </dependency>
 ```
@@ -230,7 +297,6 @@ Check the demo implementations provided across the modules. Each demo illustrate
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-components</artifactId>
-  <version>@version@</version>
   <type>iar</type>
 </dependency>
 ```
@@ -241,7 +307,6 @@ Check the demo implementations provided across the modules. Each demo illustrate
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-job</artifactId>
-  <version>@version@</version>
   <type>iar</type>
 </dependency>
 ```
@@ -252,7 +317,6 @@ Check the demo implementations provided across the modules. Each demo illustrate
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-lock</artifactId>
-  <version>@version@</version>
   <type>iar</type>
 </dependency>
 ```
@@ -263,7 +327,6 @@ Check the demo implementations provided across the modules. Each demo illustrate
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-paralleltasks</artifactId>
-  <version>@version@</version>
   <type>iar</type>
 </dependency>
 ```
@@ -274,9 +337,56 @@ Check the demo implementations provided across the modules. Each demo illustrate
 <dependency>
   <groupId>com.axonivy.demo.patterndemos</groupId>
   <artifactId>pattern-demos-placeholder</artifactId>
-  <version>@version@</version>
   <type>iar</type>
 </dependency>
 ```
 
-(Additional artifacts omitted for brevity)
+7. pattern-demos-primefacesextensions
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-primefacesextensions</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+8. pattern-demos-validation
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-validation</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+9. pattern-demos-zip
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-zip</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+10. pattern-demos-pdfviewer
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-pdfviewer</artifactId>
+  <type>iar</type>
+</dependency>
+```
+
+11. pattern-demos-waitingevent
+
+```xml
+<dependency>
+  <groupId>com.axonivy.demo.patterndemos</groupId>
+  <artifactId>pattern-demos-waitingevent</artifactId>
+  <type>iar</type>
+</dependency>
+```
