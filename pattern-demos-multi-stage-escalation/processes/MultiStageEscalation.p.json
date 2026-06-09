@@ -10,6 +10,10 @@
       "name" : "startMSE",
       "config" : {
         "signature" : "startMSE",
+        "request" : {
+          "name" : "Start Multi Stage Escalation",
+          "description" : "Start to create Multi Stage Escalation demo flow"
+        },
         "task" : {
           "name" : "Start task"
         },
