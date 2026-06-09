@@ -4,7 +4,6 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
-import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.workflow.ITask;
 import ch.ivyteam.ivy.workflow.WorkflowPriority;
 
@@ -18,7 +17,7 @@ public class TaskUtils {
 	 *   <li><b>Stage 0, 1:</b> 
 	 *       <ul>
 	 *         <li>Priority: NORMAL</li>
-	 *         <li>Expiry: current time + 1 minute</li>
+	 *         <li>Expiry: current time + 2 minute</li>
 	 *       </ul>
 	 *   </li>
 	 *   <li><b>Stage 2:</b> 
@@ -41,6 +40,18 @@ public class TaskUtils {
 	 *   </li>
 	 * </ul>
 	 *
+	 * <p><b>Configuration Notes:</b>
+	 * <ul>
+	 *   <li>
+	 *     Expiry timestamps are currently calculated using fixed durations from the current time.
+	 *   </li>
+	 *   <li>
+	 *     If business-day-based expiration is required, the Ivy Business Calendar can be used instead, for example:
+	 *     <pre>task.setExpiryTimestamp(Ivy.cal().getWorkDayIn(7).toJavaDate());
+	 *     </pre>
+	 *   </li>
+	 * </ul>
+	 * 
 	 * @param task  the task to configure
 	 * @param stage the configuration stage indicator
 	 */
@@ -53,11 +64,6 @@ public class TaskUtils {
 		case 2:
 			task.setOriginalPriority(WorkflowPriority.HIGH);
 			task.setExpiryTimestamp(Date.from(Instant.now().plus(1, ChronoUnit.MINUTES)));
-			
-			// Alternatively, you can use the Ivy Business Calendar to calculate the expiry based on working days.
-			// This line sets the task's expiry to 7 working days from now.
-			// Uncomment to apply this logic:
-			// task.setExpiryTimestamp(Ivy.cal().getWorkDayIn(7).toJavaDate());
 			break;
 		case 3:
 			task.setOriginalPriority(WorkflowPriority.EXCEPTION);
