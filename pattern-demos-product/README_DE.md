@@ -32,13 +32,15 @@ Im Einzelnen finden Sie Lösungen für die folgenden typischen Probleme:
   werden.
 - **ZIP-**: Diese Demo zeigt ein Beispiel für die Verwendung der ZIP-Funktion.
 - **PDFViewer**: Diese Demo zeigt, wie man PDF-Dateien hochlädt und anzeigt.
+- **Multi Stage Escalation Management**: This demo shows how to implement a
+  multi-stage escalation management.
 - **Warten auf Ereignis**: Diese Demo zeigt, wie Sie die Ausführung eines
   Prozesses unterbrechen und fortsetzen können, wenn ein externes Ereignis
   eintritt.
 
 ## Demo
 
-### Admin-Aufgabe
+### Admin Task
 
 Verwenden Sie eine Admin-Aufgabe, um Fehler in unbeaufsichtigten Backend-Jobs zu
 erkennen. Im Falle von Fehlern erhält eine Admin-Rolle eine Aufgabe mit den
@@ -61,7 +63,7 @@ sichtbar behandeln möchten.
 > „ `” task` und „ `” detail` gesetzt ist, damit sie verfügbar bleiben, wenn der
 > Administrator die Aufgabe öffnet!
 
-![Bild](images/admin-tasks.png)
+![image](images/admin-tasks.png)
 
 
 ### Komponenten
@@ -85,7 +87,7 @@ Komponente festgelegt wird.
 Java-Controller und ähnliche Muster können für viele komplexe Situationen (z. B.
 Vererbung) verwendet werden.
 
-![Bild](images/parent-component.png)
+![image](images/parent-component.png)
 
 
 ### Sperren
@@ -95,7 +97,7 @@ Aktionen zu erwerben. Der LockService basiert auf Persistence-Utils und benötig
 eine Datenbankverbindung. Er speichert Sperren in einer optimistisch gesperrten
 Entität, um Race-Bedingungen zu vermeiden.
 
-![Bild](images/lock-service.png)
+![image](images/lock-service.png)
 
 
 ### Job
@@ -121,7 +123,7 @@ an Ihre Bedürfnisse anzupassen.
 Beachten Sie, dass dieses Muster die Muster „ `” (pattern-demos-lock)` und „ `”
 (pattern-demos-admintask)` verwendet.
 
-![Bild](images/demos-lock.png)
+![image](images/demos-lock.png)
 
 #### Auslösen des Auftrags
 
@@ -217,7 +219,7 @@ komplexere Bearbeitung nach Abschluss erforderlich sein (z. B. Stornierung von
 Aufgaben aufgrund einer Geschäftsbedingung), sodass das Muster an Ihre
 Anforderungen angepasst werden muss.
 
-![Bild](images/parallel-tasks.png)
+![image](images/parallel-tasks.png)
 
 
 ### Platzhalterauswertung
@@ -226,11 +228,11 @@ Verwenden Sie diesen einfachen ReplacementService direkt in Ihrem Projekt oder
 als Ausgangspunkt für die Implementierung Ihres eigenen textbasierten
 Platzhalter-Ersatzes.
 
-![Bild](images/placeholder-demo.png)
+![image](images/placeholder-demo.png)
 
 Nach dem Klicken auf „Ersetzen” wurde der folgende Text generiert:
 
-![Bild](images/replace-text.png)
+![image](images/replace-text.png)
 
 Hinweise:
 
@@ -241,7 +243,7 @@ Hinweise:
 * Bestehende Java-basierte Platzhalterbibliotheken können zu einem Ivy-Projekt
   hinzugefügt werden.
 
-### Primefaces-Erweiterungen
+### Primefaces Extensions
 
 Anhand dieser Beispiele können Sie sehen, wie Primefaces-Widgets mithilfe der
 clientseitigen API von Primefaces angepasst werden können. Diese Demonstration
@@ -249,7 +251,7 @@ veranschaulicht, wie die Funktionalität des PrimeFaces InputText-Widgets auf
 zwei Arten verbessert werden kann: durch Verfeinerung der Logik der vorhandenen
 Methoden und durch Einführung neuer Methoden für das Widget.
 
-![Bild](images/primefaces-extensions.png)
+![image](images/primefaces-extensions.png)
 
 
 ### Validierung
@@ -282,7 +284,7 @@ Ihnen hochgeladenen Dateien herunterzuladen.\
 Sie können auch auf „Entpacken“ klicken, um alle Dateien in Ihren lokalen
 Designer-Ordner zu extrahieren.
 
-![Bild](images/zip-demo.jpg)
+![image](images/zip-demo.jpg)
 
 ### PDF-Viewer-Demo
 
@@ -303,6 +305,42 @@ Bearbeiten von Dokumenten, verwenden Sie „Document Viewer”.
 
 PDF-Viewer-Demo: ![Bild](images/pdf-viewer-demo.jpg)
 
+### Multi Stage Escalation Management Demo
+
+This demo demonstrates how to implement **Multi-Stage Escalation Management** in
+a workflow/process.
+#### Key Concepts
+
+- **Task Creation & Expiry Configuration**:\
+  A task is created and configured with an expiry timestamp based on the current
+  escalation stage.
+
+- **Error Start Trigger on Expiry**:\
+  An error start event is defined and linked to the task. When the task expires,
+  this event is triggered automatically.
+
+- **Stage-Based Reconfiguration**:\
+  The current escalation stage is persisted in **Process Data**. Upon task
+  expiry, the stage is incremented, and a new task is created with updated
+  configurations—priority and expiry time—based on the next stage.
+
+From a technical perspective, the expired task is deleted, and a new task is
+generated with the appropriate settings for the current stage.
+
+![image](images/MSEProcess.jpg)
+
+#### Additional
+We also provide an alternative version of the demo with most of the logic
+implemented in Java classes. Check the MSEJava process for more details. This
+version is suitable for scenarios where escalation logic and task handling are
+better managed through code for improved flexibility and maintainability.
+
+![image](images/MSE_Java.jpg)
+
+**Limitation**: This pattern results in multiple tasks being created throughout
+the escalation process, which may affect task history tracking and system
+performance in high-load scenarios.
+
 ### Warteereignis
 
 Dieses Modul demonstriert ein technisches Muster für die Handhabung der
@@ -322,7 +360,7 @@ Signal warten muss.
 Die Lösung ist leichtgewichtig, zustandslos und lässt sich leicht an
 verschiedene Geschäftsanforderungen anpassen.
 
-![Bild](images/waiting-event-demo.jpg)
+![image](images/waiting-event-demo.jpg)
 
 ## Setup
 
@@ -331,7 +369,7 @@ müssen diese an Ihre Projektsituation angepasst werden. Bitte kopieren Sie die
 Muster und Beispiele, die Sie verwenden möchten, direkt in Ihr Projekt und
 passen Sie sie dort an.
 
-### Admin-Aufgabe
+### Admin Task
 
 Die AdminTask zeigt ein Konzept und muss an Ihre Bedürfnisse und Einsatzorte
 angepasst werden, da sie von Ihrem Prozess abhängt. Die verfügbaren
@@ -354,7 +392,7 @@ Administrator die Aufgabe später öffnet.
 The demo assigns the task to the role Administrator and categorizes the task as
 the ADMIN category. Change it to your needs.
 
-### Primefaces-Erweiterungen
+### Primefaces Extensions
 
 Diese Demonstration veranschaulicht, wie Sie die Funktionalität des PrimeFaces
 InputText-Widgets auf zwei Arten verbessern können:
