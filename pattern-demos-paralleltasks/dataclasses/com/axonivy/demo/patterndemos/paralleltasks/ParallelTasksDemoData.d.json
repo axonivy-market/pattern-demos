@@ -1,15 +1,11 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/data-class.json",
   "simpleName" : "ParallelTasksDemoData",
   "namespace" : "com.axonivy.demo.patterndemos.paralleltasks",
-  "isBusinessCaseData" : false,
   "fields" : [ {
-    "name" : "uniqueId",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
+    "name" : "uniqueId"
   }, {
     "name" : "demoData",
-    "type" : "com.axonivy.demo.patterndemos.paralleltasks.pojos.DemoData",
-    "modifiers" : [ "PERSISTENT" ]
+    "type" : "com.axonivy.demo.patterndemos.paralleltasks.pojos.DemoData"
   } ]
 }
