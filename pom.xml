@@ -23,6 +23,7 @@
 		<module>pattern-demos-zip</module>
 		<module>pattern-demos-pdfviewer</module>
 		<module>pattern-demos-waitingevent</module>
+		<module>pattern-demos-multi-stage-escalation</module>
 	</modules>
 
 	<scm>
