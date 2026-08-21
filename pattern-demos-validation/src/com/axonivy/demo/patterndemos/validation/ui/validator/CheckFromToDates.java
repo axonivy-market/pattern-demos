@@ -6,18 +6,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.validator.FacesValidator;
-import javax.faces.validator.ValidatorException;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.validator.FacesValidator;
+import jakarta.faces.validator.ValidatorException;
 
 import com.axonivy.demo.patterndemos.validation.Constants;
 import com.axonivy.demo.patterndemos.validation.ui.ServerSideValidationCtrl;
 
 import ch.ivyteam.ivy.environment.Ivy;
+import jakarta.enterprise.context.ApplicationScoped;
 
-@FacesValidator("checkFromToDates")
+@FacesValidator(value = "checkFromToDates", managed = true)
+@ApplicationScoped
 public class CheckFromToDates extends BaseValidatorSimple<ServerSideValidationCtrl>{
 
 	@Override

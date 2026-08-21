@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.faces.event.ActionEvent;
+import jakarta.faces.event.ActionEvent;
 
 import com.axonivy.demo.patterndemos.placeholder.service.ReplacementService;
 
