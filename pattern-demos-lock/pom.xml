@@ -19,7 +19,7 @@
     <dependency>
       <groupId>com.axonivy.utils.persistence</groupId>
       <artifactId>persistence-utils</artifactId>
-      <version>13.2.2</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.hibernate</groupId>
