@@ -3,6 +3,7 @@
   "simpleName" : "LockDemoData",
   "namespace" : "com.axonivy.demo.patterndemos.lock.LockDemo",
   "fields" : [ {
-    "name" : "message"
+    "name" : "message",
+    "modifiers" : [ ]
   } ]
 }

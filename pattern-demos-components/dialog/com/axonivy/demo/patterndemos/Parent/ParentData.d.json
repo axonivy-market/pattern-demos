@@ -4,6 +4,7 @@
   "namespace" : "com.axonivy.demo.patterndemos.Parent",
   "fields" : [ {
     "name" : "ctrl",
-    "type" : "com.axonivy.demo.patterndemos.ui.ParentCtrl"
+    "type" : "com.axonivy.demo.patterndemos.ui.ParentCtrl",
+    "modifiers" : [ ]
   } ]
 }

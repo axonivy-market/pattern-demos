@@ -3,6 +3,7 @@
   "simpleName" : "PrimefacesExtensionsData",
   "namespace" : "com.axonivy.demo.patterndemos.primefacesextensions.PrimefacesExtensions",
   "fields" : [ {
-    "name" : "testInput"
+    "name" : "testInput",
+    "modifiers" : [ ]
   } ]
 }

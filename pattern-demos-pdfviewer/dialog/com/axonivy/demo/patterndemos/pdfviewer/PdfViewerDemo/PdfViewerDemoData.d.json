@@ -4,9 +4,11 @@
   "namespace" : "com.axonivy.demo.patterndemos.pdfviewer.PdfViewerDemo",
   "fields" : [ {
     "name" : "ctrl",
-    "type" : "com.axonivy.demo.patterndemos.pdfviewer.ui.PdfViewerCtrl"
+    "type" : "com.axonivy.demo.patterndemos.pdfviewer.ui.PdfViewerCtrl",
+    "modifiers" : [ ]
   }, {
     "name" : "contentFileDownload",
-    "type" : "org.primefaces.model.StreamedContent"
+    "type" : "org.primefaces.model.StreamedContent",
+    "modifiers" : [ ]
   } ]
 }

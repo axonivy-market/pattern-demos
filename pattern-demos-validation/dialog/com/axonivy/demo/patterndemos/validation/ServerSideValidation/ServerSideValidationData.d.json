@@ -4,6 +4,7 @@
   "namespace" : "com.axonivy.demo.patterndemos.validation.ServerSideValidation",
   "fields" : [ {
     "name" : "ctrl",
-    "type" : "com.axonivy.demo.patterndemos.validation.ui.ServerSideValidationCtrl"
+    "type" : "com.axonivy.demo.patterndemos.validation.ui.ServerSideValidationCtrl",
+    "modifiers" : [ ]
   } ]
 }

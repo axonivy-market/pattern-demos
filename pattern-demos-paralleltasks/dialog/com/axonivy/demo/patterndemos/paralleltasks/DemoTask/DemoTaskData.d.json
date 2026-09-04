@@ -4,6 +4,7 @@
   "namespace" : "com.axonivy.demo.patterndemos.paralleltasks.DemoTask",
   "fields" : [ {
     "name" : "demoData",
-    "type" : "com.axonivy.demo.patterndemos.paralleltasks.pojos.DemoData"
+    "type" : "com.axonivy.demo.patterndemos.paralleltasks.pojos.DemoData",
+    "modifiers" : [ ]
   } ]
 }

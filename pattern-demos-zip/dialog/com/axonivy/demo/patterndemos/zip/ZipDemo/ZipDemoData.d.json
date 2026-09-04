@@ -4,9 +4,11 @@
   "namespace" : "com.axonivy.demo.patterndemos.zip.ZipDemo",
   "fields" : [ {
     "name" : "fileContent",
-    "type" : "org.primefaces.model.StreamedContent"
+    "type" : "org.primefaces.model.StreamedContent",
+    "modifiers" : [ ]
   }, {
     "name" : "ctrl",
-    "type" : "com.axonivy.demo.patterndemos.zip.ui.ZipFileCtrl"
+    "type" : "com.axonivy.demo.patterndemos.zip.ui.ZipFileCtrl",
+    "modifiers" : [ ]
   } ]
 }

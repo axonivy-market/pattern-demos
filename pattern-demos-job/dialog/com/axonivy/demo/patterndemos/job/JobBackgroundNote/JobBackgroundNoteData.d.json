@@ -4,6 +4,7 @@
   "namespace" : "com.axonivy.demo.patterndemos.job.JobBackgroundNote",
   "fields" : [ {
     "name" : "ctrl",
-    "type" : "com.axonivy.demo.patterndemos.job.ui.JobBackgroundNoteCtrl"
+    "type" : "com.axonivy.demo.patterndemos.job.ui.JobBackgroundNoteCtrl",
+    "modifiers" : [ ]
   } ]
 }
