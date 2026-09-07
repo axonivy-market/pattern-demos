@@ -4,6 +4,7 @@
   "namespace" : "com.axonivy.demo.patterndemos.admintask.AdminTask",
   "fields" : [ {
     "name" : "ctrl",
-    "type" : "com.axonivy.demo.patterndemos.admintask.ui.AdminTaskCtrl"
+    "type" : "com.axonivy.demo.patterndemos.admintask.ui.AdminTaskCtrl",
+    "modifiers" : [ ]
   } ]
 }

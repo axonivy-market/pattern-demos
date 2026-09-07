@@ -4,6 +4,7 @@
   "namespace" : "com.axonivy.demo.patterndemos.placeholder.PlaceholderDemo",
   "fields" : [ {
     "name" : "ctrl",
-    "type" : "com.axonivy.demo.patterndemos.placeholder.ui.PlaceholderDemoCtrl"
+    "type" : "com.axonivy.demo.patterndemos.placeholder.ui.PlaceholderDemoCtrl",
+    "modifiers" : [ ]
   } ]
 }
