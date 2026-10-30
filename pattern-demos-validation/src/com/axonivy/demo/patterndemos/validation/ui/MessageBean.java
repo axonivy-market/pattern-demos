@@ -2,11 +2,13 @@ package com.axonivy.demo.patterndemos.validation.ui;
 
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
+import jakarta.inject.Named;
 
 import ch.ivyteam.ivy.environment.Ivy;
+import jakarta.enterprise.context.RequestScoped;
 
-@ManagedBean(name = "messages")
+@Named(value = "messages")
+@RequestScoped
 public class MessageBean {
 
 	private static final MessageBean INSTANCE = new MessageBean();

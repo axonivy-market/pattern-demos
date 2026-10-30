@@ -3,15 +3,15 @@ package com.axonivy.demo.patterndemos.validation;
 import java.util.AbstractMap;
 import java.util.Set;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 
 import ch.ivyteam.ivy.environment.Ivy;
 
 /**
  * Constants for use in project and xhtml pages.  
  */
-@ManagedBean(name = "constants")
+@Named(value = "constants")
 @ApplicationScoped
 public class Constants extends AbstractMap<String, String>{
 	public static final String DATE_PLACEHOLDER = "dd.MM.yyyy";

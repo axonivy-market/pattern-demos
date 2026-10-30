@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://json-schema.axonivy.com/14.0/config/persistence.json
+Persistence:
+  pattern-demos-test:
+    DataSource: pattern_demo_test
+    Managed:
+      Classes:
+        - com.axonivy.demo.patterndemos.job.entities.JobStatus
+    Properties:
+      hibernate.hbm2ddl.auto: create-drop
