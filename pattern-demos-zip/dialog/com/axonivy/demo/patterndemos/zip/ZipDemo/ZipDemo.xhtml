@@ -56,8 +56,8 @@
 					<div class="col-9">
 						<p:fileUpload id="upload" mode="simple" skinSimple="true"
 							multiple="true" auto="true" chooseIcon="pi pi-upload"
-							update="form" listener="#{data.ctrl.onFilesUpload}"
-							sizeLimit="20000000">
+							update="form" listener="#{data.ctrl.onFilesUpload}">
+							<p:validateFile sizeLimit="20000000" />
 						</p:fileUpload>
 					</div>
 					<div class="col-3 pl-7">
