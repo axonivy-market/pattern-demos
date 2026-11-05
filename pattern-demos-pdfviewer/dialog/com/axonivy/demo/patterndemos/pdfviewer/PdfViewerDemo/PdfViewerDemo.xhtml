@@ -32,8 +32,9 @@
 									<p:fileUpload id="btnAdd" label="Upload" mode="simple"
 										skinSimple="true" auto="true" chooseIcon="fa-solid fa-plus"
 										styleClass="upload-file" listener="#{data.ctrl.onUploadFile}"
-										update="fileManagement fileView" sizeLimit="1000000000"
-										allowTypes="/(\.|\/)(pdf)$/" validateContentType="true">
+										update="fileManagement fileView" accept="application/pdf">
+										<p:validateFile sizeLimit="1000000000"
+											allowTypes="/(\.|\/)(pdf)$/" contentType="true" />
 									</p:fileUpload>
 								</div>
 							</p:fieldset>

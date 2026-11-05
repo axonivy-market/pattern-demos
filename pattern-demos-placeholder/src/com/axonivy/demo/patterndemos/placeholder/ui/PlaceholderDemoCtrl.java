@@ -29,7 +29,7 @@ public class PlaceholderDemoCtrl {
 
 	public void replace(ActionEvent event) {
 		var replacement = entries.stream().collect(
-				Collectors.toMap(StringPair::getKey, StringPair::getValue, (o, n) -> n));
+				Collectors.toMap(StringPair::getKey, StringPair::getValue, (_, n) -> n));
 
 		text = ReplacementService.get().replacePlaceholders(template, replacement);
 	}
