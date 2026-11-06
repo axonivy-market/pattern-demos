@@ -1,6 +1,6 @@
 package com.axonivy.demo.patterndemos.ui;
 
-import javax.faces.event.ActionEvent;
+import jakarta.faces.event.ActionEvent;
 
 import com.axonivy.demo.patterndemos.entities.Person;
 import com.axonivy.demo.patterndemos.ui.components.ChildCtrl;
