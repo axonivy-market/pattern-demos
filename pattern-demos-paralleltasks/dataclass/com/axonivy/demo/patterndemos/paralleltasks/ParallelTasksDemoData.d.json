@@ -1,0 +1,11 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "ParallelTasksDemoData",
+  "namespace" : "com.axonivy.demo.patterndemos.paralleltasks",
+  "fields" : [ {
+    "name" : "uniqueId"
+  }, {
+    "name" : "demoData",
+    "type" : "com.axonivy.demo.patterndemos.paralleltasks.pojos.DemoData"
+  } ]
+}

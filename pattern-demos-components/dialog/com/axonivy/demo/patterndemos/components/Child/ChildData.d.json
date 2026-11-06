@@ -1,0 +1,10 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "ChildData",
+  "namespace" : "com.axonivy.demo.patterndemos.components.Child",
+  "fields" : [ {
+    "name" : "ctrl",
+    "type" : "com.axonivy.demo.patterndemos.ui.components.ChildCtrl",
+    "modifiers" : [ ]
+  } ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "JobData",
+  "namespace" : "com.axonivy.demo.patterndemos.job",
+  "fields" : [ {
+    "name" : "jobName"
+  }, {
+    "name" : "manual",
+    "type" : "Boolean"
+  }, {
+    "name" : "result",
+    "type" : "com.axonivy.demo.patterndemos.job.pojos.ServiceResult"
+  }, {
+    "name" : "adminDecision",
+    "type" : "com.axonivy.demo.patterndemos.admintask.enums.AdminDecision",
+    "modifiers" : [ ]
+  } ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "ZipDemoData",
+  "namespace" : "com.axonivy.demo.patterndemos.zip.ZipDemo",
+  "fields" : [ {
+    "name" : "fileContent",
+    "type" : "org.primefaces.model.StreamedContent",
+    "modifiers" : [ ]
+  }, {
+    "name" : "ctrl",
+    "type" : "com.axonivy.demo.patterndemos.zip.ui.ZipFileCtrl",
+    "modifiers" : [ ]
+  } ]
+}
