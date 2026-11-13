@@ -1,6 +1,5 @@
 package com.axonivy.demo.patterndemos.job.entities;
 
-import java.io.IOException;
 import java.time.Instant;
 
 import jakarta.persistence.Column;
@@ -12,8 +11,8 @@ import jakarta.persistence.Table;
 
 import com.axonivy.demo.patterndemos.job.enums.JobRunStatus;
 import com.axonivy.utils.persistence.beans.AuditableIdEntity;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 
 import ch.ivyteam.ivy.environment.Ivy;
 
@@ -185,7 +184,7 @@ public class JobStatus extends AuditableIdEntity {
 		if(data != null) {
 			try {
 				result = objectMapper.readerFor(jobDataClass).readValue(data);
-			} catch (IOException e) {
+			} catch (JacksonException e) {
 				Ivy.log().error("Could not unpack JobData from JobStatus ''{0}'' {1}", e, data, name);
 			}
 		}
@@ -205,7 +204,7 @@ public class JobStatus extends AuditableIdEntity {
 		try {
 			jobDataString = objectMapper.writeValueAsString(jobData);
 			setJobData(jobDataString);
-		} catch (JsonProcessingException e) {
+		} catch (JacksonException e) {
 			Ivy.log().error("Could not pack JobData to JobStatus ''{0}''. Leaving the previous message untouched. {1}", e, jobDataString, name);
 		}
 	}

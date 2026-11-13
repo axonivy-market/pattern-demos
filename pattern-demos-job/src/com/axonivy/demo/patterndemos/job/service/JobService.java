@@ -21,9 +21,8 @@ import com.axonivy.demo.patterndemos.job.pojos.ServiceResult;
 import com.axonivy.demo.patterndemos.job.pojos.ServiceResult.ResultStatus;
 import com.axonivy.demo.patterndemos.lock.entities.Lock;
 import com.axonivy.demo.patterndemos.lock.service.LockService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 
 import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.environment.Ivy;
@@ -34,7 +33,7 @@ public class JobService {
 	private static final JobService INSTANCE = new JobService();
 	public static String OK_MESSAGE = "OK";
 	private static final Map<String, JobDescription> jobRepository = Collections.synchronizedMap(new HashMap<>());
-	private static final ObjectMapper MAPPER = new ObjectMapper().registerModule(new JavaTimeModule());
+	private static final ObjectMapper MAPPER = new ObjectMapper();
 
 	private JobService() {
 	}
@@ -341,7 +340,7 @@ public class JobService {
 	public String packAdditionalData(Object additionalData) {
 		try {
 			return MAPPER.writeValueAsString(additionalData);
-		} catch (JsonProcessingException e) {
+		} catch (JacksonException e) {
 			throw BpmError
 			.create(OK_MESSAGE).withMessage("Error packing additional data of object: %s".formatted(additionalData))
 			.withCause(e)
@@ -360,7 +359,7 @@ public class JobService {
 	public <T> T unpackAdditionalData(String additionalData, Class<T> type) {
 		try {
 			return MAPPER.readValue(additionalData, type);
-		} catch (JsonProcessingException e) {
+		} catch (JacksonException e) {
 			throw BpmError
 			.create(OK_MESSAGE).withMessage("Error unpacking additional data '%s' of type: %s".formatted(additionalData, type))
 			.withCause(e)
